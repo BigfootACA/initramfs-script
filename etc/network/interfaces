@@ -1,0 +1,12 @@
+auto eth0
+iface eth0 inet dhcp
+pre-up [ -h /sys/class/eth0 ]
+auto eth1
+iface eth1 inet dhcp
+pre-up [ -h /sys/class/eth1 ]
+auto eth2
+iface eth2 inet dhcp
+pre-up [ -h /sys/class/eth2 ]
+auto eth3
+iface eth3 inet dhcp
+pre-up [ -h /sys/class/eth3 ]

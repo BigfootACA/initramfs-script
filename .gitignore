@@ -1,0 +1,10 @@
+bin/*
+lib/*
+firmware/*
+modules/*
+root
+*.rej
+*.orig
+*.swp
+*.save*
+initramfs.cpio*

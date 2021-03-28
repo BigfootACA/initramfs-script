@@ -1,0 +1,16 @@
+IN_BASHRC=1
+source /etc/profile
+unset PS1
+alias la='ls -a'
+alias ll='ls -l'
+case "${TERM}" in
+	linux|*xterm*|putty*|screen*)
+		PS1='\[\e[0;1;32m\e[31m\]\u\[\e[0;1;32m\]@\[\e[35m\]\h\[\e[0;1;32m\e[0m\]:\[\e[1;34m\]\w \[\e[36m\]\$ \[\e[0m\]'
+		alias ls='ls -h --color=auto'
+		alias grep='grep --color=auto'
+	;;
+	*)
+		PS1='\u@\h:\w \$ '
+		alias ls='ls -h'
+	;;
+esac
