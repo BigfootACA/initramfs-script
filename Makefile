@@ -84,6 +84,15 @@ root/lib: root/usr/lib
 	@ln -vs usr/lib $@
 root/usr/lib: root/usr/lib/firmware root/usr/lib/modules FORCE
 root: root/init root/bin root/sbin root/usr/sbin root/lib root/etc
+	@mkdir -pv \
+		root/sys \
+		root/dev \
+		root/proc \
+		root/run \
+		root/tmp \
+		root/log \
+		root/root \
+		root/rootblk
 check: root
 	@cd root;shellcheck -x init
 test: check
