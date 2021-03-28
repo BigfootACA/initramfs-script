@@ -8,6 +8,7 @@ function start_udevd(){
 	udevadm settle --timeout=10
 	sync
 }
+
 function start_charger(){
 	if [ "${init_kerneltype}" == "android" ]&&[ "${init_abootmode}" == "charger" ]
 	then	set_led "${init_backlight}" 50

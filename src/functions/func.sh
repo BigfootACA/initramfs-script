@@ -1,6 +1,9 @@
 function line_add_prefix(){ while read -r l;do echo "${1}${l}";done; }
+
 function load_module(){ modprobe "${1}" &>/dev/null; }
+
 function read_exists(){ [ -r "${1}" ]&&echo "$(<"${1}")"; }
+
 function read_empty(){
 	local data
 	data="$(read_exists "${1}")"
@@ -10,12 +13,14 @@ function read_empty(){
 	else echo "${@}"
 	fi
 }
+
 function run_tty(){
 	local tty
 	case "${1}" in /dev/?*)tty="${1}";shift;;esac
 	# shellcheck disable=SC2094
 	"${@}" 0<"${tty}" 1>"${tty}" 2>"${tty}"
 }
+
 function on_failed(){
 	echo "${@}"
 	echo "${@}">/tmp/failed
@@ -32,6 +37,7 @@ function on_failed(){
 	esac
 	rm -f /tmp/failed
 }
+
 function auto_decompress(){
 	case "$(file "${1}")" in
 		*"XZ compressed data"*)xz -d <"${1}";;
@@ -48,6 +54,7 @@ function auto_decompress(){
 		?*)cat<"${1}"
 	esac
 }
+
 function wait_block(){
 	#1:block 2:label
 	[ -b "${1}" ]||sleep 10

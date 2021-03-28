@@ -7,6 +7,7 @@ function add_gadget_func(){
 	mkdir "${_path}"||return 1
 	echo "${_path}"
 }
+
 function add_adb(){
 	local _gdg
 	echo "setup adb daemon"
@@ -25,6 +26,7 @@ function add_adb(){
 		-b device
 	ln -s "${_gdg}" "${_GDG_CFG}/"
 }
+
 function add_acm(){
 	local _gdg
 	echo "setup acm serial console"
@@ -35,6 +37,7 @@ function add_acm(){
 	while true;do run_tty /dev/ttyGS0 /bin/bash;done &
 	ln -s "${_gdg}" "${_GDG_CFG}/"
 }
+
 function add_mass_disk_blocks(){
 	local _gdg _dev _type _path
 	echo "setup mass_storage with multi-block mode"
@@ -54,6 +57,7 @@ function add_mass_disk_blocks(){
 		sync
 	done
 }
+
 function add_mass_disk_luns(){
 	local _gdg _luns _lun _dev _type _path
 	echo "setup mass_storage with multi-lun mode"
@@ -88,6 +92,7 @@ function add_mass_disk_luns(){
 	ln -s "${_gdg}" "${_GDG_CFG}/"
 	sync
 }
+
 function show_splash(){
 	exit_splash
 	mkfifo /run/splash
@@ -95,13 +100,16 @@ function show_splash(){
 	fbsplash -s "${1}" -i /etc/fbsplash.cfg -f /run/splash &
 	set_led "${init_backlight}" 50
 }
+
 function exit_splash(){
 	[ -e /run/splash ]||return
 	echo "stop show splash"
 	echo exit > /run/splash
 	rm -f /run/splash
 }
+
 function show_usb(){ show_splash /etc/usb.ppm; }
+
 function init_gadget(){
 	load_module libcomposite
 	mountpoint -q "${_CFS}"||mount -t configfs configfs "${_CFS}"
@@ -122,6 +130,7 @@ function init_gadget(){
 	echo -n "INITRAMFS" > "${_GDG}/configs/b.1/strings/0x409/configuration"
 	sync
 }
+
 function start_gadget(){
 	load_module udc-core
 	if [ -n "${init_abootusb}" ]
@@ -135,10 +144,12 @@ function start_gadget(){
 	fi
 	sync
 }
+
 function init_usb_control(){
 	add_adb
 	add_acm
 }
+
 function start_usb(){
 	echo "starting usb gadget mass storage";sync
 	init_gadget
@@ -149,6 +160,7 @@ function start_usb(){
 	"${init_control}"&&init_usb_control
 	start_gadget
 }
+
 function start_usb_wait(){
 	show_usb
 	start_usb

@@ -8,6 +8,7 @@ function vibrate(){
 		echo -n 1 >"${led}/activate"
 	fi
 }
+
 function set_led(){
 	#1:device 2:percent
 	local sysled="/sys/class/leds/${1}"
@@ -17,6 +18,7 @@ function set_led(){
 		echo -n "$(("${max}"*"${2}"/100))" > "${sysled}/brightness"
 	fi
 }
+
 function blink_led(){
 	#1:device 2:percent 3:times 4:on_time 5:delay
 	{

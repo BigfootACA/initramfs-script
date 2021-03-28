@@ -1,3 +1,4 @@
+
 function mount_block(){
 	#1:source 2:target 3:label 4:fstype 5:ro/rw 6:options
 	local opts fstype fs _file
@@ -56,6 +57,7 @@ function mount_block(){
 	show_block "${1}"
 	sync
 }
+
 function init_early_fs(){
 	mount -t proc proc /proc
 	mount -t sysfs sys /sys
@@ -63,6 +65,7 @@ function init_early_fs(){
 	mount -t tmpfs -o mode=755 run /run
 	mdev -s
 }
+
 function load_rootblk(){
 	echo "using loop block ${init_root} from ${init_rootblk}"
 	wait_block "${init_rootblk}" "loop rootblk"
@@ -83,6 +86,7 @@ function load_rootblk(){
 	losetup --all --list
 	show_block "${loopblk}"
 }
+
 function prepare_block(){
 	if [ -z "${init_rootblk}" ]
 	then wait_block "${init_root}" "root"
@@ -90,6 +94,7 @@ function prepare_block(){
 	fi
 	sync
 }
+
 function setup_resume(){
 	if [ -b "${init_resume}" ]&&[ -e /sys/power/resume ]
 	then	echo "setup resume..."
@@ -99,7 +104,9 @@ function setup_resume(){
 	fi
 	sync
 }
+
 function mount_root(){ mount_block "${init_root}" /root "${init_root}" "${init_rootfstype}" "${init_ro}" "${init_rootopts}"; }
+
 function init_logfs(){
 	logfs="$(blkid -l -o device -t PARTLABEL=logfs)"
 	if ! [ -b "${logfs}" ]

@@ -15,6 +15,7 @@ function find_init(){
 	show_file "/root/${init_init}"
 	sync
 }
+
 function clean_up(){
 	echo "clean up..."
 	udevadm control --exit --timeout=10
@@ -23,6 +24,7 @@ function clean_up(){
 	killall udevadm &>/dev/null
 	sync
 }
+
 function switchroot(){
 	echo "switch to new root with init ${init_init}..."
 	sync
