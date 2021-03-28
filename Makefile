@@ -91,4 +91,3 @@ clean:
 	@rm -rfv root initramfs.cpio*
 FORCE:
 .PHONY: FORCE check all boot flash-boot flash-recovery
-FORCE:
