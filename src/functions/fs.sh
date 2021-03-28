@@ -19,7 +19,9 @@ function mount_block(){
 	esac
 	case "${fs}" in
 		ar|tar|zip|cpio|aboot)
-			mount -t tmpfs -o rw "${3}" "${2}"||on_failed "failed to mount tmpfs to ${2}"
+			mount -t tmpfs -o rw "${3}" "${2}"||\
+				on_failed "failed to mount tmpfs to ${2}"
+
 			_file="${1}"
 			echo "unpacking ${fs} file ${_file}"
 			if [ "${fs}" == "aboot" ]
@@ -33,7 +35,9 @@ function mount_block(){
 				_file=/tmp/initrd.img
 				fs=cpio
 			fi
-			pushd "${2}"||on_failed "open mountpoint failed"
+
+			pushd "${2}"||\
+				on_failed "open mountpoint failed"
 			case "${fs}" in
 				zip)unzip "${_file}"||on_failed "failed to unpack zip file ${_file}";;
 				cpio)auto_decompress "${_file}"|cpio -i||on_failed "failed to unpack cpio file ${_file}";;
@@ -76,12 +80,19 @@ function load_rootblk(){
 		"${init_loopfstype}" \
 		"${init_loopro}" \
 		"${init_loopopts}"
+
 	local loopfile="/rootblk/${init_root}"
-	[ -f "${loopfile}" ]||on_failed "failed to found loop root ${init_root} on loop rootblk ${init_rootblk}"
+	[ -f "${loopfile}" ]||\
+		on_failed "failed to found loop root ${init_root} on loop rootblk ${init_rootblk}"
+
 	show_file "${loopfile}";sync
 	load_module loop
-	loopblk="$(losetup --show --find "${loopfile}")"||on_failed "failed to run losetup"
-	[ -b "${loopblk}" ]||on_failed "losetup ${loopfile} failed"
+	loopblk="$(losetup --show --find "${loopfile}")"||\
+		on_failed "failed to run losetup"
+
+	[ -b "${loopblk}" ]||\
+		on_failed "losetup ${loopfile} failed"
+
 	init_root="${loopblk}"
 	losetup --all --list
 	show_block "${loopblk}"
