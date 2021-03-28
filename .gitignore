@@ -3,6 +3,11 @@ lib/*
 firmware/*
 modules/*
 extra/*
+!bin/.gitkeep
+!lib/.gitkeep
+!firmware/.gitkeep
+!modules/.gitkeep
+!extra/.gitkeep
 root
 *.rej
 *.orig
