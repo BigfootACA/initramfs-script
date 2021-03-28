@@ -20,6 +20,8 @@ root/init: src/init.sh root/usr/bin/bash $(INIT_MOD)
 	@install -vDm755 $< $@
 initramfs.cpio: root
 	@cd root;find|cpio -o -H newc > ../initramfs.cpio
+initramfs.cpio.gz: initramfs.cpio
+	@gzip -v -c -9 < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
