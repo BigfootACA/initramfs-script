@@ -1,4 +1,6 @@
 all:initramfs.cpio
+KERNEL?=zImage
+CMDLINE?=
 include scripts/deps.mk
 include scripts/binary.mk
 include scripts/link.mk
@@ -50,6 +52,12 @@ initramfs.tar.bz2: initramfs.tar
 	@bzip2 -v -c -9 < $< > $@
 initramfs.tar.lzma: initramfs.tar
 	@lzma -v -c -9 < $< > $@
+boot.img: $(KERNEL) initramfs.cpio.gz
+	@abootimg \
+		--create $@ \
+		-c "cmdline=$(CMDLINE)" \
+		-k $(KERNEL) \
+		-r initramfs.cpio.gz
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
