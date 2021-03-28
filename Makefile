@@ -68,7 +68,7 @@ root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
 root/etc/bashrc: root/usr/bin/bash root/usr/bin/id
-root/etc: etc root/etc/bashrc FORCE
+root/etc: assets/etc root/etc/bashrc FORCE
 	@cp -uva $< root/
 	@ln -sf /proc/self/mounts root/etc/mtab
 root/usr/lib/modules: modules FORCE
