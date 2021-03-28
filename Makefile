@@ -44,6 +44,8 @@ initramfs.tar.zst: initramfs.tar
 	@zstd -v -T0 < $< > $@
 initramfs.tar.lz4: initramfs.tar
 	@lz4 -l < $< > $@
+initramfs.tar.lzo: initramfs.tar
+	@lzop -9 -v < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
