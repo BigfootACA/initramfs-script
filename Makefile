@@ -40,6 +40,8 @@ initramfs.tar.gz: initramfs.tar
 	@gzip -v -c -9 < $< > $@
 initramfs.tar.xz: initramfs.tar
 	@xz -v --check=crc32 -9 < $< > $@
+initramfs.tar.zst: initramfs.tar
+	@zstd -v -T0 < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
