@@ -28,6 +28,8 @@ initramfs.cpio.zst: initramfs.cpio
 	@zstd -v -T0 < $< > $@
 initramfs.cpio.lz4: initramfs.cpio
 	@lz4 -l < $< > $@
+initramfs.cpio.lzo: initramfs.cpio
+	@lzop -9 -v < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
