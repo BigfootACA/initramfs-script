@@ -32,6 +32,8 @@ initramfs.cpio.lzo: initramfs.cpio
 	@lzop -9 -v < $< > $@
 initramfs.cpio.bz2: initramfs.cpio
 	@bzip2 -v -c -9 < $< > $@
+initramfs.cpio.lzma: initramfs.cpio
+	@lzma -v -c -9 < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
