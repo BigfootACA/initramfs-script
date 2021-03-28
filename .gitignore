@@ -2,6 +2,7 @@ bin/*
 lib/*
 firmware/*
 modules/*
+extra/*
 root
 *.rej
 *.orig

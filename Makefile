@@ -83,7 +83,7 @@ root/usr/sbin: root/usr/bin
 root/lib: root/usr/lib
 	@ln -vs usr/lib $@
 root/usr/lib: root/usr/lib/firmware root/usr/lib/modules FORCE
-root: root/init root/bin root/sbin root/usr/sbin root/lib root/etc
+root: extra root/init root/bin root/sbin root/usr/sbin root/lib root/etc
 	@mkdir -pv \
 		root/sys \
 		root/dev \
@@ -93,6 +93,7 @@ root: root/init root/bin root/sbin root/usr/sbin root/lib root/etc
 		root/log \
 		root/root \
 		root/rootblk
+	@cp -va extra/* root/
 check: root
 	@cd root;shellcheck -x init
 test: check
