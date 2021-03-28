@@ -58,6 +58,8 @@ boot.img: $(KERNEL) initramfs.cpio.gz
 		-c "cmdline=$(CMDLINE)" \
 		-k $(KERNEL) \
 		-r initramfs.cpio.gz
+boot: boot.img
+	@fastboot boot $<
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
@@ -84,5 +86,5 @@ test: check
 clean:
 	@rm -rfv root initramfs.cpio*
 FORCE:
-.PHONY: FORCE check all
+.PHONY: FORCE check all boot
 FORCE:
