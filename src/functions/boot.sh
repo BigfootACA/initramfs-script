@@ -26,5 +26,5 @@ function clean_up(){
 function switchroot(){
 	echo "switch to new root with init ${init_init}..."
 	sync
-	exec env -i /bin/switch_root /root "${init_init}"
+	exec env -i /usr/bin/switch_root /root "${init_init}"
 }

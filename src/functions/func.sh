@@ -23,7 +23,7 @@ function on_failed(){
 	blink_led "${init_led}" 50 5 0.5 0.5
 	wait
 	case "${init_failed}" in
-		sh|shell|bash)echo "drop into shell...";sync;run_tty /dev/console /bin/bash;sleep 1;sync;;
+		sh|shell|bash)echo "drop into shell...";sync;run_tty /dev/console /usr/bin/bash;sleep 1;sync;;
 		reboot|reset|restart|reload)echo "rebooting...";sync;sleep 1;reboot -f;exit 1;;
 		halt|shutdown|poweroff|powerdown)echo "shutdowning...";sync;sleep 1;poweroff -f;exit 1;;
 		panic|exit|quit)echo "drop into panic...";sync;sleep 1;exit 1;;

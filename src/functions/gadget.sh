@@ -17,7 +17,7 @@ function add_adb(){
 	mkdir -p /dev/usb-ffs/adb
 	load_module fs-functionfs
 	mount -t functionfs adb /dev/usb-ffs/adb
-	/bin/adbd \
+	/usr/bin/adbd \
 		-d \
 		-n "${init_usb_manufacturer} ${init_usb_product}" \
 		-m "${init_usb_manufacturer}" \

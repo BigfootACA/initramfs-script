@@ -3,7 +3,7 @@ then source /etc/bashrc
 else [ "$(id -u)" == 0 ]&&PS1='# '||PS1='$ '
 fi
 unset IN_BASHRC
-export PATH="/bin"
+export PATH="/usr/bin"
 if [ -r "/etc/environment" ]
 then	while read -r i
 	do export "${i}"

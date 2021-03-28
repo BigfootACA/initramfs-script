@@ -1,6 +1,6 @@
 function start_udevd(){
 	load_module unix
-	/bin/udevd --resolve-names=never --daemon --exec-delay=3 --event-timeout=3
+	/usr/bin/udevd --resolve-names=never --daemon --exec-delay=3 --event-timeout=3
 	[ "${LOG}" == "true" ]&&udevadm monitor --kernel --udev --property &>/log/boot.udev.log &
 	sleep 0.3
 	udevadm trigger --type=subsystems --action=add
