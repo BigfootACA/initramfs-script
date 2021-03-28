@@ -34,7 +34,9 @@ function add_acm(){
 	then	echo "failed to add acm device"
 		return 1
 	fi
-	while true;do run_tty /dev/ttyGS0 /bin/bash;done &
+	while true
+	do run_tty /dev/ttyGS0 /bin/bash
+	done &
 	ln -s "${_gdg}" "${_GDG_CFG}/"
 }
 
@@ -97,7 +99,10 @@ function show_splash(){
 	exit_splash
 	mkfifo /run/splash
 	echo "start show splash ${1}"
-	fbsplash -s "${1}" -i /etc/fbsplash.cfg -f /run/splash &
+	fbsplash \
+		-s "${1}" \
+		-i /etc/fbsplash.cfg \
+		-f /run/splash &
 	set_led "${init_backlight}" 50
 }
 

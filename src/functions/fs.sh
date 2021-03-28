@@ -116,7 +116,15 @@ function setup_resume(){
 	sync
 }
 
-function mount_root(){ mount_block "${init_root}" /root "${init_root}" "${init_rootfstype}" "${init_ro}" "${init_rootopts}"; }
+function mount_root(){
+	mount_block \
+		"${init_root}" \
+		/root \
+		"${init_root}" \
+		"${init_rootfstype}" \
+		"${init_ro}" \
+		"${init_rootopts}"
+}
 
 function init_logfs(){
 	logfs="$(blkid -l -o device -t PARTLABEL=logfs)"

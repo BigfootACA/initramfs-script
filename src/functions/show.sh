@@ -1,6 +1,19 @@
-function each_sys_dev(){ for i in "/sys/dev/${1}"/*/uevent;do printf '    TYPE=%s' "${1}";while read -r l;do echo -n ", ${l}";done<"${i}";echo;done; }
+function each_sys_dev(){
+	for i in "/sys/dev/${1}"/*/uevent
+	do
+		printf '    TYPE=%s' "${1}"
+		while read -r l
+		do echo -n ", ${l}"
+		done<"${i}"
+		echo
+	done
+}
 
-function each_sys_devs(){ for i in "$@";do each_sys_dev "${i}";done; }
+function each_sys_devs(){
+	for i in "$@"
+	do each_sys_dev "${i}"
+	done
+}
 
 function dump_info(){
 	date;echo '---------------------------'
@@ -17,7 +30,10 @@ function dump_info(){
 function show_file(){
 	local file="${1//\/\//\/}"
 	echo "Show file of ${file}"
-	{ ls -lh "${file}";file "${file}"; }|line_add_prefix '  '
+	{
+		ls -lh "${file}"
+		file "${file}"
+	}|line_add_prefix '  '
 }
 
 function show_block(){
