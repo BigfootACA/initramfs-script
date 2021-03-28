@@ -8,3 +8,7 @@ root
 *.swp
 *.save*
 initramfs.cpio*
+initramfs.tar*
+initramfs.sfs*
+zImage
+boot.img

@@ -88,6 +88,6 @@ check: root
 	@cd root;shellcheck -x init
 test: check
 clean:
-	@rm -rfv root initramfs.cpio*
+	@rm -rfv root initramfs.cpio* initramfs.tar* initramfs.sfs* boot.img
 FORCE:
 .PHONY: FORCE check all boot flash-boot flash-recovery
