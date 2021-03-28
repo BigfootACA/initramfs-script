@@ -24,6 +24,8 @@ initramfs.cpio.gz: initramfs.cpio
 	@gzip -v -c -9 < $< > $@
 initramfs.cpio.xz: initramfs.cpio
 	@xz -v --check=crc32 -9 < $< > $@
+initramfs.cpio.zst: initramfs.cpio
+	@zstd -v -T0 < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
