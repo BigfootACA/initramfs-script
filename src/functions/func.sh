@@ -26,7 +26,10 @@ function run_tty(){
 	local tty
 	case "${1}" in /dev/?*)tty="${1}";shift;;esac
 	# shellcheck disable=SC2094
-	"${@}" 0<"${tty}" 1>"${tty}" 2>"${tty}"
+	"${@}" \
+		0<"${tty}" \
+		1>"${tty}" \
+		2>"${tty}"
 }
 
 function on_failed(){

@@ -4,7 +4,8 @@ function vibrate(){
 	if [ -f "${timed}" ]
 	then echo -n "${1}" >"${timed}"
 	elif [ -d "${led}" ]
-	then	echo -n "${1}" >"${led}/duration"
+	then
+		echo -n "${1}" >"${led}/duration"
 		echo -n 1 >"${led}/activate"
 	fi
 }
@@ -14,7 +15,8 @@ function set_led(){
 	local sysled="/sys/class/leds/${1}"
 	local max
 	if [ -n "${1}" ]&&[ -h "${sysled}" ]
-	then	max="$(<"${sysled}/max_brightness")"
+	then
+		max="$(<"${sysled}/max_brightness")"
 		echo -n "$(("${max}"*"${2}"/100))" > "${sysled}/brightness"
 	fi
 }
@@ -24,7 +26,8 @@ function blink_led(){
 	{
 		set +x
 		for((i=1;i<="$3";i++))
-		do	set_led "$1" "$2";sleep "$4"
+		do
+			set_led "$1" "$2";sleep "$4"
 			set_led "$1" 0;sleep "$5"
 		done
 	} &

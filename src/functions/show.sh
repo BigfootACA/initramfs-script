@@ -48,7 +48,8 @@ function show_block(){
 	MODEL="$(read_empty "${DEV}/model"  '(unknown)')"
 	VENDOR="$(read_empty "${DEV}/vendor" '(unknown)')"
 	if [ -n "${PKNAME}" ]
-	then	echo "  Partition info:"
+	then
+		echo "  Partition info:"
 		echo "    Size:  ${SIZE:-(unknown)}"
 		echo "    UUID:  ${PARTUUID:-(unknown)}"
 		echo "    Label: ${PARTLABEL:-(unknown)}"
@@ -58,7 +59,8 @@ function show_block(){
 		echo "      Vendor: ${VENDOR}"
 		echo "      Model:  ${MODEL}"
 	elif [ -n "${PTTYPE}" ]
-	then	echo "  Disk info:"
+	then
+		echo "  Disk info:"
 		echo "    Type:   ${PTTYPE}"
 		echo "    Size:   ${SIZE:-(unknown)}"
 		echo "    UUID:   ${PTUUID:-(unknown)}"
@@ -66,12 +68,14 @@ function show_block(){
 		echo "    Model:  ${MODEL}"
 	fi
 	if [ -n "${TYPE}" ]
-	then	echo "  Filesystem info:"
+	then
+		echo "  Filesystem info:"
 		echo "    Type:  ${TYPE:-(unknown)}"
 		echo "    UUID:  ${UUID:-(unknown)}"
 		echo "    Label: ${LABEL:-(none)}"
 		if [ -n "${MOUNTPOINT}" ]
-		then	echo "    Mount: ${MOUNTPOINT}"
+		then
+			echo "    Mount: ${MOUNTPOINT}"
 			echo "    Size:  ${FSUSED:-0B}/${FSSIZE:-0B} (${FSUSEP:-0%})"
 			echo "    Avail: ${FSAVAIL:-0B}"
 			echo "  List of ${MOUNTPOINT}:"

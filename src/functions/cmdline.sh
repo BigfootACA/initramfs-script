@@ -3,7 +3,8 @@ function parse_cmdline(){
 	local init_end=false
 	set +x
 	for i in $(</proc/cmdline)
-	do	case "${i}" in
+	do
+		case "${i}" in
 			androidboot.mode=?*)init_abootmode="${i//androidboot.mode=}";;
 			androidboot.serialno=?*)init_abootserial="${i//androidboot.serialno=}";;
 			androidboot.usbcontroller=?*)init_abootusb="${i//androidboot.usbcontroller=}";;

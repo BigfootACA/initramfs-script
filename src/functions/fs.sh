@@ -6,7 +6,8 @@ function mount_block(){
 	[ -n "${fs}" ]&&fstype=" -t ${4}"
 	[ -n "${5}" ]&&opts="${5}"
 	if [ -n "${6}" ]
-	then	if [ -z "${opts}" ]
+	then
+		if [ -z "${opts}" ]
 		then opts="${6}"
 		else opts="${opts},${6}"
 		fi
@@ -25,7 +26,8 @@ function mount_block(){
 			_file="${1}"
 			echo "unpacking ${fs} file ${_file}"
 			if [ "${fs}" == "aboot" ]
-			then	abootimg \
+			then
+				abootimg \
 					-x "${_file}" \
 					/dev/null \
 					/dev/null \
@@ -51,7 +53,8 @@ function mount_block(){
 			[ -n "${fs}" ]&&load_module "${4}"
 			# shellcheck disable=SC2086
 			while ! mount --verbose ${opts} ${fstype} "${1}" "${2}"
-			do	on_failed "failed to mount ${3} ${1}"
+			do
+				on_failed "failed to mount ${3} ${1}"
 				echo "retry to mount ${3}...";sync
 			done
 		;;
@@ -108,10 +111,12 @@ function prepare_block(){
 
 function setup_resume(){
 	if [ -b "${init_resume}" ]&&[ -e /sys/power/resume ]
-	then	echo "setup resume..."
+	then
+		echo "setup resume..."
 		# shellcheck disable=SC2046 disable=SC2183
 		printf "%d:%d" $(stat -Lc "0x%t 0x%T" "${init_resume}") >/sys/power/resume
-	else	echo "no swap block or hibernate support."
+	else
+		echo "no swap block or hibernate support."
 	fi
 	sync
 }
@@ -129,8 +134,10 @@ function mount_root(){
 function init_logfs(){
 	logfs="$(blkid -l -o device -t PARTLABEL=logfs)"
 	if ! [ -b "${logfs}" ]
-	then	echo "cannot find logfs block '${logfs}'";LOG=false
-	else	LOG=true
+	then
+		echo "cannot find logfs block '${logfs}'";LOG=false
+	else
+		LOG=true
 		mount -v -t vfat "${logfs}" /log
 		load_module vfat
 		rm -f /log/boot.{std{out,err},sysinfo,kernel,udev}.log

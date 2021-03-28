@@ -19,10 +19,12 @@ function start_udevd(){
 
 function start_charger(){
 	if [ "${init_kerneltype}" == "android" ]&&[ "${init_abootmode}" == "charger" ]
-	then	set_led "${init_backlight}" 50
+	then
+		set_led "${init_backlight}" 50
 		"${init_automass}"&&start_usb
 		echo "starting android charger";sync
-		charger;sync
+		charger
+		sync
 		echo "shutdowning..."
 		poweroff -f;sync
 		exit 1

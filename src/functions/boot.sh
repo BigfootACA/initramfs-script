@@ -3,10 +3,12 @@ function find_init(){
 		[ -z "${init_init}" ]||\
 		! [ -x "/root/${init_init}" ]||\
 		! [ -f "/root/${init_init}" ]
-	then	echo "find init..."
+	then
+		echo "find init..."
 		sync
 		for i in "${list_init[@]}"
-		do	[ -x "/root/${i}" ]||continue
+		do
+			[ -x "/root/${i}" ]||continue
 			[ -f "/root/${i}" ]||continue
 			[ -d "/root/${i}" ]&&continue
 			init_init="${i}"

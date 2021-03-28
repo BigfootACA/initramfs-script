@@ -11,7 +11,8 @@ function add_adb(){
 	local _gdg
 	echo "setup adb daemon"
 	if ! _gdg="$(add_gadget_func ffs adb)"
-	then	echo "failed to add functionfs for adbd"
+	then
+		echo "failed to add functionfs for adbd"
 		return 1
 	fi
 	mkdir -p /dev/usb-ffs/adb
@@ -30,7 +31,8 @@ function add_acm(){
 	local _gdg
 	echo "setup acm serial console"
 	if ! _gdg="$(add_gadget_func acm ttyGS0)"
-	then	echo "failed to add acm device"
+	then
+		echo "failed to add acm device"
 		return 1
 	fi
 	while true
@@ -43,14 +45,16 @@ function add_mass_disk_blocks(){
 	local _gdg _dev _type _path
 	echo "setup mass_storage with multi-block mode"
 	lsblk -rno KNAME,TYPE,PATH|while read -r _dev _type _path _
-	do	[ "${_type}" != "disk" ]&&continue
+	do
+		[ "${_type}" != "disk" ]&&continue
 		case "${_dev}" in
 			# VirtIO, UFS/SATA/SCSI, eMMC/SD Card/microSD, NVMe
 			vd?*|sd?*|mmcblk?*|nvme?*);;
 			?*)continue;;
 		esac
 		if ! _gdg="$(add_gadget_func mass_storage "${_dev}")"
-		then	echo "failed to add mass storage function ${_dev}"
+		then
+			echo "failed to add mass storage function ${_dev}"
 			continue
 		fi
 		echo -n "${_path}" > "${_gdg}/lun.0/file"
@@ -63,7 +67,8 @@ function add_mass_disk_luns(){
 	local _gdg _luns _lun _dev _type _path
 	echo "setup mass_storage with multi-lun mode"
 	if ! _gdg="$(add_gadget_func mass_storage disk)"
-	then	echo "failed to add mass storage function"
+	then
+		echo "failed to add mass storage function"
 		return 1
 	fi
 	mkdir -p /tmp/luns
@@ -76,12 +81,14 @@ function add_mass_disk_luns(){
 		esac
 		_lun=""
 		for _luns in {0..32}
-		do	[ -f "/tmp/luns/${_luns}" ]&&continue
+		do
+			[ -f "/tmp/luns/${_luns}" ]&&continue
 			touch "/tmp/luns/${_luns}"
 			_lun="${_gdg}/lun.${_luns}"
 		done
 		if [ -z "${_lun}" ]
-		then	echo "no availables lun found"
+		then
+			echo "no availables lun found"
 			break
 		fi
 		[ -d "${_lun}" ]||mkdir "${_lun}"
@@ -138,9 +145,12 @@ function init_gadget(){
 function start_gadget(){
 	load_module udc-core
 	if [ -n "${init_abootusb}" ]
-	then	echo "${init_abootusb}" >"${_GDG}/UDC"
-	else	for i in /sys/class/udc/*
-		do	[ -h "${i}" ]||continue
+	then
+		echo "${init_abootusb}" >"${_GDG}/UDC"
+	else
+		for i in /sys/class/udc/*
+		do
+			[ -h "${i}" ]||continue
 			case "${i}" in *dummy*|*vudc*)continue;;esac
 			basename "$i" > "${_GDG}/UDC"
 			break
