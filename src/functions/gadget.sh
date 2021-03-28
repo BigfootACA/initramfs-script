@@ -1,6 +1,5 @@
 function add_gadget_func(){
-	#1: function
-	#2: name
+	#1: function 2: name
 	load_module "usbfunc:${1}"
 	local _path="${_GDG_FUNC}/${1}.${2}"
 	[ -d "${_path}" ]&&return 1
