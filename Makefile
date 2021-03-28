@@ -34,6 +34,8 @@ initramfs.cpio.bz2: initramfs.cpio
 	@bzip2 -v -c -9 < $< > $@
 initramfs.cpio.lzma: initramfs.cpio
 	@lzma -v -c -9 < $< > $@
+initramfs.tar: root
+	@cd root;find|tar --create . > ../initramfs.tar
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
