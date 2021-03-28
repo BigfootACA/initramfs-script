@@ -38,6 +38,8 @@ initramfs.tar: root
 	@cd root;find|tar --create . > ../initramfs.tar
 initramfs.tar.gz: initramfs.tar
 	@gzip -v -c -9 < $< > $@
+initramfs.tar.xz: initramfs.tar
+	@xz -v --check=crc32 -9 < $< > $@
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
