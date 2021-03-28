@@ -60,6 +60,10 @@ boot.img: $(KERNEL) initramfs.cpio.gz
 		-r initramfs.cpio.gz
 boot: boot.img
 	@fastboot boot $<
+flash-boot: boot.img
+	fastboot flash boot $<
+flash-recovery: boot.img
+	fastboot flash recovery $<
 root/usr/lib/firmware: firmware FORCE
 	@mkdir -vp root/usr/lib
 	@cp -uva $< root/usr/lib
@@ -86,5 +90,5 @@ test: check
 clean:
 	@rm -rfv root initramfs.cpio*
 FORCE:
-.PHONY: FORCE check all boot
+.PHONY: FORCE check all boot flash-boot flash-recovery
 FORCE:
