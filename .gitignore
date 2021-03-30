@@ -3,11 +3,13 @@ lib/*
 firmware/*
 modules/*
 extra/*
+build/sysroot/*
 !bin/.gitkeep
 !lib/.gitkeep
 !firmware/.gitkeep
 !modules/.gitkeep
 !extra/.gitkeep
+!build/sysroot/.gitkeep
 root
 *.rej
 *.orig
@@ -18,3 +20,4 @@ initramfs.tar*
 initramfs.sfs*
 zImage
 boot.img
+build/musl-gcc

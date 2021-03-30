@@ -1,0 +1,32 @@
+%rename cpp_options old_cpp_options
+
+*cpp_options:
+-nostdinc -isystem %SYSROOT%/usr/include -isystem include%s %(old_cpp_options)
+
+*cc1:
+%(cc1_cpu) -nostdinc -isystem %SYSROOT%/usr/include -isystem include%s
+
+*link_libgcc:
+-L%SYSROOT%/usr/lib -L .%s
+
+*libgcc:
+libgcc.a%s %:if-exists(libgcc_eh.a%s)
+
+*startfile:
+%{!shared: %SYSROOT%/usr/lib/Scrt1.o} %SYSROOT%/usr/lib/crti.o crtbeginS.o%s
+
+*endfile:
+crtendS.o%s %SYSROOT%/usr/lib/crtn.o
+
+*link:
+-dynamic-linker /usr/lib/libc.so -nostdlib %{shared:-shared} %{static:-static} %{rdynamic:-export-dynamic}
+
+*esp_link:
+
+
+*esp_options:
+
+
+*esp_cpp_options:
+
+

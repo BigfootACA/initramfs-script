@@ -1,0 +1,54 @@
+[submodule "build/advreboot"]
+	path = build/advreboot
+	url = https://github.com/BigfootACA/advreboot.git
+[submodule "build/adbd"]
+	path = build/adbd
+	url = https://github.com/BigfootACA/adbd.git
+[submodule "build/musl"]
+	path = build/musl
+	url = git://git.musl-libc.org/musl
+[submodule "build/linux"]
+	path = build/linux
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+[submodule "build/util-linux"]
+	path = build/util-linux
+	url = https://github.com/karelzak/util-linux.git
+[submodule "build/zlib"]
+	path = build/zlib
+	url = https://github.com/madler/zlib.git
+[submodule "build/ncurses"]
+	path = build/ncurses
+	url = https://github.com/mirror/ncurses.git
+[submodule "build/readline"]
+	path = build/readline
+	url = https://git.savannah.gnu.org/git/readline.git
+[submodule "build/bash"]
+	path = build/bash
+	url = https://git.savannah.gnu.org/git/bash.git
+[submodule "build/coreutils"]
+	path = build/coreutils
+	url = https://git.savannah.gnu.org/git/coreutils.git
+[submodule "build/busybox"]
+	path = build/busybox
+	url = https://git.busybox.net/busybox.git
+[submodule "build/e2fsprogs"]
+	path = build/e2fsprogs
+	url = git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+[submodule "build/kmod"]
+	path = build/kmod
+	url = git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+[submodule "build/eudev"]
+	path = build/eudev
+	url = https://github.com/gentoo/eudev.git
+[submodule "build/xz"]
+	path = build/xz
+	url = https://git.tukaani.org/xz.git
+[submodule "build/lz4"]
+	path = build/lz4
+	url = https://github.com/lz4/lz4.git
+[submodule "build/btrfs-progs"]
+	path = build/btrfs-progs
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git
+[submodule "build/zstd"]
+	path = build/zstd
+	url = https://github.com/facebook/zstd.git

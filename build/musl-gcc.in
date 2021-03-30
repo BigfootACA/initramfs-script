@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "%GCC%" "$@" -specs "%SYSROOT%/usr/lib/musl.specs"

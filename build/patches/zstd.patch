@@ -1,0 +1,51 @@
+diff --git a/build/zstd/lib/Makefile b/build/zstd/lib/Makefile
+index 39ff304f..77dd49b1 100644
+--- a/build/zstd/lib/Makefile
++++ b/build/zstd/lib/Makefile
+@@ -203,10 +203,8 @@ ifeq ($(UNAME), Darwin)
+   SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
+   SONAME_FLAGS = -install_name $(LIBDIR)/libzstd.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
+ else
+-  SONAME_FLAGS = -Wl,-soname=libzstd.$(SHARED_EXT).$(LIBVER_MAJOR)
+   SHARED_EXT = so
+-  SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
+-  SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
++  SONAME_FLAGS = -Wl,-soname=libzstd.$(SHARED_EXT)
+ endif
+ 
+ SET_CACHE_DIRECTORY = \
+@@ -255,7 +253,7 @@ $(LIBZSTD): $(ZSTD_FILES)
+ 
+ else  # not Windows
+ 
+-LIBZSTD = libzstd.$(SHARED_EXT_VER)
++LIBZSTD = libzstd.$(SHARED_EXT)
+ .PHONY: $(LIBZSTD)  # must be run every time
+ $(LIBZSTD): CFLAGS += -fPIC -fvisibility=hidden
+ $(LIBZSTD): LDFLAGS += -shared
+@@ -278,8 +276,6 @@ $(ZSTD_DYNLIB): $(ZSTD_DYNLIB_OBJ)
+ 	@echo compiling dynamic library $(LIBVER)
+ 	$(CC) $(FLAGS) $^ $(LDFLAGS) $(SONAME_FLAGS) -o $@
+ 	@echo creating versioned links
+-	ln -sf $@ libzstd.$(SHARED_EXT_MAJOR)
+-	ln -sf $@ libzstd.$(SHARED_EXT)
+ 
+ $(LIBZSTD): $(ZSTD_DYNLIB)
+ 	cp -f $< $@
+@@ -428,8 +424,6 @@ install-shared:
+ 	[ -e $(DESTDIR)$(LIBDIR) ] || $(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)/
+ 	@echo Installing shared library
+ 	$(INSTALL_PROGRAM) $(LIBZSTD) $(DESTDIR)$(LIBDIR)
+-	ln -sf $(LIBZSTD) $(DESTDIR)$(LIBDIR)/libzstd.$(SHARED_EXT_MAJOR)
+-	ln -sf $(LIBZSTD) $(DESTDIR)$(LIBDIR)/libzstd.$(SHARED_EXT)
+ 
+ install-includes:
+ 	[ -e $(DESTDIR)$(INCLUDEDIR) ] || $(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)/
+@@ -442,7 +436,6 @@ install-includes:
+ uninstall:
+ 	$(RM) $(DESTDIR)$(LIBDIR)/libzstd.a
+ 	$(RM) $(DESTDIR)$(LIBDIR)/libzstd.$(SHARED_EXT)
+-	$(RM) $(DESTDIR)$(LIBDIR)/libzstd.$(SHARED_EXT_MAJOR)
+ 	$(RM) $(DESTDIR)$(LIBDIR)/$(LIBZSTD)
+ 	$(RM) $(DESTDIR)$(PKGCONFIGDIR)/libzstd.pc
+ 	$(RM) $(DESTDIR)$(INCLUDEDIR)/zstd.h

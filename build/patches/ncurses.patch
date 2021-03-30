@@ -1,0 +1,201 @@
+diff --git a/build/ncurses/aclocal.m4 b/build/ncurses/aclocal.m4
+index bd38209b..1a724935 100644
+--- a/build/ncurses/aclocal.m4
++++ b/build/ncurses/aclocal.m4
+@@ -5955,7 +5955,7 @@ if test "x$cf_cv_abi_version" != "x$with_abi_version"
+ then
+ 	case "$cf_cv_rel_version" in
+ 	(5.*)
+-		cf_cv_rel_version=$with_abi_version.0
++		cf_cv_rel_version=$with_abi_version
+ 		;;
+ 	esac
+ fi
+@@ -7053,7 +7053,7 @@ CF_EOF
+ 	(interix*)
+ 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+ 		if test "$cf_cv_shlib_version" = rel; then
+-			cf_shared_soname='`basename $[@] .${REL_VERSION}`.${ABI_VERSION}'
++			cf_shared_soname='`basename $[@]'
+ 		else
+ 			cf_shared_soname='`basename $[@]`'
+ 		fi
+@@ -7427,7 +7427,7 @@ define([CF_SHARED_SONAME],
+ [
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=ifelse($1,,rel,$1)
+ 	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $[@] .${REL_VERSION}`.${ABI_VERSION}'
++		cf_cv_shared_soname='`basename $[@]`'
+ 	else
+ 		cf_cv_shared_soname='`basename $[@]`'
+ 	fi
+diff --git a/build/ncurses/configure b/build/ncurses/configure
+index 0c314340..05d406f3 100755
+--- a/build/ncurses/configure
++++ b/build/ncurses/configure
+@@ -6163,11 +6163,7 @@ echo "${ECHO_T}$cf_cv_ldflags_search_paths_first" >&6
+ 		;;
+ 	(interix*)
+ 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-		if test "$cf_cv_shlib_version" = rel; then
+-			cf_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-		else
+-			cf_shared_soname='`basename $@`'
+-		fi
++		cf_shared_soname='`basename $@`'
+ 		CC_SHARED_OPTS=
+ 		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-rpath,${RPATH_LIST} -Wl,-h,'$cf_shared_soname' -o $@'
+ 		;;
+@@ -6194,12 +6190,7 @@ echo "${ECHO_T}$cf_cv_ldflags_search_paths_first" >&6
+ 		fi
+ 
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-	else
+ 		cf_cv_shared_soname='`basename $@`'
+-	fi
+-
+ 		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
+ 		;;
+ 	(mingw*msvc*)
+@@ -6346,12 +6337,7 @@ CF_EOF
+ 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
+ 
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-	else
+ 		cf_cv_shared_soname='`basename $@`'
+-	fi
+-
+ 		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-Bshareable,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
+ 		;;
+ 	(nskJ*)
+@@ -6376,12 +6362,7 @@ CF_EOF
+ 		fi
+ 
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-	else
+ 		cf_cv_shared_soname='`basename $@`'
+-	fi
+-
+ 		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
+ 		;;
+ 	(netbsd*)
+@@ -6399,12 +6380,7 @@ CF_EOF
+ 			fi
+ 
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-	else
+ 		cf_cv_shared_soname='`basename $@`'
+-	fi
+-
+ 			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname' -o $@'
+ 		else
+ 			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -o $@'
+@@ -6461,12 +6437,7 @@ CF_EOF
+ 		fi
+ 
+ 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+-	if test "$cf_cv_shlib_version" = rel; then
+-		cf_cv_shared_soname='`basename $@ .${REL_VERSION}`.${ABI_VERSION}'
+-	else
+ 		cf_cv_shared_soname='`basename $@`'
+-	fi
+-
+ 		if test "$GCC" != yes; then
+ 			cf_save_CFLAGS="$CFLAGS"
+ 			for cf_shared_opts in -xcode=pic32 -xcode=pic13 -KPIC -Kpic -O
+@@ -29683,24 +29654,15 @@ eval cf_libname="\$${cf_map_lib_basename}_NAME"
+ 				if test "$cf_cv_do_symlinks" = yes ; then
+ 					cf_version_name=
+ 
+-					case "$cf_cv_shlib_version" in
+-					(rel)
+-						cf_version_name=REL_VERSION
+-						;;
+-					(abi)
+-						cf_version_name=ABI_VERSION
+-						;;
+-					esac
+-
+ 					if test -n "$cf_version_name"
+ 					then
+ 						case "$cf_cv_system_name" in
+ 						(darwin*)
+ 							# "w", etc?
+-							cf_suffix="${USE_LIB_SUFFIX}"'.${'$cf_version_name'}'"$cf_shared_suffix"
++							cf_suffix="${USE_LIB_SUFFIX}$cf_shared_suffix"
+ 							;;
+ 						(*)
+-							cf_suffix="$cf_suffix"'.${'$cf_version_name'}'
++							cf_suffix="$cf_suffix"
+ 							;;
+ 						esac
+ 					fi
+diff --git a/build/ncurses/mk-1st.awk b/build/ncurses/mk-1st.awk
+index 74bc2ebe..9755361e 100644
+--- a/build/ncurses/mk-1st.awk
++++ b/build/ncurses/mk-1st.awk
+@@ -85,30 +85,30 @@ function imp_name_of(a_name) {
+ # see abi_name
+ function abi_name_of(a_name) {
+ 		if (ShlibVerInfix == "cygdll") {
+-			result = sprintf("%s%s$(ABI_VERSION)%s", "cyg", a_name, suffix);
++			result = sprintf("%s%s%s", "cyg", a_name, suffix);
+ 		} else if (ShlibVerInfix == "msysdll") {
+-			result = sprintf("%s%s$(ABI_VERSION)%s", "msys-", a_name, suffix);
++			result = sprintf("%s%s%s", "msys-", a_name, suffix);
+ 		} else if (ShlibVerInfix == "mingw" || ShlibVerInfix == "msvcdll") {
+-			result = sprintf("%s%s$(ABI_VERSION)%s", prefix, a_name, suffix);
++			result = sprintf("%s%s%s", prefix, a_name, suffix);
+ 		} else if (ShlibVerInfix == "yes") {
+-			result = sprintf("%s%s.$(ABI_VERSION)%s", prefix, a_name, suffix);
++			result = sprintf("%s%s%s", prefix, a_name, suffix);
+ 		} else {
+-			result = sprintf("%s.$(ABI_VERSION)", lib_name_of(a_name));
++			result = sprintf("%s", lib_name_of(a_name));
+ 		}
+ 		return result;
+ 	}
+ # see rel_name
+ function rel_name_of(a_name) {
+ 		if (ShlibVerInfix == "cygdll") {
+-			result = sprintf("%s%s$(REL_VERSION)%s", "cyg", a_name, suffix);
++			result = sprintf("%s%s%s", "cyg", a_name, suffix);
+ 		} else if (ShlibVerInfix == "msysdll") {
+-			result = sprintf("%s%s$(ABI_VERSION)%s", "msys-", a_name, suffix);
++			result = sprintf("%s%s%s", "msys-", a_name, suffix);
+ 		} else if (ShlibVerInfix == "mingw" || ShlibVerInfix == "msvcdll") {
+-			result = sprintf("%s%s$(REL_VERSION)%s", prefix, a_name, suffix);
++			result = sprintf("%s%s%s", prefix, a_name, suffix);
+ 		} else if (ShlibVerInfix == "yes") {
+-			result = sprintf("%s%s.$(REL_VERSION)%s", prefix, a_name, suffix);
++			result = sprintf("%s%s%s", prefix, a_name, suffix);
+ 		} else {
+-			result = sprintf("%s.$(REL_VERSION)", lib_name_of(a_name));
++			result = sprintf("%s", lib_name_of(a_name));
+ 		}
+ 		return result;
+ 	}
+@@ -236,7 +236,6 @@ function shlib_build(directory) {
+ 		} else {
+ 			make_shlib(OBJS, "SHLIB_LIST")
+ 		}
+-		sharedlinks(directory)
+ 	}
+ function shlib_install(directory) {
+ 		src_lib1 = sprintf("../lib/%s", end_name);
+@@ -246,7 +245,6 @@ function shlib_install(directory) {
+ 		printf "\t\t%s\n", src_lib1
+ 		printf "\t@echo installing $@\n"
+ 		printf "\t$(INSTALL_LIB) %s %s\n", src_lib1, dst_lib1;
+-		sharedlinks(directory)
+ 	}
+ function install_dll(directory,filename) {
+ 		src_name = sprintf("../lib/%s", filename);

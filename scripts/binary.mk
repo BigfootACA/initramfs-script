@@ -4,11 +4,11 @@ root/usr/bin/%:
 		bin/?*)install -vDm755 $< $@;;\
 		root/usr/bin/?*)ln -vs $(shell basename $<) $@;;\
 	esac
-root/usr/bin/bash: bin/bash root/usr/lib/libreadline.so root/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libintl.so root/usr/lib/libc.so
+root/usr/bin/bash: build/sysroot/usr/bin/bash root/usr/lib/libreadline.so root/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/blkid: bin/blkid root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/busybox: bin/busybox root/usr/lib/libc.so
 root/usr/bin/charger: bin/charger
-root/usr/bin/adbd: bin/adbd
+root/usr/bin/adbd: build/sysroot/usr/bin/adbd
 root/usr/bin/dmesg: bin/dmesg root/usr/lib/libncursesw.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/lsblk: bin/lsblk root/usr/lib/libblkid.so root/usr/lib/libmount.so root/usr/lib/libsmartcols.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/udevadm: bin/udevadm root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
@@ -21,11 +21,11 @@ root/usr/bin/file: bin/file root/usr/lib/libmagic.so root/usr/lib/liblzma.so roo
 root/usr/bin/stat: bin/stat root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/losetup: bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/boot_menu: bin/boot_menu root/usr/lib/libc.so
-root/usr/bin/advreboot: bin/advreboot root/usr/lib/libc.so
-root/usr/bin/lz4: bin/lz4 root/usr/lib/libc.so
+root/usr/bin/advreboot: build/sysroot/usr/bin/advreboot root/usr/lib/libc.so
+root/usr/bin/lz4: build/sysroot/usr/bin/lz4 root/usr/lib/libc.so
 root/usr/bin/bzip2: bin/bzip2 root/usr/lib/libc.so
 root/usr/bin/zstd: bin/zstd root/usr/lib/libz.so root/usr/lib/liblzma.so root/usr/lib/liblz4.so root/usr/lib/libc.so
-root/usr/bin/xz: bin/xz root/usr/lib/liblzma.so root/usr/lib/libintl.so root/usr/lib/libc.so
+root/usr/bin/xz: build/sysroot/usr/bin/xz root/usr/lib/liblzma.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/abootimg: bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/e2fsck: bin/e2fsck root/usr/lib/libintl.so root/usr/lib/libext2fs.so root/usr/lib/libcom-err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
 root/usr/bin/ntfs-3g: bin/ntfs-3g root/usr/lib/libntfs.so root/usr/lib/libc.so

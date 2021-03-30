@@ -2,6 +2,7 @@ all:initramfs.cpio
 KERNEL?=zImage
 CMDLINE?=
 include scripts/deps.mk
+include scripts/build.mk
 include scripts/binary.mk
 include scripts/link.mk
 include scripts/library.mk
@@ -95,11 +96,21 @@ root: extra root/init root/bin root/sbin root/usr/sbin root/lib root/etc
 		root/log \
 		root/root \
 		root/rootblk
-	@cp -va extra/* root/
+	@-cp -va extra/* root/
 check: root
 	@cd root;shellcheck -x init
 test: check
-clean:
-	@rm -rfv root initramfs.cpio* initramfs.tar* initramfs.sfs* boot.img
+clean-root:
+	@rm -rfv root
+clean-initramfs-cpio:
+	@rm -fv initramfs.cpio*
+clean-initramfs-tar:
+	@rm -fv initramfs.tar*
+clean-initramfs-sfs:
+	@rm -fv initramfs.sfs*
+clean-initramfs: clean-initramfs-sfs clean-initramfs-tar clean-initramfs-cpio
+clean-bootimg:
+	@rm -fv boot.img
+clean: clean-root clean-initramfs clean-bootimg clean-build
 FORCE:
 .PHONY: FORCE check all boot flash-boot flash-recovery

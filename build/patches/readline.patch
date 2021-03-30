@@ -1,0 +1,15 @@
+diff --git a/build/readline/support/shobj-conf b/build/readline/support/shobj-conf
+index 5a3f977..6ad518f 100644
+--- a/build/readline/support/shobj-conf
++++ b/build/readline/support/shobj-conf
+@@ -128,8 +128,8 @@ linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*|dragonfly*)
+ 	SHOBJ_LD='${CC}'
+ 	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
+ 
+-	SHLIB_XLDFLAGS='-Wl,-rpath,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
+-	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(SHLIB_MAJOR)$(SHLIB_MINOR)'
++	SHLIB_XLDFLAGS='-Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
++	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF)'
+ 	;;
+ 
+ # Darwin/MacOS X

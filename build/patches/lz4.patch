@@ -1,0 +1,73 @@
+diff --git a/Makefile.inc b/Makefile.inc
+index 0840a56..f482d8f 100644
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -53,7 +53,7 @@ WINBASED   = yes
+ LIBLZ4     = cyglz4-$(LIBVER_MAJOR)
+ WINBASED   = yes
+       else
+-LIBLZ4     = liblz4.$(SHARED_EXT_VER)
++LIBLZ4     = liblz4.$(SHARED_EXT)
+ WINBASED   = no
+ EXT        =
+       endif
+diff --git a/lib/Makefile b/lib/Makefile
+index 344120a..3dad572 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -63,14 +63,10 @@ include ../Makefile.inc
+ # see : https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/DynamicLibraryDesignGuidelines.html
+ ifeq ($(TARGET_OS), Darwin)
+ 	SHARED_EXT = dylib
+-	SHARED_EXT_MAJOR = $(LIBVER_MAJOR).$(SHARED_EXT)
+-	SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
+-	SONAME_FLAGS = -install_name $(libdir)/liblz4.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
++	SONAME_FLAGS = -install_name $(libdir)/liblz4.$(SHARED_EXT) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
+ else
+-	SONAME_FLAGS = -Wl,-soname=liblz4.$(SHARED_EXT).$(LIBVER_MAJOR)
+ 	SHARED_EXT = so
+-	SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
+-	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
++	SONAME_FLAGS = -Wl,-soname=liblz4.$(SHARED_EXT)
+ endif
+ 
+ .PHONY: default
+@@ -120,9 +116,6 @@ else   # not windows
+ $(LIBLZ4): $(SRCFILES)
+ 	@echo compiling dynamic library $(LIBVER)
+ 	$(CC) $(FLAGS) -shared $^ -fPIC -fvisibility=hidden $(SONAME_FLAGS) -o $@
+-	@echo creating versioned links
+-	$(LN_SF) $@ liblz4.$(SHARED_EXT_MAJOR)
+-	$(LN_SF) $@ liblz4.$(SHARED_EXT)
+ 
+ endif
+ 
+@@ -135,7 +128,7 @@ ifeq ($(WINBASED),yes)
+ 	$(RM) *.rc
+ endif
+ 	$(RM) core *.o liblz4.pc dll/$(LIBLZ4).dll dll/$(LIBLZ4_EXP)
+-	$(RM) *.a *.$(SHARED_EXT) *.$(SHARED_EXT_MAJOR) *.$(SHARED_EXT_VER)
++	$(RM) *.a *.$(SHARED_EXT)
+ 	@echo Cleaning library completed
+ 
+ #-----------------------------------------------------------------------------
+@@ -193,9 +186,7 @@ install: lib liblz4.pc
+ 	$(INSTALL_PROGRAM) dll/$(LIBLZ4).dll $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) dll/$(LIBLZ4_EXP) $(DESTDIR)$(libdir)
+     else
+-	$(INSTALL_PROGRAM) liblz4.$(SHARED_EXT_VER) $(DESTDIR)$(libdir)
+-	$(LN_SF) liblz4.$(SHARED_EXT_VER) $(DESTDIR)$(libdir)/liblz4.$(SHARED_EXT_MAJOR)
+-	$(LN_SF) liblz4.$(SHARED_EXT_VER) $(DESTDIR)$(libdir)/liblz4.$(SHARED_EXT)
++	$(INSTALL_PROGRAM) liblz4.$(SHARED_EXT) $(DESTDIR)$(libdir)
+     endif
+   endif
+ 	@echo Installing headers in $(includedir)
+@@ -211,8 +202,6 @@ uninstall:
+ 	$(RM) $(DESTDIR)$(libdir)/$(LIBLZ4_EXP)
+   else
+ 	$(RM) $(DESTDIR)$(libdir)/liblz4.$(SHARED_EXT)
+-	$(RM) $(DESTDIR)$(libdir)/liblz4.$(SHARED_EXT_MAJOR)
+-	$(RM) $(DESTDIR)$(libdir)/liblz4.$(SHARED_EXT_VER)
+   endif
+ 	$(RM) $(DESTDIR)$(libdir)/liblz4.a
+ 	$(RM) $(DESTDIR)$(includedir)/lz4.h
