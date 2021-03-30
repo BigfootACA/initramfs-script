@@ -3,7 +3,7 @@ root/usr/lib/lib%.so:
 	@install -vDm755 $< $@
 root/usr/lib/libc.so: build/sysroot/usr/lib/libc.so
 root/usr/lib/libblkid.so: lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
-root/usr/lib/libbz2.so: lib/libbz2.so root/usr/lib/libc.so
+root/usr/lib/libbz2.so: build/sysroot/usr/lib/libbz2.so root/usr/lib/libc.so
 root/usr/lib/libcom-err.so: lib/libcom-err.so root/usr/lib/libc.so
 root/usr/lib/libe2p.so: lib/libe2p.so root/usr/lib/libc.so
 root/usr/lib/libext2fs.so: lib/libext2fs.so root/usr/lib/libcom-err.so root/usr/lib/libc.so

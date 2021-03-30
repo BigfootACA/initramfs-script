@@ -23,7 +23,7 @@ root/usr/bin/losetup: bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libi
 root/usr/bin/boot_menu: bin/boot_menu root/usr/lib/libc.so
 root/usr/bin/advreboot: build/sysroot/usr/bin/advreboot root/usr/lib/libc.so
 root/usr/bin/lz4: build/sysroot/usr/bin/lz4 root/usr/lib/libc.so
-root/usr/bin/bzip2: bin/bzip2 root/usr/lib/libc.so
+root/usr/bin/bzip2: build/sysroot/usr/bin/bzip2 root/usr/lib/libc.so
 root/usr/bin/zstd: bin/zstd root/usr/lib/libz.so root/usr/lib/liblzma.so root/usr/lib/liblz4.so root/usr/lib/libc.so
 root/usr/bin/xz: build/sysroot/usr/bin/xz root/usr/lib/liblzma.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/abootimg: bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
