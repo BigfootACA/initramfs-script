@@ -17,7 +17,7 @@ root/usr/bin/uuidgen: bin/uuidgen root/usr/lib/libuuid.so root/usr/lib/libintl.s
 root/usr/bin/kmod: bin/kmod root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/bin/mount: bin/mount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/umount: bin/umount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
-root/usr/bin/file: bin/file root/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/bin/file: build/sysroot/usr/bin/file root/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/bin/stat: bin/stat root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/losetup: bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/boot_menu: bin/boot_menu root/usr/lib/libc.so

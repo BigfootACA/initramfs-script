@@ -14,7 +14,7 @@ root/usr/lib/libkmod.so: build/sysroot/usr/lib/libkmod.so root/usr/lib/liblzma.s
 root/usr/lib/liblz4.so: build/sysroot/usr/lib/liblz4.so root/usr/lib/libc.so
 root/usr/lib/liblzma.so: build/sysroot/usr/lib/liblzma.so root/usr/lib/libc.so
 root/usr/lib/liblzo2.so: lib/liblzo2.so root/usr/lib/libc.so
-root/usr/lib/libmagic.so: lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/lib/libmagic.so: build/sysroot/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/lib/libmount.so: lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/lib/libncursesw.so: build/sysroot/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/lib/libntfs.so: lib/libntfs.so root/usr/lib/libc.so

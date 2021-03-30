@@ -55,3 +55,6 @@
 [submodule "build/bzip2"]
 	path = build/bzip2
 	url = git://sourceware.org/git/bzip2.git
+[submodule "build/file"]
+	path = build/file
+	url = https://github.com/file/file.git
