@@ -11,7 +11,7 @@ build/progress/headers: build/headers
 	@echo > $@
 install-headers: build/progress/headers
 install-kheaders: build/progress/kheaders
-clean-kheaders: build/linux/Makefile
-	@make -C build/linux clean
-	@rm -f build/progress/kheaders build/progress/headers
+clean-kheaders: build/linux/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-kheaders install-kheaders install-headers

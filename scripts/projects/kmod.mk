@@ -39,7 +39,7 @@ build/sysroot/usr/lib/libkmod.so build/sysroot/usr/bin/kmod: build/kmod/.install
 configure-kmod: build/kmod/Makefile
 build-kmod: build/kmod/.built
 install-kmod: build/kmod/.installed
-clean-kmod: build/kmod/Makefile
-	@make -C build/kmod clean
-	@rm -f build/kmod/.installed build/kmod/.built
+clean-kmod: build/kmod/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-kmod configure-kmod build-kmod install-kmod

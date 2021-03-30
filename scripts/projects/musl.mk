@@ -29,7 +29,7 @@ build/sysroot/usr/lib/libc.so: build/musl/lib/libc.so
 configure-musl: build/musl/config.mak
 build-musl: build/musl/lib/libc.so
 install-musl: build/sysroot/usr/lib/libc.so
-clean-musl: build/musl/Makefile
-	@make -C build/musl clean
-	@rm -vf build/musl/config.mak build/musl-gcc
+clean-musl: build/musl/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-musl build-musl install-musl

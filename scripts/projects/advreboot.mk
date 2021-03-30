@@ -12,8 +12,9 @@ build/sysroot/usr/bin/advreboot: build/advreboot/advreboot
 	@touch $@
 build-advreboot: build/advreboot/advreboot
 install-advreboot: build/sysroot/usr/bin/advreboot
-clean-advreboot: build/advreboot/Makefile
-	@make -C build/advreboot clean
+clean-advreboot: build/advreboot/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-advreboot
 .PHONY: build-advreboot
 .PHONY: install-advreboot

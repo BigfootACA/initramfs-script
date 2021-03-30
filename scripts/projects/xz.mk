@@ -30,7 +30,7 @@ build/sysroot/usr/lib/liblzma.so build/sysroot/usr/bin/xz: build/xz/.installed
 configure-xz: build/xz/Makefile
 build-xz: build/xz/.built
 install-xz: build/xz/.installed
-clean-xz: build/xz/Makefile
-	@make -C build/xz clean
-	@rm -f build/xz/.installed build/xz/.built
+clean-xz: build/xz/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-xz configure-xz build-xz install-xz

@@ -27,7 +27,7 @@ build/sysroot/usr/lib/libreadline.so build/sysroot/usr/lib/libhistory.so: build/
 configure-readline: build/readline/Makefile
 build-readline: build/readline/.built
 install-readline: build/readline/.installed
-clean-readline: build/readline/Makefile
-	@make -C build/readline clean
-	@rm -f build/readline/.installed build/readline/.built
+clean-readline: build/readline/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-readline configure-readline build-readline install-readline

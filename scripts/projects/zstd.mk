@@ -21,7 +21,7 @@ build/sysroot/usr/lib/libzstd.so build/sysroot/usr/bin/zstd: build/zstd/.install
 configure-zstd: build/zstd/Makefile
 build-zstd: build/zstd/.built
 install-zstd: build/zstd/.installed
-clean-zstd: build/zstd/Makefile
-	@make -C build/zstd clean
-	@rm -f build/zstd/.built build/zstd/.installed
+clean-zstd: build/zstd/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-zstd configure-zstd build-zstd install-zstd

@@ -13,8 +13,9 @@ build/sysroot/usr/bin/adbd: build/adbd/adbd
 	@touch $@
 install-adbd: build/sysroot/usr/bin/adbd
 build-adbd: build/adbd/adbd
-clean-adbd: build/adbd/Makefile
-	@make -C build/adbd clean
+clean-adbd: build/adbd/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-adbd
 .PHONY: build-adbd
 .PHONY: install-adbd

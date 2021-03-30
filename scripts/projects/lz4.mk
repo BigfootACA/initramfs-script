@@ -21,7 +21,7 @@ build/sysroot/usr/lib/liblz4.so build/sysroot/usr/bin/lz4: build/lz4/.installed
 configure-lz4: build/lz4/Makefile
 build-lz4: build/lz4/.built
 install-lz4: build/lz4/.installed
-clean-lz4: build/lz4/Makefile
-	@make -C build/lz4 clean
-	@rm -f build/lz4/.built build/lz4/.installed
+clean-lz4: build/lz4/.git
+	@git clean -xdf
+	@git reset --hard
 .PHONY: clean-lz4 configure-lz4 build-lz4 install-lz4
