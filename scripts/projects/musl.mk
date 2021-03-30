@@ -6,7 +6,7 @@ build/musl/config.mak: build/musl/configure
 build/sysroot/usr/lib/musl.specs: build/musl.specs.in
 	@mkdir -vp build/sysroot/usr/lib
 	@sed "s|%SYSROOT%|$(PWD)/build/sysroot|g;s|%GCC%|$(CROSS_COMPILE)gcc|g" < $< > $@
-build/musl-gcc: build/musl-gcc.in build/sysroot/usr/lib/musl.specs build/sysroot/usr/lib/libc.so build/progress/kheaders build/progress/headers
+build/musl-gcc: build/musl-gcc.in build/sysroot/usr/lib/musl.specs build/sysroot/usr/lib/libc.so build/sysroot/usr/include/.kheaders build/sysroot/usr/include/.headers
 	@sed "s|%SYSROOT%|$(PWD)/build/sysroot|g;s|%GCC%|$(CROSS_COMPILE)gcc|g" < $< > $@
 	@chmod +x $@
 build/musl/lib/libc.so: build/linux/Makefile build/musl/config.mak
