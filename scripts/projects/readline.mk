@@ -28,6 +28,5 @@ configure-readline: build/readline/Makefile
 build-readline: build/readline/.built
 install-readline: build/readline/.installed
 clean-readline: build/readline/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-readline configure-readline build-readline install-readline

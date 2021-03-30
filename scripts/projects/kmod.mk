@@ -40,6 +40,5 @@ configure-kmod: build/kmod/Makefile
 build-kmod: build/kmod/.built
 install-kmod: build/kmod/.installed
 clean-kmod: build/kmod/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-kmod configure-kmod build-kmod install-kmod

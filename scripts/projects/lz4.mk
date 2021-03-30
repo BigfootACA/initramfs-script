@@ -22,6 +22,5 @@ configure-lz4: build/lz4/Makefile
 build-lz4: build/lz4/.built
 install-lz4: build/lz4/.installed
 clean-lz4: build/lz4/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-lz4 configure-lz4 build-lz4 install-lz4

@@ -13,8 +13,7 @@ build/sysroot/usr/bin/advreboot: build/advreboot/advreboot
 build-advreboot: build/advreboot/advreboot
 install-advreboot: build/sysroot/usr/bin/advreboot
 clean-advreboot: build/advreboot/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-advreboot
 .PHONY: build-advreboot
 .PHONY: install-advreboot

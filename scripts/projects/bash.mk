@@ -30,6 +30,5 @@ configure-bash: build/bash/Makefile
 build-bash: build/bash/bash
 install-bash: build/sysroot/usr/bin/bash
 clean-bash: build/bash/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-bash configure-bash build-bash install-bash

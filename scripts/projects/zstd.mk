@@ -22,6 +22,5 @@ configure-zstd: build/zstd/Makefile
 build-zstd: build/zstd/.built
 install-zstd: build/zstd/.installed
 clean-zstd: build/zstd/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-zstd configure-zstd build-zstd install-zstd

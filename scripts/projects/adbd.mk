@@ -14,8 +14,7 @@ build/sysroot/usr/bin/adbd: build/adbd/adbd
 install-adbd: build/sysroot/usr/bin/adbd
 build-adbd: build/adbd/adbd
 clean-adbd: build/adbd/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-adbd
 .PHONY: build-adbd
 .PHONY: install-adbd

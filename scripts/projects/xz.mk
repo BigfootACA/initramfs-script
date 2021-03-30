@@ -31,6 +31,5 @@ configure-xz: build/xz/Makefile
 build-xz: build/xz/.built
 install-xz: build/xz/.installed
 clean-xz: build/xz/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-xz configure-xz build-xz install-xz

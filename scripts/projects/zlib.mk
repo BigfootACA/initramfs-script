@@ -22,6 +22,5 @@ configure-zlib: build/zlib/Makefile
 build-zlib: build/zlib/libz.so
 install-zlib: build/sysroot/usr/lib/libz.so
 clean-zlib: build/zlib/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-zlib configure-zlib build-zlib install-zlib

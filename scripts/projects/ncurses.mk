@@ -39,6 +39,5 @@ configure-ncurses: build/ncurses/Makefile
 build-ncurses: build/ncurses/.built
 install-ncurses: build/ncurses/.installed
 clean-ncurses: build/ncurses/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-ncurses configure-ncurses build-ncurses install-ncurses

@@ -30,6 +30,5 @@ configure-musl: build/musl/config.mak
 build-musl: build/musl/lib/libc.so
 install-musl: build/sysroot/usr/lib/libc.so
 clean-musl: build/musl/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-musl build-musl install-musl

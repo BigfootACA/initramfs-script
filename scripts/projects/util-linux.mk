@@ -38,6 +38,5 @@ configure-util-linux: build/util-linux/Makefile
 build-util-linux: build/util-linux/libuuid.so
 install-util-linux: build/sysroot/usr/lib/libuuid.so
 clean-util-linux: build/util-linux/.git
-	@git clean -xdf
-	@git reset --hard
+	@cd $(shell dirname $<)&&git clean -xdf&&git reset --hard
 .PHONY: clean-util-linux configure-util-linux build-util-linux install-util-linux
