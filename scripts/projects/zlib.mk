@@ -17,7 +17,7 @@ build/sysroot/usr/lib/libz.so: build/zlib/libz.so
 		DESTDIR="$(PWD)/build/sysroot" \
 		$(ZLIB_INSTALL_FLAGS) \
 		install
-	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/readline.pc
+	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/zlib.pc
 configure-zlib: build/zlib/Makefile
 build-zlib: build/zlib/libz.so
 install-zlib: build/sysroot/usr/lib/libz.so
