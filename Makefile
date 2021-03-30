@@ -6,7 +6,7 @@ include scripts/build.mk
 include scripts/binary.mk
 include scripts/link.mk
 include scripts/library.mk
-src/init.sh: bin/bash
+src/init.sh: root/usr/bin/bash
 root/functions/%.sh:
 	@install -vDm644 $< $@
 root/functions/boot.sh:     src/functions/boot.sh     $(MOD_BOOT_DEP)
