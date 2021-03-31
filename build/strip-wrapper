@@ -1,0 +1,19 @@
+#!/bin/bash
+if [ -z "${STRIP}" ]||! type "${STRIP}" &>/dev/null||[ -n "${_INSTRIP}" ]
+then
+	if [ -z "${CROSS_COMPILE}" ]
+	then
+		if [ -z "${TARGET}" ]
+		then
+			[ -z "${CC}" ]&&CC=gcc
+			TARGET="$("${CC}" -dumpmachine)"
+		fi
+		CROSS_COMPILE="${TARGET}-"
+	fi
+	STRIP="${CROSS_COMPILE}strip"
+	if ! type "${STRIP}" &>/dev/null
+	then STRIP="strip"
+	fi
+fi
+export _INSTRIP=yes
+exec "${STRIP}" "$@"

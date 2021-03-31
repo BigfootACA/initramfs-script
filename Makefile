@@ -1,6 +1,9 @@
 all:initramfs.cpio
 KERNEL?=zImage
 CMDLINE?=
+XSTRIP=$(PWD)/build/strip-wrapper
+INSTALL?=install
+BIN_INSTALL=$(INSTALL) --strip-program="$(XSTRIP)" -svDm755
 include scripts/deps.mk
 include scripts/build.mk
 include scripts/binary.mk

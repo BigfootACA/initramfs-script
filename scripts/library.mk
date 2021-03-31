@@ -1,6 +1,6 @@
 root/usr/lib/lib%.so:
 	@mkdir -p root/usr/lib
-	@install -vDm755 $< $@
+	@$(BIN_INSTALL) $< $@
 root/usr/lib/libc.so: build/sysroot/usr/lib/libc.so
 root/usr/lib/libblkid.so: build/sysroot/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libbz2.so: build/sysroot/usr/lib/libbz2.so root/usr/lib/libc.so

@@ -1,7 +1,7 @@
 root/usr/bin/%:
 	@mkdir -p root/usr/bin
 	@case "$<" in \
-		bin/?*)install -vDm755 $< $@;;\
+		build/sysroot/usr/bin/?*|bin/?*)$(BIN_INSTALL) $< $@;;\
 		root/usr/bin/?*)ln -vs $(shell basename $<) $@;;\
 	esac
 root/usr/bin/charger: root/usr/bin/true
