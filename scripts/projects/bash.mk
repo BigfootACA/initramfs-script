@@ -11,6 +11,7 @@ build/bash/Makefile: build/musl-gcc build/bash/configure $(BASH_DEPS)
 		--prefix=/usr \
 		--with-curses \
 		--with-installed-readline \
+		--disable-nls \
 		--disable-rpath \
 		$(BASH_CONFIGURE_FLAGS)
 	@sed -i "s,_LIBDIR = /usr/lib,_LIBDIR = $(PWD)/build/sysroot/usr/lib,g" build/bash/Makefile

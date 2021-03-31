@@ -9,6 +9,7 @@ build/xz/Makefile: build/musl-gcc build/xz/configure
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
 		--prefix=/usr \
+		--disable-nls \
 		--disable-scripts \
 		--disable-doc \
 		$(XZ_CONFIGURE_FLAGS)

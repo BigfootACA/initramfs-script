@@ -133,6 +133,7 @@ build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
 		--prefix=/usr \
+		--disable-nls \
 		--disable-rpath \
 		--without-udev \
 		--without-python \
