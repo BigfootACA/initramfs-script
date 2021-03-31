@@ -4,10 +4,10 @@ root/usr/bin/%:
 		bin/?*)install -vDm755 $< $@;;\
 		root/usr/bin/?*)ln -vs $(shell basename $<) $@;;\
 	esac
+root/usr/bin/charger: root/usr/bin/true
 root/usr/bin/bash: build/sysroot/usr/bin/bash root/usr/lib/libreadline.so root/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/bin/blkid: build/sysroot/usr/bin/blkid root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/busybox: build/sysroot/usr/bin/busybox root/usr/lib/libc.so
-root/usr/bin/charger: bin/charger
 root/usr/bin/adbd: build/sysroot/usr/bin/adbd
 root/usr/bin/dmesg: build/sysroot/usr/bin/dmesg root/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/bin/lsblk: build/sysroot/usr/bin/lsblk root/usr/lib/libblkid.so root/usr/lib/libmount.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
