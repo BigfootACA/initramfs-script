@@ -1,7 +1,7 @@
-diff --git a/Makefile.inc b/Makefile.inc
+diff --git a/build/lz4/Makefile.inc b/build/lz4/Makefile.inc
 index 0840a56..f482d8f 100644
---- a/Makefile.inc
-+++ b/Makefile.inc
+--- a/build/lz4/Makefile.inc
++++ b/build/lz4/Makefile.inc
 @@ -53,7 +53,7 @@ WINBASED   = yes
  LIBLZ4     = cyglz4-$(LIBVER_MAJOR)
  WINBASED   = yes
@@ -11,10 +11,10 @@ index 0840a56..f482d8f 100644
  WINBASED   = no
  EXT        =
        endif
-diff --git a/lib/Makefile b/lib/Makefile
+diff --git a/build/lz4/lib/Makefile b/build/lz4/lib/Makefile
 index 344120a..3dad572 100644
---- a/lib/Makefile
-+++ b/lib/Makefile
+--- a/build/lz4/lib/Makefile
++++ b/build/lz4/lib/Makefile
 @@ -63,14 +63,10 @@ include ../Makefile.inc
  # see : https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/DynamicLibraryDesignGuidelines.html
  ifeq ($(TARGET_OS), Darwin)
