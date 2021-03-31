@@ -6,7 +6,7 @@ root/usr/bin/%:
 	esac
 root/usr/bin/bash: build/sysroot/usr/bin/bash root/usr/lib/libreadline.so root/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libintl.so root/usr/lib/libc.so
 root/usr/bin/blkid: bin/blkid root/usr/lib/libblkid.so root/usr/lib/libintl.so root/usr/lib/libc.so
-root/usr/bin/busybox: bin/busybox root/usr/lib/libc.so
+root/usr/bin/busybox: build/sysroot/usr/bin/busybox root/usr/lib/libc.so
 root/usr/bin/charger: bin/charger
 root/usr/bin/adbd: build/sysroot/usr/bin/adbd
 root/usr/bin/dmesg: bin/dmesg root/usr/lib/libncursesw.so root/usr/lib/libintl.so root/usr/lib/libc.so
