@@ -80,6 +80,8 @@ root/etc/bashrc: root/usr/bin/bash root/usr/bin/id
 root/etc: assets/etc root/etc/bashrc FORCE
 	@cp -uva $< root/
 	@ln -sf /proc/self/mounts root/etc/mtab
+root/usr/bin:
+	@mkdir -p $@
 root/bin: root/usr/bin
 	@ln -vs usr/bin $@
 root/sbin: root/usr/bin
@@ -99,7 +101,7 @@ root: extra root/init root/bin root/sbin root/usr/sbin root/lib root/etc
 		root/log \
 		root/root \
 		root/rootblk
-	@-cp -va extra/* root/
+	@cp -va extra/* root/||true
 check: root
 	@cd root;shellcheck -x init
 test: check
