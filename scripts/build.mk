@@ -1,11 +1,3 @@
-REALCC?=$(PWD)/build/musl-gcc
-ifdef TARGET
-ifndef CROSS_COMPILE
-CROSS_COMPILE=$(TARGET)-
-export CROSS_COMPILE
-endif
-endif
-export REALCC
 CLEAN_TARGETS=\
 	clean-sysroot \
 	clean-adbd \
