@@ -20,7 +20,13 @@ CLEAN_TARGETS=\
 	clean-util-linux \
 	clean-xz \
 	clean-zlib \
-	clean-zstd
+	clean-zstd \
+	clean-bzip2 \
+	clean-file \
+	clean-eudev \
+	clean-util-linux \
+	clean-abootimg \
+	clean-busybox
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf build/sysroot/*
