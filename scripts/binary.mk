@@ -25,7 +25,7 @@ root/usr/bin/lz4: build/sysroot/usr/bin/lz4 root/usr/lib/libc.so
 root/usr/bin/bzip2: build/sysroot/usr/bin/bzip2 root/usr/lib/libc.so
 root/usr/bin/zstd: build/sysroot/usr/bin/zstd root/usr/lib/libz.so root/usr/lib/liblzma.so root/usr/lib/liblz4.so root/usr/lib/libc.so
 root/usr/bin/xz: build/sysroot/usr/bin/xz root/usr/lib/liblzma.so root/usr/lib/libc.so
-root/usr/bin/abootimg: bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/abootimg: build/sysroot/usr/bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/e2fsck: bin/e2fsck root/usr/lib/libext2fs.so root/usr/lib/libcom-err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
 root/usr/bin/ntfs-3g: bin/ntfs-3g root/usr/lib/libntfs.so root/usr/lib/libc.so
 root/usr/bin/fsck.f2fs: bin/fsck.f2fs root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so

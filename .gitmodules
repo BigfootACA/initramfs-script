@@ -55,3 +55,6 @@
 [submodule "build/file"]
 	path = build/file
 	url = https://github.com/file/file.git
+[submodule "build/abootimg"]
+	path = build/abootimg
+	url = https://github.com/ggrandou/abootimg.git
