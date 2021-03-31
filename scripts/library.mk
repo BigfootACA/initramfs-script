@@ -21,5 +21,6 @@ root/usr/lib/libntfs.so: lib/libntfs.so root/usr/lib/libc.so
 root/usr/lib/libreadline.so: build/sysroot/usr/lib/libreadline.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/lib/libsmartcols.so: build/sysroot/usr/lib/libsmartcols.so root/usr/lib/libc.so
 root/usr/lib/libuuid.so: build/sysroot/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/lib/libudev.so: build/sysroot/usr/lib/libudev.so root/usr/lib/libc.so
 root/usr/lib/libz.so: build/sysroot/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/lib/libzstd.so: build/sysroot/usr/lib/libzstd.so root/usr/lib/liblz4.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so

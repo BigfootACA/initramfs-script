@@ -11,8 +11,8 @@ root/usr/bin/charger: bin/charger
 root/usr/bin/adbd: build/sysroot/usr/bin/adbd
 root/usr/bin/dmesg: build/sysroot/usr/bin/dmesg root/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/bin/lsblk: build/sysroot/usr/bin/lsblk root/usr/lib/libblkid.so root/usr/lib/libmount.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
-root/usr/bin/udevadm: bin/udevadm root/usr/lib/libblkid.so root/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
-root/usr/bin/udevd: bin/udevd root/usr/lib/libblkid.so root/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/bin/udevadm: build/sysroot/usr/bin/udevadm root/usr/lib/libblkid.so root/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/bin/udevd: build/sysroot/usr/bin/udevd root/usr/lib/libblkid.so root/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/bin/uuidgen: build/sysroot/usr/bin/uuidgen root/usr/lib/libuuid.so root/usr/lib/libc.so
 root/usr/bin/kmod: build/sysroot/usr/bin/kmod root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/bin/mount: build/sysroot/usr/bin/mount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
