@@ -57,6 +57,7 @@ root/usr/bin/sulogin: root/usr/bin/busybox
 root/usr/bin/su: root/usr/bin/busybox
 root/usr/bin/stty: root/usr/bin/busybox
 root/usr/bin/strings: root/usr/bin/busybox
+root/usr/bin/stat: root/usr/bin/busybox
 root/usr/bin/start-stop-daemon: root/usr/bin/busybox
 root/usr/bin/sort: root/usr/bin/busybox
 root/usr/bin/sleep: root/usr/bin/busybox

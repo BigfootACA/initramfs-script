@@ -18,7 +18,6 @@ root/usr/bin/kmod: build/sysroot/usr/bin/kmod root/usr/lib/liblzma.so root/usr/l
 root/usr/bin/mount: build/sysroot/usr/bin/mount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/umount: build/sysroot/usr/bin/umount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/file: build/sysroot/usr/bin/file root/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
-root/usr/bin/stat: bin/stat root/usr/lib/libc.so
 root/usr/bin/losetup: build/sysroot/usr/bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libc.so
 root/usr/bin/boot_menu: bin/boot_menu root/usr/lib/libc.so
 root/usr/bin/advreboot: build/sysroot/usr/bin/advreboot root/usr/lib/libc.so
