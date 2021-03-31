@@ -25,9 +25,6 @@
 [submodule "build/bash"]
 	path = build/bash
 	url = https://git.savannah.gnu.org/git/bash.git
-[submodule "build/coreutils"]
-	path = build/coreutils
-	url = https://git.savannah.gnu.org/git/coreutils.git
 [submodule "build/busybox"]
 	path = build/busybox
 	url = https://git.busybox.net/busybox.git
