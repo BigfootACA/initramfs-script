@@ -36,7 +36,7 @@ build/eudev/.installed: build/eudev/.built
 	@rm -vf build/sysroot/usr/sbin/udevadm
 	@rmdir -v --ignore-fail-on-non-empty build/sysroot/usr/sbin
 	@touch $@
-build/sysroot/usr/lib/libudev.so: build/eudev/.installed
+build/sysroot/usr/lib/libudev.so build/sysroot/usr/bin/udevadm build/sysroot/usr/bin/udevd: build/eudev/.installed
 configure-eudev: build/eudev/Makefile
 build-eudev: build/eudev/.built
 install-eudev: build/eudev/.installed
