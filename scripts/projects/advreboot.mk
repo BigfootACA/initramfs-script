@@ -3,13 +3,12 @@ build/advreboot/advreboot: build/musl-gcc build/advreboot/Makefile
 		-C build/advreboot \
 		CC="$(REALCC)" \
 		$(ADVREBOOT_BUILD_FLAGS)
-	@touch $@
 build/sysroot/usr/bin/advreboot: build/advreboot/advreboot
 	@$(MAKE) \
 		-C build/advreboot \
 		DESTDIR="$(PWD)/build/sysroot" \
-		$(ADVREBOOT_INSTALL_FLAGS)
-	@touch $@
+		$(ADVREBOOT_INSTALL_FLAGS) \
+		install
 build-advreboot: build/advreboot/advreboot
 install-advreboot: build/sysroot/usr/bin/advreboot
 clean-advreboot: build/advreboot/.git
