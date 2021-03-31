@@ -30,7 +30,6 @@ CLEAN_TARGETS=\
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
-	@rm -f build/progress/*
 clean-build: $(CLEAN_TARGETS)
 .PHONY: clean-build $(CLEAN_TARGETS)
 include scripts/projects/*.mk
