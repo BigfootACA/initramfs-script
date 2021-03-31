@@ -10,7 +10,7 @@ build/xz/Makefile: build/musl-gcc build/xz/configure
 		--host=$(TARGET) \
 		--prefix=/usr \
 		--disable-scripts \
-		--disable-doc
+		--disable-doc \
 		$(XZ_CONFIGURE_FLAGS)
 build/xz/.built: build/musl-gcc build/xz/.patched build/xz/Makefile
 	@$(MAKE) \
