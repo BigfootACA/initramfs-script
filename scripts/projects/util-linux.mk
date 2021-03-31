@@ -156,7 +156,7 @@ build/util-linux/.built: build/musl-gcc build/util-linux/.patched build/util-lin
 build/util-linux/.installed: build/util-linux/.built
 	@$(MAKE) \
 		-C build/util-linux \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(UTIL_LINUX_INSTALL_FLAGS) \
 		install
 	@mv -v build/sysroot/lib/* build/sysroot/usr/lib/

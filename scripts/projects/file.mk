@@ -20,7 +20,7 @@ build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS)
 		--prefix=/usr \
 		--enable-static \
 		--disable-libseccomp \
-		--with-sysroot="$(PWD)/build/sysroot" \
+		--with-sysroot="$(SYSROOT)" \
 		$(FILE_CONFIGURE_FLAGS)
 build/file/.built: build/musl-gcc build/file/.patched build/file/Makefile
 	@$(MAKE) \
@@ -31,10 +31,10 @@ build/file/.built: build/musl-gcc build/file/.patched build/file/Makefile
 build/file/.installed: build/file/.built
 	@$(MAKE) \
 		-C build/file \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(FILE_INSTALL_FLAGS) \
 		install
-	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/libmagic.pc
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/libmagic.pc
 	@touch $@
 build/sysroot/usr/lib/libmagic.so build/sysroot/usr/bin/file: build/file/.installed
 configure-file: build/file/Makefile

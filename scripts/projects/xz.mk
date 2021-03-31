@@ -22,10 +22,10 @@ build/xz/.built: build/musl-gcc build/xz/.patched build/xz/Makefile
 build/xz/.installed: build/xz/.built
 	@$(MAKE) \
 		-C build/xz \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(XZ_INSTALL_FLAGS) \
 		install
-	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/liblzma.pc
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/liblzma.pc
 	@touch $@
 build/sysroot/usr/lib/liblzma.so build/sysroot/usr/bin/xz: build/xz/.installed
 configure-xz: build/xz/Makefile

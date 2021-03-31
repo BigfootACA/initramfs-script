@@ -6,7 +6,7 @@ build/advreboot/advreboot: build/musl-gcc build/advreboot/Makefile
 build/sysroot/usr/bin/advreboot: build/advreboot/advreboot
 	@$(MAKE) \
 		-C build/advreboot \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(ADVREBOOT_INSTALL_FLAGS) \
 		install
 build-advreboot: build/advreboot/advreboot

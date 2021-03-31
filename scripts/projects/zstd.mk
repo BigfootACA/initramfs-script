@@ -13,7 +13,7 @@ build/zstd/.installed: build/zstd/.built
 	@$(MAKE) \
 		-C build/zstd \
 		PREFIX="/usr" \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(ZSTD_INSTALL_FLAGS) \
 		install
 	@touch $@

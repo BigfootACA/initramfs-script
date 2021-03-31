@@ -17,10 +17,10 @@ build/readline/.built: build/musl-gcc build/readline/Makefile
 build/readline/.installed: build/readline/.built
 	@$(MAKE) \
 		-C build/readline \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(readline_INSTALL_FLAGS) \
 		install
-	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/readline.pc
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/readline.pc
 	@rm -f build/sysroot/usr/lib/libreadline.so.old build/sysroot/usr/lib/libhistory.so.old
 	@touch $@
 build/sysroot/usr/lib/libreadline.so build/sysroot/usr/lib/libhistory.so: build/readline/.installed

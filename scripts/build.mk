@@ -29,7 +29,7 @@ CLEAN_TARGETS=\
 	clean-busybox
 toolchain: build/musl-gcc
 clean-sysroot:
-	@rm -rf build/sysroot/*
+	@rm -rf $(SYSROOT)/*
 	@rm -f build/progress/*
 clean-build: $(CLEAN_TARGETS)
 .PHONY: clean-build $(CLEAN_TARGETS)

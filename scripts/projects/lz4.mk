@@ -13,7 +13,7 @@ build/lz4/.installed: build/lz4/.built
 	@$(MAKE) \
 		-C build/lz4 \
 		PREFIX="/usr" \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(LZ4_INSTALL_FLAGS) \
 		install
 	@touch $@

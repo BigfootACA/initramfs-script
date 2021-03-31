@@ -18,7 +18,7 @@ build/eudev/Makefile: build/musl-gcc build/eudev/configure $(EUDEV_DEPS)
 		--disable-selinux \
 		--disable-manpages \
 		--enable-introspection=no \
-		--with-sysroot="$(PWD)/build/sysroot" \
+		--with-sysroot="$(SYSROOT)" \
 		$(EUDEV_CONFIGURE_FLAGS)
 build/eudev/.built: build/eudev/Makefile build/eudev/.patched
 	@$(MAKE) \
@@ -29,7 +29,7 @@ build/eudev/.built: build/eudev/Makefile build/eudev/.patched
 build/eudev/.installed: build/eudev/.built
 	@$(MAKE) \
 		-C build/eudev \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(EUDEV_INSTALL_FLAGS) \
 		install
 	@mv -v build/sysroot/usr/sbin/udevd build/sysroot/usr/bin/

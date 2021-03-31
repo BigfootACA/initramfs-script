@@ -5,7 +5,7 @@ build/busybox/busybox: build/musl-gcc build/busybox/Makefile build/busybox/.conf
 		-C build/busybox \
 		CC="$(REALCC)" \
 		CONFIG_CROSS_COMPILER_PREFIX="$(CROSS_COMPILE)" \
-		CONFIG_SYSROOT="$(PWD)/build/sysroot" \
+		CONFIG_SYSROOT="$(SYSROOT)" \
 		$(BUSYBOX_BUILD_FLAGS)
 build/sysroot/usr/bin/busybox: build/busybox/busybox
 	@install -vDm755 $< $@

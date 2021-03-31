@@ -19,7 +19,7 @@ build/kmod/Makefile: build/musl-gcc build/kmod/configure $(KMOD_DEPS)
 		--with-zstd \
 		--with-xz \
 		--with-zlib \
-		--with-sysroot="$(PWD)/build/sysroot" \
+		--with-sysroot="$(SYSROOT)" \
 		$(KMOD_CONFIGURE_FLAGS)
 build/kmod/.built: build/musl-gcc build/kmod/.patched build/kmod/Makefile
 	@$(MAKE) \
@@ -30,10 +30,10 @@ build/kmod/.built: build/musl-gcc build/kmod/.patched build/kmod/Makefile
 build/kmod/.installed: build/kmod/.built
 	@$(MAKE) \
 		-C build/kmod \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(KMOD_INSTALL_FLAGS) \
 		install
-	@sed -i s,=/usr,=$(PWD)/build/sysroot/usr,g build/sysroot/usr/lib/pkgconfig/libkmod.pc
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/libkmod.pc
 	@touch $@
 build/sysroot/usr/lib/libkmod.so build/sysroot/usr/bin/kmod: build/kmod/.installed
 configure-kmod: build/kmod/Makefile

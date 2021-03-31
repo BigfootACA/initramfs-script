@@ -29,7 +29,7 @@ build/ncurses/.built: build/ncurses/Makefile
 build/ncurses/.installed: build/ncurses/.built
 	@$(MAKE) \
 		-C build/ncurses \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(NCURSES_INSTALL_FLAGS) \
 		install
 	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libcurses.so

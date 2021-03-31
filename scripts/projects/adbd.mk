@@ -7,7 +7,7 @@ build/adbd/adbd: build/adbd/Makefile build/musl-gcc
 build/sysroot/usr/bin/adbd: build/adbd/adbd
 	@$(MAKE) \
 		-C build/adbd \
-		DESTDIR="$(PWD)/build/sysroot" \
+		DESTDIR="$(SYSROOT)" \
 		$(ADBD_INSTALL_FLAGS) \
 		install
 	@touch $@
