@@ -47,3 +47,62 @@ root/usr/bin/e2freefrag: build/sysroot/usr/bin/e2freefrag root/usr/lib/libext2fs
 root/usr/bin/e2fsck: build/sysroot/usr/bin/e2fsck root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
 root/usr/bin/e2image: build/sysroot/usr/bin/e2image root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/mke2fs: build/sysroot/usr/bin/mke2fs root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
+root/usr/bin/uuidd: build/sysroot/usr/bin/uuidd root/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/bin/scriptreplay: build/sysroot/usr/bin/scriptreplay root/usr/lib/libc.so
+root/usr/bin/setsid: build/sysroot/usr/bin/setsid root/usr/lib/libc.so
+root/usr/bin/fsck: build/sysroot/usr/bin/fsck root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/mkswap: build/sysroot/usr/bin/mkswap root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/eject: build/sysroot/usr/bin/eject root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/agetty: build/sysroot/usr/bin/agetty root/usr/lib/libc.so
+root/usr/bin/wipefs: build/sysroot/usr/bin/wipefs root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/delpart: build/sysroot/usr/bin/delpart root/usr/lib/libc.so
+root/usr/bin/mountpoint: build/sysroot/usr/bin/mountpoint root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/scriptlive: build/sysroot/usr/bin/scriptlive root/usr/lib/libc.so
+root/usr/bin/fsck.minix: build/sysroot/usr/bin/fsck.minix root/usr/lib/libc.so
+root/usr/bin/mkfs.cramfs: build/sysroot/usr/bin/mkfs.cramfs root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/bin/switch_root: build/sysroot/usr/bin/switch_root root/usr/lib/libc.so
+root/usr/bin/cfdisk: build/sysroot/usr/bin/cfdisk root/usr/lib/libsmartcols.so root/usr/lib/libfdisk.so root/usr/lib/libmount.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
+root/usr/bin/fallocate: build/sysroot/usr/bin/fallocate root/usr/lib/libc.so
+root/usr/bin/blkid: build/sysroot/usr/bin/blkid root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/hexdump: build/sysroot/usr/bin/hexdump root/usr/lib/libncursesw.so root/usr/lib/libc.so
+root/usr/bin/dmesg: build/sysroot/usr/bin/dmesg root/usr/lib/libncursesw.so root/usr/lib/libc.so
+root/usr/bin/nsenter: build/sysroot/usr/bin/nsenter root/usr/lib/libc.so
+root/usr/bin/script: build/sysroot/usr/bin/script root/usr/lib/libc.so
+root/usr/bin/findfs: build/sysroot/usr/bin/findfs root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/swaplabel: build/sysroot/usr/bin/swaplabel root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/bin/losetup: build/sysroot/usr/bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/fstrim: build/sysroot/usr/bin/fstrim root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/blkzone: build/sysroot/usr/bin/blkzone root/usr/lib/libc.so
+root/usr/bin/unshare: build/sysroot/usr/bin/unshare root/usr/lib/libc.so
+root/usr/bin/findmnt: build/sysroot/usr/bin/findmnt root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/mkfs.minix: build/sysroot/usr/bin/mkfs.minix root/usr/lib/libc.so
+root/usr/bin/hwclock: build/sysroot/usr/bin/hwclock root/usr/lib/libc.so
+root/usr/bin/swapon: build/sysroot/usr/bin/swapon root/usr/lib/libblkid.so root/usr/lib/libmount.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/fsfreeze: build/sysroot/usr/bin/fsfreeze root/usr/lib/libc.so
+root/usr/bin/swapoff: build/sysroot/usr/bin/swapoff root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/pivot_root: build/sysroot/usr/bin/pivot_root root/usr/lib/libc.so
+root/usr/bin/fdisk: build/sysroot/usr/bin/fdisk root/usr/lib/libfdisk.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
+root/usr/bin/mkfs: build/sysroot/usr/bin/mkfs root/usr/lib/libc.so
+root/usr/bin/kill: build/sysroot/usr/bin/kill root/usr/lib/libc.so
+root/usr/bin/whereis: build/sysroot/usr/bin/whereis root/usr/lib/libc.so
+root/usr/bin/resizepart: build/sysroot/usr/bin/resizepart root/usr/lib/libc.so
+root/usr/bin/lscpu: build/sysroot/usr/bin/lscpu root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/rfkill: build/sysroot/usr/bin/rfkill root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/uuidparse: build/sysroot/usr/bin/uuidparse root/usr/lib/libuuid.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/blkdiscard: build/sysroot/usr/bin/blkdiscard root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/blockdev: build/sysroot/usr/bin/blockdev root/usr/lib/libc.so
+root/usr/bin/mkfs.bfs: build/sysroot/usr/bin/mkfs.bfs root/usr/lib/libc.so
+root/usr/bin/ctrlaltdel: build/sysroot/usr/bin/ctrlaltdel root/usr/lib/libc.so
+root/usr/bin/partx: build/sysroot/usr/bin/partx root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/addpart: build/sysroot/usr/bin/addpart root/usr/lib/libc.so
+root/usr/bin/fsck.cramfs: build/sysroot/usr/bin/fsck.cramfs root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/bin/mount: build/sysroot/usr/bin/mount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/flock: build/sysroot/usr/bin/flock root/usr/lib/libc.so
+root/usr/bin/uuidgen: build/sysroot/usr/bin/uuidgen root/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/bin/zramctl: build/sysroot/usr/bin/zramctl root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/lsblk: build/sysroot/usr/bin/lsblk root/usr/lib/libblkid.so root/usr/lib/libmount.so root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/chcpu: build/sysroot/usr/bin/chcpu root/usr/lib/libc.so
+root/usr/bin/umount: build/sysroot/usr/bin/umount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/wdctl: build/sysroot/usr/bin/wdctl root/usr/lib/libsmartcols.so root/usr/lib/libc.so
+root/usr/bin/rtcwake: build/sysroot/usr/bin/rtcwake root/usr/lib/libc.so
+root/usr/bin/sfdisk: build/sysroot/usr/bin/sfdisk root/usr/lib/libfdisk.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
