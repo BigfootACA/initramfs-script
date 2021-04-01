@@ -2,7 +2,7 @@ build/ncurses/.patched: build/patches/ncurses.patch
 	@patch -Np1 < $<
 	@touch $@
 build/ncurses/Makefile: build/musl-gcc build/ncurses/.patched build/ncurses/configure
-	cd build/ncurses;./configure \
+	@cd build/ncurses;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
 		--prefix=/usr \

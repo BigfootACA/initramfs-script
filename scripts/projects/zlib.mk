@@ -2,7 +2,7 @@ build/zlib/.patched: build/patches/zlib.patch
 	@patch -Np1 < $<
 	@touch $@
 build/zlib/Makefile: build/musl-gcc build/zlib/.patched build/zlib/configure
-	cd build/zlib;env \
+	@cd build/zlib;env \
 		CC="$(REALCC)" \
 		./configure \
 			--prefix=/usr
