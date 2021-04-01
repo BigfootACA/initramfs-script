@@ -58,3 +58,6 @@
 [submodule "build/abootimg"]
 	path = build/abootimg
 	url = https://github.com/ggrandou/abootimg.git
+[submodule "build/lzo"]
+	path = build/lzo
+	url = https://github.com/BigfootACA/lzo.git
