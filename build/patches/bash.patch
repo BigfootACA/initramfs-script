@@ -1,0 +1,31 @@
+diff --git a/build/bash/config-top.h b/build/bash/config-top.h
+index 735f75e3..e8745f92 100644
+--- a/build/bash/config-top.h
++++ b/build/bash/config-top.h
+@@ -63,7 +63,7 @@
+ /* The default value of the PATH variable. */
+ #ifndef DEFAULT_PATH_VALUE
+ #define DEFAULT_PATH_VALUE \
+-  "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:."
++  "/usr/bin"
+ #endif
+ 
+ /* If you want to unconditionally set a value for PATH in every restricted
+@@ -74,7 +74,7 @@
+    the Posix.2 confstr () function, or CS_PATH define are not present. */
+ #ifndef STANDARD_UTILS_PATH
+ #define STANDARD_UTILS_PATH \
+-  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
++  "/usr/bin"
+ #endif
+ 
+ /* Default primary and secondary prompt strings. */
+@@ -91,7 +91,7 @@
+ #define DEFAULT_BASHRC "~/.bashrc"
+ 
+ /* System-wide .bashrc file for interactive shells. */
+-/* #define SYS_BASHRC "/etc/bash.bashrc" */
++#define SYS_BASHRC "/etc/bashrc"
+ 
+ /* System-wide .bash_logout for login shells. */
+ /* #define SYS_BASH_LOGOUT "/etc/bash.bash_logout" */

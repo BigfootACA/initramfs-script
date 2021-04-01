@@ -2,7 +2,10 @@ BASH_DEPS=\
 	build/sysroot/usr/lib/libncursesw.so \
 	build/sysroot/usr/lib/libreadline.so \
 	build/sysroot/usr/lib/libhistory.so
-build/bash/Makefile: build/musl-gcc build/bash/configure $(BASH_DEPS)
+build/bash/.patched: build/patches/bash.patch
+	@patch -Np1 < $<
+	@touch $@
+build/bash/Makefile: build/musl-gcc build/bash/configure build/bash/.patched $(BASH_DEPS)
 	@cd build/bash;./configure \
 		CC="$(REALCC)" \
 		LDFLAGS="-L$(SYSROOT)/usr/lib" \
