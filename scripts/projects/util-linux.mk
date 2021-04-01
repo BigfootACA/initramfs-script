@@ -164,6 +164,7 @@ build/util-linux/.installed: build/util-linux/.built
 	@mv -v build/sysroot/sbin/* build/sysroot/usr/bin/
 	@mv -v build/sysroot/usr/sbin/* build/sysroot/usr/bin/
 	@rmdir -v build/sysroot/{lib,bin,{usr/,}sbin}
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/{blkid,mount,fdisk,smartcols,uuid}.pc
 	@touch $@
 $(UL_BINS) $(UL_LIBS): build/util-linux/.installed
 configure-util-linux: build/util-linux/Makefile
