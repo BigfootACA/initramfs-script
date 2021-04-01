@@ -11,6 +11,8 @@ build/bash/Makefile: build/musl-gcc build/bash/configure $(BASH_DEPS)
 		--prefix=/usr \
 		--with-curses \
 		--with-installed-readline \
+		--without-bash-malloc \
+		--enable-readline \
 		--disable-nls \
 		--disable-rpath \
 		$(BASH_CONFIGURE_FLAGS)
