@@ -5,6 +5,7 @@ include scripts/build.mk
 include scripts/binary.mk
 include scripts/link.mk
 include scripts/library.mk
+include scripts/compress.mk
 src/init.sh: root/usr/bin/bash
 root/functions/%.sh:
 	@install -vDm644 $< $@
@@ -20,38 +21,10 @@ root/functions/service.sh:  src/functions/service.sh  $(MOD_SERVICE_DEP)
 root/functions/show.sh:     src/functions/show.sh     $(MOD_SHOW_DEP)
 root/init: src/init.sh root/usr/bin/bash $(INIT_MOD)
 	@install -vDm755 $< $@
-initramfs.cpio: root
+initramfs.cpio: root FORCE
 	@cd root;find|cpio -o -H newc > ../initramfs.cpio
-initramfs.cpio.gz: initramfs.cpio
-	@gzip -v -c -9 < $< > $@
-initramfs.cpio.xz: initramfs.cpio
-	@xz -v --check=crc32 -9 < $< > $@
-initramfs.cpio.zst: initramfs.cpio
-	@zstd -v -T0 < $< > $@
-initramfs.cpio.lz4: initramfs.cpio
-	@lz4 -l < $< > $@
-initramfs.cpio.lzo: initramfs.cpio
-	@lzop -9 -v < $< > $@
-initramfs.cpio.bz2: initramfs.cpio
-	@bzip2 -v -c -9 < $< > $@
-initramfs.cpio.lzma: initramfs.cpio
-	@lzma -v -c -9 < $< > $@
-initramfs.tar: root
+initramfs.tar: root FORCE
 	@cd root;find|tar --create . > ../initramfs.tar
-initramfs.tar.gz: initramfs.tar
-	@gzip -v -c -9 < $< > $@
-initramfs.tar.xz: initramfs.tar
-	@xz -v --check=crc32 -9 < $< > $@
-initramfs.tar.zst: initramfs.tar
-	@zstd -v -T0 < $< > $@
-initramfs.tar.lz4: initramfs.tar
-	@lz4 -l < $< > $@
-initramfs.tar.lzo: initramfs.tar
-	@lzop -9 -v < $< > $@
-initramfs.tar.bz2: initramfs.tar
-	@bzip2 -v -c -9 < $< > $@
-initramfs.tar.lzma: initramfs.tar
-	@lzma -v -c -9 < $< > $@
 boot.img: $(KERNEL) initramfs.cpio.gz
 	@abootimg \
 		--create $@ \
@@ -87,7 +60,7 @@ root/usr/sbin: root/usr/bin
 root/lib: root/usr/lib
 	@ln -vs usr/lib $@
 root/usr/lib: root/usr/lib/firmware root/usr/lib/modules FORCE
-root: extra root/init root/bin root/sbin root/usr/sbin root/lib root/etc
+root: extra root/init root/bin root/sbin root/usr/sbin root/lib root/etc FORCE
 	@mkdir -pv \
 		root/sys \
 		root/dev \
