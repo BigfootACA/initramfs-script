@@ -4,9 +4,10 @@ root/usr/lib/lib%.so:
 root/usr/lib/libc.so: build/sysroot/usr/lib/libc.so
 root/usr/lib/libblkid.so: build/sysroot/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libbz2.so: build/sysroot/usr/lib/libbz2.so root/usr/lib/libc.so
-root/usr/lib/libcom-err.so: lib/libcom-err.so root/usr/lib/libc.so
-root/usr/lib/libe2p.so: lib/libe2p.so root/usr/lib/libc.so
-root/usr/lib/libext2fs.so: lib/libext2fs.so root/usr/lib/libcom-err.so root/usr/lib/libc.so
+root/usr/lib/libcom_err.so: build/sysroot/usr/lib/libcom_err.so root/usr/lib/libc.so
+root/usr/lib/libe2p.so: build/sysroot/usr/lib/libe2p.so root/usr/lib/libc.so
+root/usr/lib/libext2fs.so: build/sysroot/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libc.so
+root/usr/lib/libss.so: build/sysroot/usr/lib/libss.so root/usr/lib/libcom_err.so root/usr/lib/libc.so
 root/usr/lib/libf2fs.so: lib/libf2fs.so root/usr/lib/libc.so
 root/usr/lib/libfdisk.so: build/sysroot/usr/lib/libfdisk.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libhistory.so: build/sysroot/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
