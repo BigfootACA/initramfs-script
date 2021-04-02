@@ -1,0 +1,27 @@
+diff --git a/build/libdrm/meson.build b/build/libdrm/meson.build
+index a4d8d707..d5d8138e 100644
+--- a/build/libdrm/meson.build
++++ b/build/libdrm/meson.build
+@@ -25,5 +25,5 @@ project(
+   license : 'MIT',
+-  meson_version : '>= 0.43',
++  meson_version : '>= 0.46',
+   default_options : ['buildtype=debugoptimized', 'c_std=gnu99'],
+ )
+ 
+@@ -294,6 +294,6 @@ add_project_arguments('-include', '@0@'.format(config_file), language : 'c')
+ inc_root = include_directories('.')
+ inc_drm = include_directories('include/drm')
+ 
+-libdrm = shared_library(
++libdrm = both_libraries(
+   'drm',
+   [files(
+@@ -305,7 +305,6 @@ libdrm = shared_library(
+   c_args : libdrm_c_args,
+   dependencies : [dep_valgrind, dep_rt, dep_m],
+   include_directories : inc_drm,
+-  version : '2.4.0',
+   install : true,
+ )
+ 
