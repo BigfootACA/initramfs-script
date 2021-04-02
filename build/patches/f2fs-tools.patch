@@ -1,0 +1,15 @@
+diff --git a/build/f2fs-tools/libtool b/build/f2fs-tools/libtool
+index 48cea9b..818bf5e 100644
+--- a/build/f2fs-tools/libtool
++++ b/build/f2fs-tools/libtool
+@@ -9652,8 +9652,8 @@ func_mode_link ()
+ 
+ 	linux) # correct to gnu/linux during the next big refactor
+ 	  func_arith $current - $age
+-	  major=.$func_arith_result
+-	  versuffix=$major.$age.$revision
++	  major=
++	  versuffix=
+ 	  ;;
+ 
+ 	osf)

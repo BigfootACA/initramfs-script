@@ -28,7 +28,6 @@ root/usr/bin/xz: build/sysroot/usr/bin/xz root/usr/lib/liblzma.so root/usr/lib/l
 root/usr/bin/abootimg: build/sysroot/usr/bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/e2fsck: build/sysroot/usr/bin/e2fsck root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
 root/usr/bin/ntfs-3g: bin/ntfs-3g root/usr/lib/libntfs.so root/usr/lib/libc.so
-root/usr/bin/fsck.f2fs: bin/fsck.f2fs root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
 root/usr/bin/ntfsfix: bin/ntfsfix root/usr/lib/libntfs.so root/usr/lib/libc.so
 root/usr/bin/fsck.exfat: bin/fsck.exfat root/usr/lib/libc.so
 root/usr/bin/fsck: build/sysroot/usr/bin/fsck root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
@@ -106,3 +105,9 @@ root/usr/bin/umount: build/sysroot/usr/bin/umount root/usr/lib/libmount.so root/
 root/usr/bin/wdctl: build/sysroot/usr/bin/wdctl root/usr/lib/libsmartcols.so root/usr/lib/libc.so
 root/usr/bin/rtcwake: build/sysroot/usr/bin/rtcwake root/usr/lib/libc.so
 root/usr/bin/sfdisk: build/sysroot/usr/bin/sfdisk root/usr/lib/libfdisk.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libsmartcols.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
+root/usr/bin/mkfs.f2fs: build/sysroot/usr/bin/mkfs.f2fs root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
+root/usr/bin/f2fstat: build/sysroot/usr/bin/f2fstat root/usr/lib/libc.so
+root/usr/bin/f2fscrypt: build/sysroot/usr/bin/f2fscrypt root/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/bin/fsck.f2fs: build/sysroot/usr/bin/fsck.f2fs root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
+root/usr/bin/fibmap.f2fs: build/sysroot/usr/bin/fibmap.f2fs root/usr/lib/libc.so
+root/usr/bin/parse.f2fs: build/sysroot/usr/bin/parse.f2fs root/usr/lib/libc.so
