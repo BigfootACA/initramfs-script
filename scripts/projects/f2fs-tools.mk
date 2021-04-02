@@ -19,7 +19,7 @@ build/f2fs-tools/configure: build/f2fs-tools/autogen.sh
 	@cd build/f2fs-tools;\
 		bash autogen.sh; \
 		sed -i '/sg_write_buffer/d' tools/Makefile.am
-build/f2fs-tools/Makefile: build/musl-gcc build/f2fs-tools/configure $(E2P_DEPS)
+build/f2fs-tools/Makefile: build/musl-gcc build/f2fs-tools/configure $(F2FS_DEPS)
 	@cd build/f2fs-tools;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -27,21 +27,21 @@ build/f2fs-tools/Makefile: build/musl-gcc build/f2fs-tools/configure $(E2P_DEPS)
 		--sbindir=/usr/bin \
 		--without-selinux \
 		--with-sysroot="$(SYSROOT)" \
-		$(F2FS_TOOLSCONFIGURE_FLAGS)
+		$(F2FS_TOOLS_CONFIGURE_FLAGS)
 build/f2fs-tools/.built: build/musl-gcc build/f2fs-tools/.patched build/f2fs-tools/Makefile
 	@$(MAKE) \
 		-C build/f2fs-tools \
 		CC="$(REALCC)" \
-		$(F2FS_TOOLSBUILD_FLAGS)
+		$(F2FS_TOOLS_BUILD_FLAGS)
 	@touch $@
 build/f2fs-tools/.installed: build/f2fs-tools/.built
 	@$(MAKE) \
 		-C build/f2fs-tools \
 		DESTDIR="$(SYSROOT)" \
-		$(F2FS_TOOLSINSTALL_FLAGS) \
+		$(F2FS_TOOLS_INSTALL_FLAGS) \
 		install
 	@touch $@
-$(E2P_BINS) $(E2P_LIBS): build/f2fs-tools/.installed
+$(F2FS_BINS) $(F2FS_LIBS): build/f2fs-tools/.installed
 configure-f2fs-tools: build/f2fs-tools/Makefile
 build-f2fs-tools: build/f2fs-tools/.built
 install-f2fs-tools: build/f2fs-tools/.installed

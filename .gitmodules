@@ -63,4 +63,4 @@
 	url = https://github.com/BigfootACA/lzo.git
 [submodule "build/f2fs-tools"]
 	path = build/f2fs-tools
-	url = git://192.168.60.50/korg/f2fs-tools.git
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git
