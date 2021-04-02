@@ -21,3 +21,4 @@ initramfs.sfs*
 zImage
 boot.img
 build/musl-gcc
+build/meson.conf

@@ -1,0 +1,10 @@
+[binaries]
+c='%BUILD%/musl-gcc'
+ar='%CROSS_COMPILE%ar'
+strip='%BUILD%/strip-wrapper'
+[properties]
+sys_root='%SYSROOT%'
+pkg_config_libdir='%SYSROOT%/usr/lib/pkgconfig'
+pkg_config_static='false'
+#[host_machine]
+#system='linux'

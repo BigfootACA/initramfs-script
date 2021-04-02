@@ -23,5 +23,7 @@ toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
 clean-build: $(CLEAN_TARGETS)
+build/meson.conf: build/meson.conf.in
+	@sed "s|%SYSROOT%|$(SYSROOT)|g;s|%BUILD%|$(PWD)/build|g;s|%CROSS_COMPILE%|$(CROSS_COMPILE)|g" < $< > $@
 .PHONY: clean-build $(CLEAN_TARGETS)
 include scripts/projects/*.mk
