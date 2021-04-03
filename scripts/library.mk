@@ -27,3 +27,4 @@ root/usr/lib/libzstd.so: build/sysroot/usr/lib/libzstd.so root/usr/lib/liblz4.so
 root/usr/lib/libf2fs.so: build/sysroot/usr/lib/libf2fs.so root/usr/lib/libc.so
 root/usr/lib/libf2fs_format.so: build/sysroot/usr/lib/libf2fs_format.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
 root/usr/lib/libdrm.so: build/sysroot/usr/lib/libdrm.so root/usr/lib/libc.so
+root/usr/lib/libjson-c.so: build/sysroot/usr/lib/libjson-c.so root/usr/lib/libc.so

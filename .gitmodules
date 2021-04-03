@@ -67,3 +67,6 @@
 [submodule "build/libdrm"]
 	path = build/libdrm
 	url = https://gitlab.freedesktop.org/mesa/drm.git
+[submodule "build/json-c"]
+	path = build/json-c
+	url = https://github.com/json-c/json-c.git
