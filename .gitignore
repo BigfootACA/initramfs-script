@@ -22,3 +22,4 @@ zImage
 boot.img
 build/musl-gcc
 build/meson.conf
+build/toolchain.cmake
