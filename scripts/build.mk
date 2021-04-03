@@ -19,7 +19,9 @@ CLEAN_TARGETS=\
 	clean-eudev \
 	clean-util-linux \
 	clean-abootimg \
-	clean-busybox
+	clean-busybox \
+	clean-libdrm \
+	clean-json-c
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
