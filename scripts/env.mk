@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 KERNEL?=zImage
 CMDLINE?=
 XSTRIP=$(PWD)/build/strip-wrapper
