@@ -1,7 +1,7 @@
 build/lvgl-initramfs-tools/lvgl/Makefile:
 	@cd build/lvgl-initramfs-tools/lvgl/;\
-		git submodules init;\
-		git submodules update
+		git submodule init;\
+		git submodule update
 build/lvgl-initramfs-tools/.built: build/musl-gcc build/lvgl-initramfs-tools/Makefile sysroot/usr/lib/libdrm.so sysroot/usr/lib/libjson-c.so
 	@$(MAKE) \
 		-C build/lvgl-initramfs-tools \
