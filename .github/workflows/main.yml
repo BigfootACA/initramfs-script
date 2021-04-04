@@ -11,5 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install requires packages
         run: sudo apt update&&sudo apt install autoconf libtool autopoint po4a pkgconf shtool meson cmake make gcc gcc-aarch64-linux-gnu rsync patch bison gperf cpio
+      - name: Fetch submodules
+        run: git submodule init&&git submodule update
       - name: Build
         run: make TARGET=aarch64-linux-gnu
