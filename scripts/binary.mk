@@ -19,7 +19,6 @@ root/usr/bin/mount: build/sysroot/usr/bin/mount root/usr/lib/libmount.so root/us
 root/usr/bin/umount: build/sysroot/usr/bin/umount root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/file: build/sysroot/usr/bin/file root/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/bin/losetup: build/sysroot/usr/bin/losetup root/usr/lib/libsmartcols.so root/usr/lib/libc.so
-root/usr/bin/boot_menu: bin/boot_menu root/usr/lib/libc.so
 root/usr/bin/advreboot: build/sysroot/usr/bin/advreboot root/usr/lib/libc.so
 root/usr/bin/lz4: build/sysroot/usr/bin/lz4 root/usr/lib/libc.so
 root/usr/bin/bzip2: build/sysroot/usr/bin/bzip2 root/usr/lib/libc.so
@@ -111,3 +110,4 @@ root/usr/bin/f2fscrypt: build/sysroot/usr/bin/f2fscrypt root/usr/lib/libuuid.so 
 root/usr/bin/fsck.f2fs: build/sysroot/usr/bin/fsck.f2fs root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
 root/usr/bin/fibmap.f2fs: build/sysroot/usr/bin/fibmap.f2fs root/usr/lib/libc.so
 root/usr/bin/parse.f2fs: build/sysroot/usr/bin/parse.f2fs root/usr/lib/libc.so
+root/usr/bin/menu: bin/menu root/usr/lib/libdrm.so root/usr/lib/libjson-c.so root/usr/lib/liblvgl.so root/usr/lib/liblvgl_font.so root/usr/lib/libc.so
