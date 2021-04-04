@@ -1,5 +1,5 @@
 build/sysroot/usr/include/.kheaders: build/linux/Makefile
-	@$(MAKE) \
+	@env -u ARCH $(MAKE) \
 		-C build/linux \
 		INSTALL_HDR_PATH="$(SYSROOT)/usr" \
 		$(KHEADERS_INSTALL_FLAGS) \
