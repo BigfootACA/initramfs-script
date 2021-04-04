@@ -19,6 +19,7 @@ build/ncurses/Makefile: build/musl-gcc build/ncurses/.patched build/ncurses/conf
 		--with-default-terminfo-dir=/etc/terminfo \
 		--disable-home-terminfo \
 		--enable-widec \
+		--disable-db-install \
 		$(NCURSES_CONFIGURE_FLAGS)
 build/ncurses/.built: build/ncurses/Makefile
 	@$(MAKE) \
