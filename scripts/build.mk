@@ -30,7 +30,7 @@ toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
 clean-configs:
-	@rm -f build/meson.conf build/toolchain.cmake
+	@rm -f build/meson.conf build/toolchain.cmake build/musl-gcc
 clean-build: $(CLEAN_TARGETS)
 build/meson.conf: build/meson.conf.in build/musl-gcc
 	@sed "s|%SYSROOT%|$(SYSROOT)|g;s|%BUILD%|$(PWD)/build|g;s|%CROSS_COMPILE%|$(CROSS_COMPILE)|g" < $< > $@
