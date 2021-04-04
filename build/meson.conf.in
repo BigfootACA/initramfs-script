@@ -6,5 +6,8 @@ strip='%BUILD%/strip-wrapper'
 sys_root='%SYSROOT%'
 pkg_config_libdir='%SYSROOT%/usr/lib/pkgconfig'
 pkg_config_static='false'
-#[host_machine]
-#system='linux'
+[host_machine]
+system='linux'
+cpu_family='%ARCH%'
+cpu='%ARCH%'
+endian='%ENDIAN%'
