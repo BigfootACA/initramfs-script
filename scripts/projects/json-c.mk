@@ -24,7 +24,7 @@ build/json-c/build/.installed: build/json-c/build/.built
 		$(JSON_C_INSTALL_FLAGS) \
 		install
 	@touch $@
-sysroot/usr/lib/libjson-c.so: build/json-c/.installed
+sysroot/usr/lib/libjson-c.so: build/json-c/build/.installed
 configure-json-c: build/json-c/build/Makefle
 build-json-c: build/json-c/build/.built
 install-json-c: build/json-c/build/.installed
