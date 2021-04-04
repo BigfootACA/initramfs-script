@@ -21,7 +21,11 @@ CLEAN_TARGETS=\
 	clean-abootimg \
 	clean-busybox \
 	clean-libdrm \
-	clean-json-c
+	clean-json-c \
+	clean-e2fsprogs \
+	clean-lzo \
+	clean-lvgl-initramfs-tools \
+	clean-f2fs-tools
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
