@@ -25,3 +25,11 @@ index a4d8d707..d5d8138e 100644
    install : true,
  )
  
+@@ -386,7 +386,6 @@ if with_man_pages
+   subdir('man')
+ endif
+ subdir('data')
+-subdir('tests')
+ 
+ message('')
+ message('@0@ will be compiled with:'.format(meson.project_name()))
