@@ -12,4 +12,4 @@ jobs:
       - name: Install requires packages
         run: sudo apt update&&sudo apt install autoconf libtool autopoint po4a pkgconf shtool meson cmake make gcc gcc-aarch64-linux-gnu rsync patch bison gperf cpio
       - name: Build
-        run: make
+        run: make TARGET=aarch64-linux-gnu
