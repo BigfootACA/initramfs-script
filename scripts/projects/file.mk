@@ -12,8 +12,26 @@ build/file/configure: build/file/configure.ac
 		autoconf&&\
 		autoheader&&\
 		automake -acf --foreign
+build/file/host/Makefile: build/file/configure
+	@mkdir -p build/file/host
+	@cd build/file/host;../configure \
+		--prefix=/usr \
+		LDFLAGS="-Wl,-rpath='$(PWD)/build/file/host/src/.libs'" \
+		$(HOST_FILE_CONFIGURE_FLAGS)
+	@touch $@
+build/file/host/.built: build/file/host/Makefile
+	@$(MAKE) \
+		-C build/file/host \
+		$(HOST_FILE_BUILD_FLAGS)
+	@touch $@
+build/file/host/bin/file: build/file/host/.built
+	@mkdir -p build/file/host/bin
+	@echo "#!/bin/bash" > $@
+	@echo "export MAGIC='$(PWD)/build/file/host/magic/magic.mgc'" >>$@
+	@echo "exec \"$(PWD)/build/file/host/src/.libs/file\" \"\$$@\"" >> $@
+	@chmod 0755 $@
 build/file/libtool: build/file/Makefile
-build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS)
+build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS) build/file/host/bin/file
 	@cd build/file;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -26,6 +44,7 @@ build/file/.built: build/musl-gcc build/file/.patched build/file/Makefile
 	@$(MAKE) \
 		-C build/file \
 		CC="$(REALCC)" \
+		PATH="$(PWD)/build/file/host/bin:$(PATH)" \
 		$(FILE_BUILD_FLAGS)
 	@touch $@
 build/file/.installed: build/file/.built
