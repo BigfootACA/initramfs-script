@@ -12,6 +12,6 @@ jobs:
       - name: Install requires packages
         run: sudo apt update&&sudo apt install autoconf libtool autopoint po4a pkgconf shtool meson cmake make gcc gcc-aarch64-linux-gnu rsync patch bison gperf cpio
       - name: Fetch submodules
-        run: git submodule init&&git submodule update
+        run: git submodule init&&git submodule update --recursive --depth 1
       - name: Build
         run: make TARGET=aarch64-linux-gnu
