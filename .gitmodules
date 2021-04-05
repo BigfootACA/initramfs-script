@@ -9,7 +9,7 @@
 	url = git://git.musl-libc.org/musl
 [submodule "build/linux"]
 	path = build/linux
-	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+	url = https://github.com/torvalds/linux.git
 [submodule "build/util-linux"]
 	path = build/util-linux
 	url = https://github.com/karelzak/util-linux.git
