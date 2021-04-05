@@ -146,6 +146,7 @@ build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 		--enable-libfdisk \
 		--enable-libblkid \
 		--enable-libuuid \
+		--without-tinfo \
 		$(UTIL_LINUX_CONFIGURE_FLAGS)
 build/util-linux/.built: build/musl-gcc build/util-linux/.patched build/util-linux/Makefile
 	@$(MAKE) \
