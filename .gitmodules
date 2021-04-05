@@ -39,7 +39,7 @@
 	url = https://github.com/gentoo/eudev.git
 [submodule "build/xz"]
 	path = build/xz
-	url = https://git.tukaani.org/xz.git
+	url = https://github.com/xz-mirror/xz.git
 [submodule "build/lz4"]
 	path = build/lz4
 	url = https://github.com/lz4/lz4.git
