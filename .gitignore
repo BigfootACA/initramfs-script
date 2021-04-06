@@ -4,12 +4,14 @@ firmware/*
 modules/*
 extra/*
 build/sysroot/*
+build/hostroot/*
 !bin/.gitkeep
 !lib/.gitkeep
 !firmware/.gitkeep
 !modules/.gitkeep
 !extra/.gitkeep
 !build/sysroot/.gitkeep
+!build/hostroot/.gitkeep
 root
 *.rej
 *.orig

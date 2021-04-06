@@ -5,6 +5,7 @@ XSTRIP=$(PWD)/build/strip-wrapper
 INSTALL?=install
 BIN_INSTALL=$(INSTALL) --strip-program="$(XSTRIP)" -svDm755
 SYSROOT=$(PWD)/build/sysroot
+HOSTROOT=$(PWD)/build/hostroot
 REALCC?=$(PWD)/build/musl-gcc
 ifndef TARGET
 $(error TARGET not specified)
@@ -26,6 +27,7 @@ export ARCH
 export PKGCONF
 export REALCC
 export SYSROOT
+export HOSTROOT
 export AR
 export RANLIB
 export PKG_CONFIG_SYSROOT_DIR
