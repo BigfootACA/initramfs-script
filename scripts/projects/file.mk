@@ -16,7 +16,8 @@ build/file/host/Makefile: build/file/configure
 	@mkdir -p build/file/host
 	@cd build/file/host;../configure \
 		--prefix=/usr \
-		LDFLAGS="-Wl,-rpath='$(PWD)/build/file/host/src/.libs'" \
+		LDFLAGS="-Wl,-rpath='$(HOSTROOT)/usr/lib'" \
+		MAGIC="$(HOSTROOT)/usr/share/magic/magic.mgc" \
 		$(HOST_FILE_CONFIGURE_FLAGS)
 	@touch $@
 build/file/host/.built: build/file/host/Makefile
@@ -24,14 +25,16 @@ build/file/host/.built: build/file/host/Makefile
 		-C build/file/host \
 		$(HOST_FILE_BUILD_FLAGS)
 	@touch $@
-build/file/host/bin/file: build/file/host/.built
-	@mkdir -p build/file/host/bin
-	@echo "#!/bin/bash" > $@
-	@echo "export MAGIC='$(PWD)/build/file/host/magic/magic.mgc'" >>$@
-	@echo "exec \"$(PWD)/build/file/host/src/.libs/file\" \"\$$@\"" >> $@
-	@chmod 0755 $@
+build/file/host/.installed: build/file/host/.built
+	@$(MAKE) \
+		-C build/file/host \
+		DESTDIR="$(HOSTROOT)" \
+		$(HOST_FILE_INSTALL_FLAGS) \
+		install
+	@touch $@
+build/hostroot/usr/bin/file: build/file/host/.installed
 build/file/libtool: build/file/Makefile
-build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS) build/file/host/bin/file
+build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS) build/hostroot/usr/bin/file
 	@cd build/file;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -44,7 +47,7 @@ build/file/.built: build/musl-gcc build/file/.patched build/file/Makefile
 	@$(MAKE) \
 		-C build/file \
 		CC="$(REALCC)" \
-		PATH="$(PWD)/build/file/host/bin:$(PATH)" \
+		PATH="$(HOSTROOT)/usr/bin:$(PATH)" \
 		$(FILE_BUILD_FLAGS)
 	@touch $@
 build/file/.installed: build/file/.built
