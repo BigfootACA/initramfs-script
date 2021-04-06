@@ -10,7 +10,7 @@ root/usr/lib/libext2fs.so: build/sysroot/usr/lib/libext2fs.so root/usr/lib/libco
 root/usr/lib/libss.so: build/sysroot/usr/lib/libss.so root/usr/lib/libcom_err.so root/usr/lib/libc.so
 root/usr/lib/libfdisk.so: build/sysroot/usr/lib/libfdisk.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libhistory.so: build/sysroot/usr/lib/libhistory.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
-root/usr/lib/libkmod.so: build/sysroot/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libc.so
+root/usr/lib/libkmod.so: build/sysroot/usr/lib/libkmod.so root/usr/lib/liblzma.so root/usr/lib/libz.so root/usr/lib/libzstd.so root/usr/lib/libc.so
 root/usr/lib/liblz4.so: build/sysroot/usr/lib/liblz4.so root/usr/lib/libc.so
 root/usr/lib/liblzma.so: build/sysroot/usr/lib/liblzma.so root/usr/lib/libc.so
 root/usr/lib/liblzo2.so: build/sysroot/usr/lib/liblzo2.so root/usr/lib/libc.so
