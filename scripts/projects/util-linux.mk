@@ -1,7 +1,8 @@
 UL_DEPS=\
 	build/sysroot/usr/lib/libz.so \
 	build/sysroot/usr/lib/libmagic.so \
-	build/sysroot/usr/lib/libncursesw.so
+	build/sysroot/usr/lib/libncursesw.so \
+	build/hostroot/usr/bin/ncursesw6-config
 UL_LIBS=\
 	build/sysroot/usr/lib/libblkid.so \
 	build/sysroot/usr/lib/libfdisk.so \
@@ -131,6 +132,7 @@ build/util-linux/libtool: build/util-linux/Makefile
 build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 	@cd build/util-linux;./configure \
 		CC="$(REALCC)" \
+		PATH="$(HOSTROOT)/usr/bin:$(PATH)" \
 		--host=$(TARGET) \
 		--prefix=/usr \
 		--disable-nls \
@@ -147,10 +149,12 @@ build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 		--enable-libblkid \
 		--enable-libuuid \
 		--without-tinfo \
+		--enable-usrdir-path \
 		$(UTIL_LINUX_CONFIGURE_FLAGS)
 build/util-linux/.built: build/musl-gcc build/util-linux/.patched build/util-linux/Makefile
 	@$(MAKE) \
 		-C build/util-linux \
+		PATH="$(HOSTROOT)/usr/bin:$(PATH)" \
 		CC="$(REALCC)" \
 		$(UTIL_LINUX_BUILD_FLAGS)
 	@touch $@
