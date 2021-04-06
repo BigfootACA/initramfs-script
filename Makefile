@@ -1,6 +1,7 @@
 all:initramfs.cpio
 include scripts/env.mk
 include scripts/deps.mk
+include scripts/data.mk
 include scripts/build.mk
 include scripts/binary.mk
 include scripts/link.mk
