@@ -22,9 +22,9 @@ root/functions/show.sh:     src/functions/show.sh     $(MOD_SHOW_DEP)
 root/init: src/init.sh root/usr/bin/bash $(INIT_MOD)
 	@install -vDm755 $< $@
 initramfs.cpio: root FORCE
-	@cd root;find|cpio -o -H newc > ../initramfs.cpio
+	@cd root;find|cpio -R 0:0 -o -H newc > ../initramfs.cpio
 initramfs.tar: root FORCE
-	@cd root;find|tar --create . > ../initramfs.tar
+	@cd root;find|tar --owner=0 --create . > ../initramfs.tar
 boot.img: $(KERNEL) initramfs.cpio.gz
 	@abootimg \
 		--create $@ \
