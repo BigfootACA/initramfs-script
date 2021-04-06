@@ -17,9 +17,11 @@ build/ncurses/Makefile: build/musl-gcc build/ncurses/.patched build/ncurses/conf
 		--with-shared \
 		--disable-rpath-hack \
 		--with-default-terminfo-dir=/etc/terminfo \
+		--with-pkg-config-libdir=/usr/lib/pkgconfig \
 		--disable-home-terminfo \
 		--enable-widec \
 		--disable-db-install \
+		--enable-pc-files \
 		$(NCURSES_CONFIGURE_FLAGS)
 build/ncurses/.built: build/ncurses/Makefile
 	@$(MAKE) \
@@ -34,6 +36,7 @@ build/ncurses/.installed: build/ncurses/.built
 		$(NCURSES_INSTALL_FLAGS) \
 		install
 	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libcurses.so
+	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/{ncurses,menu,form,panel}w.pc
 	@touch $@
 build/sysroot/usr/lib/libncursesw.so build/sysroot/usr/lib/libpanelw.so build/sysroot/usr/lib/libmenuw.so build/sysroot/usr/lib/libformw.so: build/ncurses/.installed
 configure-ncurses: build/ncurses/Makefile
