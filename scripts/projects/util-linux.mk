@@ -143,6 +143,8 @@ build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 		--disable-hardlink \
 		--disable-pylibmount \
 		--disable-bash-completion \
+		--disable-makeinstall-chown \
+		--disable-makeinstall-setuid \
 		--enable-libsmartcols \
 		--enable-libmount \
 		--enable-libfdisk \
