@@ -1,3 +1,8 @@
+NCURSES_OUTS=\
+	build/sysroot/usr/lib/libncursesw.so \
+	build/sysroot/usr/lib/libpanelw.so \
+	build/sysroot/usr/lib/libmenuw.so \
+	build/sysroot/usr/lib/libformw.so
 build/ncurses/.patched: build/patches/ncurses.patch
 	@patch -Np1 < $<
 	@touch $@
@@ -38,7 +43,7 @@ build/ncurses/.installed: build/ncurses/.built
 	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libcurses.so
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/{ncurses,menu,form,panel}w.pc
 	@touch $@
-build/sysroot/usr/lib/libncursesw.so build/sysroot/usr/lib/libpanelw.so build/sysroot/usr/lib/libmenuw.so build/sysroot/usr/lib/libformw.so: build/ncurses/.installed
+$(NCURSES_OUTS): build/ncurses/.installed
 configure-ncurses: build/ncurses/Makefile
 build-ncurses: build/ncurses/.built
 install-ncurses: build/ncurses/.installed
