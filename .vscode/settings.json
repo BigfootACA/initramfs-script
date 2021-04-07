@@ -1,0 +1,28 @@
+{
+        "files.associations": {
+                "unistd.h": "c",
+                "drivers.h": "c",
+                "json.h": "c",
+                "lib.h": "c",
+                "typeinfo": "c",
+                "stdio.h": "c",
+                "string.h": "c",
+                "limits.h": "c"
+        },
+        "files.exclude": {
+                "**/*.rej": true,
+                "**/*.orig": true,
+                "**/*.swp": true,
+                "**/*.save*": true,
+                "**/.gitkeep": true,
+                "initramfs.cpio*": true,
+                "initramfs.tar*": true,
+                "zImage": true,
+                "boot.img": true,
+                "**/*.a": true,
+                "**/*.o": true,
+                "**/*.plist": true
+        },
+        "editor.tabSize": 8,
+        "editor.insertSpaces": false
+}
