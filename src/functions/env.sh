@@ -1,4 +1,5 @@
-export PATH=/bin
+export PATH=/usr/bin
+export SHELL=/usr/bin/bash
 export init_init=/usr/lib/systemd/systemd
 export init_ro=ro
 export init_loopro=rw
