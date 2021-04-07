@@ -89,16 +89,16 @@ function show_block(){
 function show_menu(){
 	local _mode
 	echo "start gui boot menu"
-	_mode="$(boot_menu)"
+	_mode="$(menu /etc/bootmenu.json)"
 	if [ -z "${_mode}" ]
-	then echo "none selected, fallback to normal"
+	then echo "none selected, fallback to linux"
 	else echo "selected ${_mode}"
 	fi
 	sync
 	case "${_mode}" in
-		normal)return;;
+		linux)return;;
 		edl)advreboot edl;sleep 5;exit 1;;
-		reboot)sync;reboot -f;sleep 5;exit 1;;
+		android)sync;reboot -f;sleep 5;exit 1;;
 		recovery)advreboot recovery;sleep 5;exit 1;;
 		fastboot)advreboot bootloader;sleep 5;exit 1;;
 		shutdown)poweroff -f;sleep 5;exit 1;;
