@@ -23,6 +23,7 @@ export init_usb_id_vendor=0x2717
 export init_usb_id_product=0xff88
 export init_usb_manufacturer=Android
 export init_usb_product="Mass Stroage"
+export LANG=C
 export _CFS=/sys/kernel/config
 export _GDG="${_CFS}/usb_gadget/gadget"
 export _GDG_FUNC="${_GDG}/functions"

@@ -11,6 +11,10 @@ function parse_cmdline(){
 		esac
 		"${init_end}"&&continue
 		case "${i}" in
+			LANG=?*)LANG="${i//LANG=}";;
+			LANGUAGE=?*)LANG="${i//LANGUAGE=}";;
+			lang=?*)LANG="${i//lang=}";;
+			language=?*)LANG="${i//language=}";;
 			ro|rw)init_ro="${i}";;
 			loopro|looprw)init_loopro="${i//loop}";;
 			init=?*)init_init="${i//init=}";;
