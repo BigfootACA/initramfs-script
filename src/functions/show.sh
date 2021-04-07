@@ -102,7 +102,21 @@ function show_menu(){
 		recovery)advreboot recovery;sleep 5;exit 1;;
 		fastboot)advreboot bootloader;sleep 5;exit 1;;
 		shutdown)poweroff -f;sleep 5;exit 1;;
-		mass)start_usb_wait;;
+		mass_lun)
+			init_multimass=lun
+			init_control=false
+			start_usb_wait
+		;;
+		mass_block)
+			init_multimass=block
+			init_control=false
+			start_usb_wait
+		;;
+		control)
+			init_multimass=none
+			init_control=true
+			start_usb_wait
+		;;
 		*)echo "unknown select: ${_mode}";return;;
 	esac
 }
