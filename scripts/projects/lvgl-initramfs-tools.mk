@@ -16,7 +16,7 @@ build/lvgl-initramfs-tools/.installed: build/lvgl-initramfs-tools/.built
 	@install -vDm755 build/lvgl-initramfs-tools/lvgl-build/liblvgl.so build/sysroot/usr/lib/liblvgl.so
 	@install -vDm755 build/lvgl-initramfs-tools/fonts/liblvgl_font.so build/sysroot/usr/lib/liblvgl_font.so
 	@touch $@
-sysroot/usr/bin/menu sysroot/usr/lib/liblvgl.so sysroot/usr/lib/liblvgl_font.so: build/lvgl-initramfs-tools/.installed
+build/sysroot/usr/bin/menu build/sysroot/usr/lib/liblvgl.so build/sysroot/usr/lib/liblvgl_font.so: build/lvgl-initramfs-tools/.installed
 build-lvgl-initramfs-tools: build/lvgl-initramfs-tools/.built
 install-lvgl-initramfs-tools: build/lvgl-initramfs-tools/.installed
 clean-lvgl-initramfs-tools: build/lvgl-initramfs-tools/.git

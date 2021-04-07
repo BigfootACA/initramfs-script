@@ -90,7 +90,8 @@ MOD_SHOW_DEP=\
 	root/usr/bin/file \
 	root/usr/bin/lsblk \
 	root/usr/bin/blkid \
-	root/usr/bin/advreboot
+	root/usr/bin/advreboot \
+	root/usr/bin/menu
 
 INIT_MOD=\
 	root/functions/env.sh \

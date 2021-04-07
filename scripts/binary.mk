@@ -110,4 +110,4 @@ root/usr/bin/f2fscrypt: build/sysroot/usr/bin/f2fscrypt root/usr/lib/libuuid.so 
 root/usr/bin/fsck.f2fs: build/sysroot/usr/bin/fsck.f2fs root/usr/lib/libuuid.so root/usr/lib/libf2fs.so root/usr/lib/libc.so
 root/usr/bin/fibmap.f2fs: build/sysroot/usr/bin/fibmap.f2fs root/usr/lib/libc.so
 root/usr/bin/parse.f2fs: build/sysroot/usr/bin/parse.f2fs root/usr/lib/libc.so
-root/usr/bin/menu: bin/menu root/usr/lib/libdrm.so root/usr/lib/libjson-c.so root/usr/lib/liblvgl.so root/usr/lib/liblvgl_font.so root/usr/lib/libc.so
+root/usr/bin/menu: build/sysroot/usr/bin/menu root/usr/lib/libdrm.so root/usr/lib/libjson-c.so root/usr/lib/liblvgl.so root/usr/lib/liblvgl_font.so root/usr/lib/libc.so
