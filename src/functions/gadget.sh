@@ -85,6 +85,7 @@ function add_mass_disk_luns(){
 			[ -f "/tmp/luns/${_luns}" ]&&continue
 			touch "/tmp/luns/${_luns}"
 			_lun="${_gdg}/lun.${_luns}"
+			break
 		done
 		if [ -z "${_lun}" ]
 		then
@@ -146,13 +147,16 @@ function start_gadget(){
 	load_module udc-core
 	if [ -n "${init_abootusb}" ]
 	then
-		echo "${init_abootusb}" >"${_GDG}/UDC"
+		echo -n "${init_abootusb}" >"${_GDG}/UDC"
+		echo "use gadget udc ${init_abootusb} from androidboot"
 	else
 		for i in /sys/class/udc/*
 		do
 			[ -h "${i}" ]||continue
 			case "${i}" in *dummy*|*vudc*)continue;;esac
-			basename "$i" > "${_GDG}/UDC"
+			udc="$(basename "$i")"
+			echo "use gadget udc ${udc}"
+			echo -n "$udc" > "${_GDG}/UDC"
 			break
 		done
 	fi
@@ -170,6 +174,7 @@ function start_usb(){
 	case "${init_multimass}" in
 		lun)add_mass_disk_luns;;
 		block)add_mass_disk_blocks;;
+		none);;
 	esac
 	"${init_control}"&&init_usb_control
 	start_gadget
