@@ -61,11 +61,11 @@ MOD_GADGET_DEP=\
 	root/usr/bin/rmdir \
 	root/usr/bin/rm \
 	root/usr/bin/mkfifo \
-	root/usr/bin/fbsplash \
 	root/usr/bin/mountpoint \
 	root/usr/bin/basename \
 	root/usr/bin/sleep \
-	root/usr/bin/true
+	root/usr/bin/true \
+	root/usr/bin/usb
 
 MOD_HARDWARE_DEP=\
 	root/usr/bin/bash \

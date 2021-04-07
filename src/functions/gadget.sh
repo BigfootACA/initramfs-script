@@ -102,25 +102,16 @@ function add_mass_disk_luns(){
 	sync
 }
 
-function show_splash(){
-	exit_splash
-	mkfifo /run/splash
-	echo "start show splash ${1}"
-	fbsplash \
-		-s "${1}" \
-		-i /etc/fbsplash.cfg \
-		-f /run/splash &
+function show_usb(){
+	exit_usb
+	echo "start show usb"
+	usb &
 	set_led "${init_backlight}" 50
 }
 
-function exit_splash(){
-	[ -e /run/splash ]||return
+function exit_usb(){
 	echo "stop show splash"
-	echo exit > /run/splash
-	rm -f /run/splash
 }
-
-function show_usb(){ show_splash /etc/usb.ppm; }
 
 function init_gadget(){
 	load_module libcomposite
@@ -186,5 +177,5 @@ function start_usb_wait(){
 	while true
 	do sleep 3600
 	done
-	exit_splash
+	exit_usb
 }
