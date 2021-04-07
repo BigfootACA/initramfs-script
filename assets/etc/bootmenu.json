@@ -1,0 +1,54 @@
+{
+	"title":"@title",
+	"confirm":"@confirm",
+	"items":[
+		{
+			"title":"@linux",
+			"action":"linux"
+		},
+		{
+			"title":"@android",
+			"action":"android"
+		},
+		{
+			"title":"@fastboot",
+			"action":"fastboot"
+		},
+		{
+			"title":"@recovery",
+			"action":"recovery"
+		},
+		{
+			"title":"@mass",
+			"action":"mass"
+		},
+		{
+			"title":"@shutdown",
+			"action":"shutdown"
+		}
+	],
+	"translate":{
+		"zh_CN":{
+			"name":"简体中文",
+			"title":"启动菜单",
+			"confirm":"确认",
+			"linux":"继续启动Linux",
+			"android":"重启到安卓系统",
+			"fastboot":"重启到Fastboot",
+			"recovery":"重启到Recovery",
+			"mass":"进入USB大容量存储模式",
+			"shutdown":"关机"
+		},
+		"en_US":{
+			"name":"American English",
+			"title":"Boot Menu",
+			"confirm":"OK",
+			"linux":"Continue boot Linux",
+			"android":"Reboot into Android",
+			"fastboot":"Reboot into Fastboot",
+			"recovery":"Reboot into Recovery",
+			"mass":"Enter USB mass storage mode",
+			"shutdown":"Shutdown"
+		}
+	}
+}
