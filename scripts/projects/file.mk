@@ -58,7 +58,7 @@ build/file/.installed: build/file/.built
 		install
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/libmagic.pc
 	@touch $@
-build/sysroot/usr/lib/libmagic.so build/sysroot/usr/bin/file: build/file/.installed
+build/sysroot/usr/share/misc/magic.mgc build/sysroot/usr/lib/libmagic.so build/sysroot/usr/bin/file: build/file/.installed
 configure-file: build/file/Makefile
 build-file: build/file/.built
 install-file: build/file/.installed
