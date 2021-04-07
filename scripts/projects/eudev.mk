@@ -2,6 +2,16 @@ EUDEV_DEPS=\
 	build/sysroot/usr/lib/libkmod.so \
 	build/sysroot/usr/lib/libuuid.so \
 	build/sysroot/usr/lib/libblkid.so
+EUDEV_OUTS=\
+	build/sysroot/usr/lib/libudev.so \
+	build/sysroot/usr/bin/udevadm \
+	build/sysroot/usr/bin/udevd \
+	build/sysroot/usr/lib/udev/ata_id \
+	build/sysroot/usr/lib/udev/cdrom_id \
+	build/sysroot/usr/lib/udev/collect \
+	build/sysroot/usr/lib/udev/mtd_probe \
+	build/sysroot/usr/lib/udev/scsi_id \
+	build/sysroot/usr/lib/udev/v4l_id
 build/eudev/.patched: build/patches/eudev.patch build/eudev/libtool
 	@patch -Np1 < $<
 	@touch $@
@@ -36,7 +46,7 @@ build/eudev/.installed: build/eudev/.built
 	@rm -vf build/sysroot/usr/sbin/udevadm
 	@rmdir -v --ignore-fail-on-non-empty build/sysroot/usr/sbin
 	@touch $@
-build/sysroot/usr/lib/libudev.so build/sysroot/usr/bin/udevadm build/sysroot/usr/bin/udevd: build/eudev/.installed
+$(EUDEV_OUTS): build/eudev/.installed
 configure-eudev: build/eudev/Makefile
 build-eudev: build/eudev/.built
 install-eudev: build/eudev/.installed
