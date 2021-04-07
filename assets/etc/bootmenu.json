@@ -28,6 +28,7 @@
 		}
 	],
 	"translate":{
+		"C":"en_US",
 		"zh_CN":{
 			"name":"简体中文",
 			"title":"启动菜单",
