@@ -1,4 +1,3 @@
-
 function mount_block(){
 	#1:source 2:target 3:label 4:fstype 5:ro/rw 6:options
 	local opts fstype fs _file
