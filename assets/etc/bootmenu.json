@@ -23,8 +23,16 @@
 			"action":"recovery"
 		},
 		{
-			"title":"@mass",
-			"action":"mass"
+			"title":"@mass_lun",
+			"action":"mass_lun"
+		},
+		{
+			"title":"@mass_block",
+			"action":"mass_block"
+		},
+		{
+			"title":"@control",
+			"action":"control"
 		},
 		{
 			"title":"@shutdown",
@@ -42,7 +50,9 @@
 			"edl":"重启到EDL/9008",
 			"fastboot":"重启到Fastboot",
 			"recovery":"重启到Recovery",
-			"mass":"进入USB大容量存储模式",
+			"mass_lun":"进入USB大容量存储(多LUN模式)",
+			"mass_block":"进入USB大容量存储(多块模式)",
+			"control":"进入USB调试模式(adb+serial)",
 			"shutdown":"关机"
 		},
 		"en_US":{
@@ -55,6 +65,9 @@
 			"fastboot":"Reboot into Fastboot",
 			"recovery":"Reboot into Recovery",
 			"mass":"Enter USB mass storage mode",
+			"mass_lun":"Enter USB mass storage (multi-luns)",
+			"mass_block":"Enter USB mass storage (multi-blocks)",
+			"control":"Enter USB debug mode (adb+serial)",
 			"shutdown":"Shutdown"
 		}
 	}
