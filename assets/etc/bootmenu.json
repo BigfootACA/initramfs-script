@@ -15,6 +15,10 @@
 			"action":"fastboot"
 		},
 		{
+			"title":"@edl",
+			"action":"edl"
+		},
+		{
 			"title":"@recovery",
 			"action":"recovery"
 		},
@@ -35,6 +39,7 @@
 			"confirm":"确认",
 			"linux":"继续启动Linux",
 			"android":"重启到安卓系统",
+			"edl":"重启到EDL/9008",
 			"fastboot":"重启到Fastboot",
 			"recovery":"重启到Recovery",
 			"mass":"进入USB大容量存储模式",
@@ -46,6 +51,7 @@
 			"confirm":"OK",
 			"linux":"Continue boot Linux",
 			"android":"Reboot into Android",
+			"edl":"Reboot into EDL/9008",
 			"fastboot":"Reboot into Fastboot",
 			"recovery":"Reboot into Recovery",
 			"mass":"Enter USB mass storage mode",
