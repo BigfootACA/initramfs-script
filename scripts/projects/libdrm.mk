@@ -37,7 +37,7 @@ build/libdrm/build/.installed: build/libdrm/build/.built
 		install
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/libdrm.pc
 	@touch $@
-sysroot/usr/lib/libdrm.so: build/libdrm/build/.installed
+build/sysroot/usr/lib/libdrm.so: build/libdrm/build/.installed
 configure-libdrm: build/libdrm/build/build.ninja
 build-libdrm: build/libdrm/build/.built
 install-libdrm: build/libdrm/build/.installed
