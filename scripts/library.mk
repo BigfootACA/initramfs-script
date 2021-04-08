@@ -30,3 +30,5 @@ root/usr/lib/libdrm.so: build/sysroot/usr/lib/libdrm.so root/usr/lib/libc.so
 root/usr/lib/libjson-c.so: build/sysroot/usr/lib/libjson-c.so root/usr/lib/libc.so
 root/usr/lib/liblvgl.so: build/sysroot/usr/lib/liblvgl.so root/usr/lib/libc.so
 root/usr/lib/liblvgl_font.so: build/sysroot/usr/lib/liblvgl_font.so root/usr/lib/libc.so
+root/usr/lib/liblvgl_icon.so: build/sysroot/usr/lib/liblvgl_icon.so root/usr/lib/libc.so
+root/usr/lib/liblvgl_tool.so: build/sysroot/usr/lib/liblvgl_tool.so root/usr/lib/libjson-c.so root/usr/lib/libc.so

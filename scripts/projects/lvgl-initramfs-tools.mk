@@ -2,7 +2,9 @@ LVGLTOOLS_OUTS=\
 	build/sysroot/usr/bin/usb \
 	build/sysroot/usr/bin/menu \
 	build/sysroot/usr/lib/liblvgl.so \
-	build/sysroot/usr/lib/liblvgl_font.so
+	build/sysroot/usr/lib/liblvgl_font.so \
+	build/sysroot/usr/lib/liblvgl_icon.so \
+	build/sysroot/usr/lib/liblvgl_tool.so
 build/lvgl-initramfs-tools/lvgl/Makefile:
 	@cd build/lvgl-initramfs-tools/lvgl/;\
 		git submodule init;\
@@ -21,6 +23,8 @@ build/lvgl-initramfs-tools/.installed: build/lvgl-initramfs-tools/.built
 	@install -vDm755 build/lvgl-initramfs-tools/menu build/sysroot/usr/bin/menu
 	@install -vDm755 build/lvgl-initramfs-tools/lvgl-build/liblvgl.so build/sysroot/usr/lib/liblvgl.so
 	@install -vDm755 build/lvgl-initramfs-tools/fonts/liblvgl_font.so build/sysroot/usr/lib/liblvgl_font.so
+	@install -vDm755 build/lvgl-initramfs-tools/icons/liblvgl_icon.so build/sysroot/usr/lib/liblvgl_icon.so
+	@install -vDm755 build/lvgl-initramfs-tools/src/liblvgl_tool.so build/sysroot/usr/lib/liblvgl_tool.so
 	@touch $@
 $(LVGLTOOLS_OUTS): build/lvgl-initramfs-tools/.installed
 build-lvgl-initramfs-tools: build/lvgl-initramfs-tools/.built
