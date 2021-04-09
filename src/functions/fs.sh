@@ -74,6 +74,10 @@ function init_early_fs(){
 	fi
 	mount -t tmpfs -o mode=755 run /run
 	mdev -s
+	if ! [ -c /dev/tty0 ]
+	then
+		echo "warning: your kernel does not have vt, xorg may not work."
+	fi
 }
 
 function load_rootblk(){
