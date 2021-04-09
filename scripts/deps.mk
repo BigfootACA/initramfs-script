@@ -22,6 +22,7 @@ MOD_FS_DEP=\
 	root/usr/bin/cpio \
 	root/usr/bin/ar \
 	root/usr/bin/tar \
+	root/usr/bin/stat \
 	root/usr/bin/sync \
 	root/usr/bin/mdev \
 	root/usr/bin/losetup \
