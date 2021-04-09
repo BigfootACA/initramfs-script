@@ -85,8 +85,8 @@ function auto_decompress(){
 		*"bzip2 compressed data"*)bzip2 -d <"${1}";;
 		*"Zstandard compressed data"*)zstd -d <"${1}";;
 		*"compressed data"*)
-			echo "Unsupported compress method for file $1"
-			file "${1}"
+			echo "Unsupported compress method for file $1" >&2
+			file "${1}" >&2
 			return 1
 		;;
 		?*)cat<"${1}"
