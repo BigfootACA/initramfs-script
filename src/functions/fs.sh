@@ -134,24 +134,23 @@ function init_logfs(){
 	logfs="$(blkid -l -o device -t PARTLABEL=logfs)"
 	if ! [ -b "${logfs}" ]
 	then
-		echo "cannot find logfs block '${logfs}'";LOG=false
+		echo "cannot find logfs block '${logfs}'"
 	else
-		LOG=true
-		mount -v -t vfat "${logfs}" /log
 		load_module vfat
-		rm -f /log/boot.{std{out,err},sysinfo,kernel,udev}.log
-		touch /log/boot.{std{out,err},sysinfo,kernel,udev}.log
-		dmesg -wx > /log/boot.kernel.log&
-		exec 0<>/dev/null
-		exec 1<>/log/boot.stdout.log
-		exec 2<>/log/boot.stderr.log
-		dump_info>/log/boot.sysinfo.log
-		echo 'Started initramfs boot log.'
-		echo 'Started initramfs boot log.'>&2
-		echo '---------------------------'
-		echo '---------------------------'>&2
-		set -x
+		mount -v -t vfat "${logfs}" /log
 	fi
+	rm -f /log/boot.{std{out,err},sysinfo,kernel,udev}.log
+	touch /log/boot.{std{out,err},sysinfo,kernel,udev}.log
+	dmesg -wx > /log/boot.kernel.log&
+	exec 0<>/dev/null
+	exec 1<>/log/boot.stdout.log
+	exec 2<>/log/boot.stderr.log
+	dump_info>/log/boot.sysinfo.log
+	echo 'Started initramfs boot log.'
+	echo 'Started initramfs boot log.'>&2
+	echo '---------------------------'
+	echo '---------------------------'>&2
+	set -x
 	syslogd -t -O -
 	sync
 }

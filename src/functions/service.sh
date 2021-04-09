@@ -5,7 +5,7 @@ function start_udevd(){
 		--daemon \
 		--exec-delay=3 \
 		--event-timeout=3
-	[ "${LOG}" == "true" ]&&udevadm monitor \
+	udevadm monitor \
 		--kernel \
 		--udev \
 		--property \
