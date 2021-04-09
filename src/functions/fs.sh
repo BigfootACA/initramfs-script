@@ -67,7 +67,11 @@ function mount_block(){
 function init_early_fs(){
 	mount -t proc proc /proc
 	mount -t sysfs sys /sys
-	mount -t devtmpfs devfs /dev||mount -t tmpfs devfs /dev
+	if ! mount -t devtmpfs devfs /dev
+	then
+		echo "warning: your kernel does not have devtmpfs, systemd may not work."
+		mount -t tmpfs devfs /dev
+	fi
 	mount -t tmpfs -o mode=755 run /run
 	mdev -s
 }
