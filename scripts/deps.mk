@@ -73,7 +73,8 @@ MOD_HARDWARE_DEP=\
 	root/usr/bin/sleep
 
 MOD_MAIN_DEP=\
-	root/usr/bin/bash
+	root/usr/bin/bash \
+	root/usr/bin/depmod
 
 MOD_SERVICE_DEP=\
 	root/usr/bin/bash \
