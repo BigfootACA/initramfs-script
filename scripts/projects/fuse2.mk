@@ -1,3 +1,10 @@
+FUSE2_LIBS=\
+	build/sysroot/usr/lib/libfuse.so \
+	build/sysroot/usr/lib/libulockmgr.so
+FUSE2_BINS=\
+	build/sysroot/usr/bin/fusermount \
+	build/sysroot/usr/bin/mount.fuse \
+	build/sysroot/usr/bin/ulockmgr_server
 build/fuse2/.patched: build/patches/fuse2.patch build/fuse2/libtool
 	@patch -Np1 < $<
 	@touch $@
@@ -31,7 +38,7 @@ build/fuse2/.installed: build/fuse2/.built
 		install
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/fuse.pc
 	@touch $@
-build/sysroot/usr/lib/liblzma.so build/sysroot/usr/bin/fuse2: build/fuse2/.installed
+$(FUSE2_LIBS) $(FUSE2_BINS): build/fuse2/.installed
 configure-fuse2: build/fuse2/Makefile
 build-fuse2: build/fuse2/.built
 install-fuse2: build/fuse2/.installed
