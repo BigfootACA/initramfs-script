@@ -30,9 +30,6 @@ root/usr/bin/ntfs-3g: bin/ntfs-3g root/usr/lib/libntfs.so root/usr/lib/libc.so
 root/usr/bin/ntfsfix: bin/ntfsfix root/usr/lib/libntfs.so root/usr/lib/libc.so
 root/usr/bin/fsck.exfat: bin/fsck.exfat root/usr/lib/libc.so
 root/usr/bin/fsck: build/sysroot/usr/bin/fsck root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
-root/usr/bin/btrfs: bin/btrfs root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libz.so root/usr/lib/liblzo2.so root/usr/lib/libc.so
-root/usr/bin/btrfsck: bin/btrfsck root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libz.so root/usr/lib/liblzo2.so root/usr/lib/libc.so
-root/usr/bin/fsck.btrfs: bin/fsck.btrfs
 root/usr/bin/fsck.fat: bin/fsck.fat root/usr/lib/libc.so
 root/usr/bin/debugfs: build/sysroot/usr/bin/debugfs root/usr/lib/libext2fs.so root/usr/lib/libe2p.so root/usr/lib/libss.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libc.so
 root/usr/bin/tune2fs: build/sysroot/usr/bin/tune2fs root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
@@ -112,3 +109,11 @@ root/usr/bin/fibmap.f2fs: build/sysroot/usr/bin/fibmap.f2fs root/usr/lib/libc.so
 root/usr/bin/parse.f2fs: build/sysroot/usr/bin/parse.f2fs root/usr/lib/libc.so
 root/usr/bin/menu: build/sysroot/usr/bin/menu root/usr/lib/libdrm.so root/usr/lib/libjson-c.so root/usr/lib/liblvgl.so root/usr/lib/liblvgl_font.so root/usr/lib/liblvgl_tool.so root/usr/lib/liblvgl_icon.so root/usr/lib/libc.so
 root/usr/bin/usb: build/sysroot/usr/bin/usb root/usr/lib/libdrm.so root/usr/lib/libjson-c.so root/usr/lib/liblvgl.so root/usr/lib/liblvgl_font.so root/usr/lib/liblvgl_tool.so root/usr/lib/liblvgl_icon.so root/usr/lib/libc.so
+root/usr/bin/btrfs-image: build/sysroot/usr/bin/btrfs-image root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libz.so root/usr/lib/liblzo2.so root/usr/lib/libzstd.so root/usr/lib/libc.so
+root/usr/bin/btrfstune: build/sysroot/usr/bin/btrfstune root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/btrfs-map-logical: build/sysroot/usr/bin/btrfs-map-logical root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/btrfs: build/sysroot/usr/bin/btrfs root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libz.so root/usr/lib/liblzo2.so root/usr/lib/libzstd.so root/usr/lib/libc.so
+root/usr/bin/mkfs.btrfs: build/sysroot/usr/bin/mkfs.btrfs root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/btrfs-select-super: build/sysroot/usr/bin/btrfs-select-super root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/btrfs-find-root: build/sysroot/usr/bin/btrfs-find-root root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/bin/fsck.btrfs: build/sysroot/usr/bin/fsck.btrfs root/usr/bin/sh

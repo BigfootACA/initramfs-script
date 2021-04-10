@@ -279,3 +279,4 @@ root/usr/bin/fsck.fat32: root/usr/bin/fsck.fat
 root/usr/bin/fsck.fat16: root/usr/bin/fsck.fat
 root/usr/bin/fsck.fat12: root/usr/bin/fsck.fat
 root/usr/bin/fsck.msdos: root/usr/bin/fsck.fat
+root/usr/bin/btrfsck: root/usr/bin/btrfs

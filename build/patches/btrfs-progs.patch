@@ -1,0 +1,99 @@
+diff --git a/build/btrfs-progs/Makefile b/build/btrfs-progs/Makefile
+index e288a336..216b1d22 100644
+--- a/build/btrfs-progs/Makefile
++++ b/build/btrfs-progs/Makefile
+@@ -336,13 +336,12 @@ static_convert_objects = $(patsubst %.o, %.static.o, $(convert_objects))
+ static_mkfs_objects = $(patsubst %.o, %.static.o, $(mkfs_objects))
+ static_image_objects = $(patsubst %.o, %.static.o, $(image_objects))
+ 
+-libs_shared = libbtrfs.so.0.1 libbtrfsutil.so.$(libbtrfsutil_version)
++libs_shared = libbtrfs.so libbtrfsutil.so
+ libs_static = libbtrfs.a libbtrfsutil.a
+ libs = $(libs_shared) $(libs_static)
+-lib_links = libbtrfs.so.0 libbtrfs.so libbtrfsutil.so.$(libbtrfsutil_major) libbtrfsutil.so
+ libs_build =
+ ifeq ($(BUILD_SHARED_LIBRARIES),1)
+-libs_build += $(libs_shared) $(lib_links)
++libs_build += $(libs_shared)
+ endif
+ ifeq ($(BUILD_STATIC_LIBRARIES),1)
+ libs_build += $(libs_static)
+@@ -489,37 +488,29 @@ kernel-lib/tables.c:
+ 	@echo "    [TABLE]  $@"
+ 	$(Q)./mktables > $@ || ($(RM) -f $@ && exit 1)
+ 
+-libbtrfs.so.0.1: $(libbtrfs_objects) libbtrfs.sym
++libbtrfs.so: $(libbtrfs_objects) libbtrfs.sym
+ 	@echo "    [LD]     $@"
+ 	$(Q)$(CC) $(CFLAGS) $(filter %.o,$^) $(LDFLAGS) $(LIBBTRFS_LIBS) \
+-		-shared -Wl,-soname,libbtrfs.so.0 -Wl,--version-script=libbtrfs.sym -o $@
++		-shared -Wl,-soname,libbtrfs.so -Wl,--version-script=libbtrfs.sym -o $@
+ 
+ libbtrfs.a: $(libbtrfs_objects)
+ 	@echo "    [AR]     $@"
+ 	$(Q)$(AR) cr $@ $^
+ 
+-libbtrfs.so.0 libbtrfs.so: libbtrfs.so.0.1 libbtrfs.sym
+-	@echo "    [LN]     $@"
+-	$(Q)$(LN_S) -f $< $@
+-
+ libbtrfsutil/%.o: libbtrfsutil/%.c
+ 	@echo "    [CC]     $@"
+ 	$(Q)$(CC) $(LIBBTRFSUTIL_CFLAGS) -o $@ -c $< -o $@
+ 
+-libbtrfsutil.so.$(libbtrfsutil_version): $(libbtrfsutil_objects) libbtrfsutil.sym
++libbtrfsutil.so: $(libbtrfsutil_objects) libbtrfsutil.sym
+ 	@echo "    [LD]     $@"
+ 	$(Q)$(CC) $(LIBBTRFSUTIL_CFLAGS) $(libbtrfsutil_objects) $(LIBBTRFSUTIL_LDFLAGS) \
+-		-shared -Wl,-soname,libbtrfsutil.so.$(libbtrfsutil_major) \
++		-shared -Wl,-soname,libbtrfsutil.so \
+ 		-Wl,--version-script=libbtrfsutil.sym -o $@
+ 
+ libbtrfsutil.a: $(libbtrfsutil_objects)
+ 	@echo "    [AR]     $@"
+ 	$(Q)$(AR) cr $@ $^
+ 
+-libbtrfsutil.so.$(libbtrfsutil_major) libbtrfsutil.so: libbtrfsutil.so.$(libbtrfsutil_version)
+-	@echo "    [LN]     $@"
+-	$(Q)$(LN_S) -f $< $@
+-
+ ifeq ($(PYTHON_BINDINGS),1)
+ libbtrfsutil_python: libbtrfsutil.so.$(libbtrfsutil_major) libbtrfsutil.so libbtrfsutil/btrfsutil.h
+ 	@echo "    [PY]     libbtrfsutil"
+@@ -704,7 +695,7 @@ test-build-pre:
+ test-build-real:
+ 	$(MAKE) $(MAKEOPTS) library-test
+ 	-$(MAKE) $(MAKEOPTS) library-test.static
+-	$(MAKE) $(MAKEOPTS) -j 8 $(progs) $(libs) $(lib_links) $(BUILDDIRS)
++	$(MAKE) $(MAKEOPTS) -j 8 $(progs) $(libs) $(BUILDDIRS)
+ 	-$(MAKE) $(MAKEOPTS) -j 8 static
+ 
+ manpages:
+@@ -749,7 +740,7 @@ clean: $(CLEANDIRS)
+ 	      btrfs.box btrfs.box.static json-formatter-test \
+ 	      hash-speedtest \
+ 	      $(check_defs) \
+-	      $(libs) $(lib_links) \
++	      $(libs) \
+ 	      $(progs_static) \
+ 	      libbtrfsutil/*.o libbtrfsutil/*.o.d
+ ifeq ($(PYTHON_BINDINGS),1)
+@@ -789,9 +780,6 @@ endif
+ ifneq ($(libs_build),)
+ 	$(INSTALL) -m755 -d $(DESTDIR)$(libdir)
+ 	$(INSTALL) $(libs_build) $(DESTDIR)$(libdir)
+-ifeq ($(BUILD_SHARED_LIBRARIES),1)
+-	cp -d $(lib_links) $(DESTDIR)$(libdir)
+-endif
+ 	$(INSTALL) -m755 -d $(DESTDIR)$(incdir)/btrfs
+ 	$(INSTALL) -m644 $(libbtrfs_headers) $(DESTDIR)$(incdir)/btrfs
+ 	$(INSTALL) -m644 libbtrfsutil/btrfsutil.h $(DESTDIR)$(incdir)
+@@ -826,7 +814,7 @@ uninstall:
+ 	cd $(DESTDIR)$(incdir)/btrfs; $(RM) -f -- $(libbtrfs_headers)
+ 	$(RMDIR) -p --ignore-fail-on-non-empty -- $(DESTDIR)$(incdir)/btrfs
+ 	cd $(DESTDIR)$(incdir); $(RM) -f -- btrfsutil.h
+-	cd $(DESTDIR)$(libdir); $(RM) -f -- $(lib_links) $(libs)
++	cd $(DESTDIR)$(libdir); $(RM) -f -- $(libs)
+ 	cd $(DESTDIR)$(bindir); $(RM) -f -- btrfsck fsck.btrfs $(progs_install)
+ 
+ ifneq ($(MAKECMDGOALS),clean)
