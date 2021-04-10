@@ -76,3 +76,6 @@
 [submodule "build/fuse2"]
 	path = build/fuse2
 	url = https://github.com/libfuse/libfuse.git
+[submodule "build/fuse3"]
+	path = build/fuse3
+	url = https://github.com/libfuse/libfuse.git

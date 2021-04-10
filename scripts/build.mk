@@ -27,7 +27,9 @@ CLEAN_TARGETS=\
 	clean-lzo \
 	clean-lvgl-initramfs-tools \
 	clean-f2fs-tools \
-	clean-btrfs-progs
+	clean-btrfs-progs \
+	clean-fuse2 \
+	clean-fuse3
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*

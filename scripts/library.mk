@@ -36,3 +36,4 @@ root/usr/lib/libbtrfsutil.so: build/sysroot/usr/lib/libbtrfsutil.so root/usr/lib
 root/usr/lib/libbtrfs.so: build/sysroot/usr/lib/libbtrfs.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libfuse.so: build/sysroot/usr/lib/libfuse.so root/usr/lib/libc.so
 root/usr/lib/libulockmgr.so: build/sysroot/usr/lib/libulockmgr.so root/usr/lib/libc.so
+root/usr/lib/libfuse3.so: build/sysroot/usr/lib/libfuse3.so root/usr/lib/libc.so

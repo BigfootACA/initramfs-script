@@ -120,3 +120,5 @@ root/usr/bin/fsck.btrfs: build/sysroot/usr/bin/fsck.btrfs root/usr/bin/sh
 root/usr/bin/ulockmgr_server: build/sysroot/usr/bin/ulockmgr_server root/usr/lib/libc.so
 root/usr/bin/mount.fuse: build/sysroot/usr/bin/mount.fuse root/usr/lib/libc.so
 root/usr/bin/fusermount: build/sysroot/usr/bin/fusermount root/usr/lib/libc.so
+root/usr/bin/mount.fuse3: build/sysroot/usr/bin/mount.fuse3 root/usr/lib/libfuse3.so root/usr/lib/libc.so
+root/usr/bin/fusermount3: build/sysroot/usr/bin/fusermount3 root/usr/lib/libc.so

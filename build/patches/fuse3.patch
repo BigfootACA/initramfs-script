@@ -1,0 +1,15 @@
+diff --git a/build/fuse3/lib/meson.build b/build/fuse3/lib/meson.build
+index 98461d8..8ff796d 100644
+--- a/build/fuse3/lib/meson.build
++++ b/build/fuse3/lib/meson.build
+@@ -33,8 +33,8 @@ else
+ endif
+ 
+ fusermount_path = join_paths(get_option('prefix'), get_option('bindir'))
+-libfuse = library('fuse3', libfuse_sources, version: meson.project_version(),
+-                  soversion: '3', include_directories: include_dirs,
++libfuse = library('fuse3', libfuse_sources,
++                  include_directories: include_dirs,
+                   dependencies: deps, install: true,
+                   link_depends: 'fuse_versionscript',
+                   c_args: [ '-DFUSE_USE_VERSION=35',
