@@ -117,3 +117,6 @@ root/usr/bin/mkfs.btrfs: build/sysroot/usr/bin/mkfs.btrfs root/usr/lib/libuuid.s
 root/usr/bin/btrfs-select-super: build/sysroot/usr/bin/btrfs-select-super root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/btrfs-find-root: build/sysroot/usr/bin/btrfs-find-root root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/fsck.btrfs: build/sysroot/usr/bin/fsck.btrfs root/usr/bin/sh
+root/usr/bin/ulockmgr_server: build/sysroot/usr/bin/ulockmgr_server root/usr/lib/libc.so
+root/usr/bin/mount.fuse: build/sysroot/usr/bin/mount.fuse root/usr/lib/libc.so
+root/usr/bin/fusermount: build/sysroot/usr/bin/fusermount root/usr/lib/libc.so

@@ -34,3 +34,5 @@ root/usr/lib/liblvgl_icon.so: build/sysroot/usr/lib/liblvgl_icon.so root/usr/lib
 root/usr/lib/liblvgl_tool.so: build/sysroot/usr/lib/liblvgl_tool.so root/usr/lib/libjson-c.so root/usr/lib/libc.so
 root/usr/lib/libbtrfsutil.so: build/sysroot/usr/lib/libbtrfsutil.so root/usr/lib/libc.so
 root/usr/lib/libbtrfs.so: build/sysroot/usr/lib/libbtrfs.so root/usr/lib/libuuid.so root/usr/lib/libblkid.so root/usr/lib/libc.so
+root/usr/lib/libfuse.so: build/sysroot/usr/lib/libfuse.so root/usr/lib/libc.so
+root/usr/lib/libulockmgr.so: build/sysroot/usr/lib/libulockmgr.so root/usr/lib/libc.so

@@ -73,3 +73,6 @@
 [submodule "build/lvgl-initramfs-tools"]
 	path = build/lvgl-initramfs-tools
 	url = https://github.com/BigfootACA/lvgl-initramfs-tools.git
+[submodule "build/fuse2"]
+	path = build/fuse2
+	url = https://github.com/libfuse/libfuse.git
