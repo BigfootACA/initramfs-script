@@ -26,7 +26,7 @@ build/lzo/.installed: build/lzo/.built
 		install
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/lzo2.pc
 	@touch $@
-build/sysroot/usr/lib/liblzo.so: build/lzo/.installed
+build/sysroot/usr/lib/liblzo2.so: build/lzo/.installed
 configure-lzo: build/lzo/Makefile
 build-lzo: build/lzo/.built
 install-lzo: build/lzo/.installed
