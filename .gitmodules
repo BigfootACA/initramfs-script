@@ -79,3 +79,6 @@
 [submodule "build/fuse3"]
 	path = build/fuse3
 	url = https://github.com/libfuse/libfuse.git
+[submodule "build/ntfs-3g"]
+	path = build/ntfs-3g
+	url = https://git.code.sf.net/p/ntfs-3g/ntfs-3g.git

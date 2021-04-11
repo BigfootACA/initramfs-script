@@ -17,7 +17,6 @@ root/usr/lib/liblzo2.so: build/sysroot/usr/lib/liblzo2.so root/usr/lib/libc.so
 root/usr/lib/libmagic.so: build/sysroot/usr/lib/libmagic.so root/usr/lib/liblzma.so root/usr/lib/libbz2.so root/usr/lib/libz.so root/usr/lib/libc.so
 root/usr/lib/libmount.so: build/sysroot/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/lib/libncursesw.so: build/sysroot/usr/lib/libncursesw.so root/usr/lib/libc.so
-root/usr/lib/libntfs.so: lib/libntfs.so root/usr/lib/libc.so
 root/usr/lib/libreadline.so: build/sysroot/usr/lib/libreadline.so root/usr/lib/libncursesw.so root/usr/lib/libc.so
 root/usr/lib/libsmartcols.so: build/sysroot/usr/lib/libsmartcols.so root/usr/lib/libc.so
 root/usr/lib/libuuid.so: build/sysroot/usr/lib/libuuid.so root/usr/lib/libc.so
@@ -37,3 +36,4 @@ root/usr/lib/libbtrfs.so: build/sysroot/usr/lib/libbtrfs.so root/usr/lib/libuuid
 root/usr/lib/libfuse.so: build/sysroot/usr/lib/libfuse.so root/usr/lib/libc.so
 root/usr/lib/libulockmgr.so: build/sysroot/usr/lib/libulockmgr.so root/usr/lib/libc.so
 root/usr/lib/libfuse3.so: build/sysroot/usr/lib/libfuse3.so root/usr/lib/libc.so
+root/usr/lib/libntfs-3g.so: build/sysroot/usr/lib/libntfs-3g.so root/usr/lib/libc.so

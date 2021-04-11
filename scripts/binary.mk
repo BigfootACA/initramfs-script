@@ -26,8 +26,6 @@ root/usr/bin/zstd: build/sysroot/usr/bin/zstd root/usr/lib/libz.so root/usr/lib/
 root/usr/bin/xz: build/sysroot/usr/bin/xz root/usr/lib/liblzma.so root/usr/lib/libc.so
 root/usr/bin/abootimg: build/sysroot/usr/bin/abootimg root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/e2fsck: build/sysroot/usr/bin/e2fsck root/usr/lib/libext2fs.so root/usr/lib/libcom_err.so root/usr/lib/libblkid.so root/usr/lib/libuuid.so root/usr/lib/libe2p.so root/usr/lib/libc.so
-root/usr/bin/ntfs-3g: bin/ntfs-3g root/usr/lib/libntfs.so root/usr/lib/libc.so
-root/usr/bin/ntfsfix: bin/ntfsfix root/usr/lib/libntfs.so root/usr/lib/libc.so
 root/usr/bin/fsck.exfat: bin/fsck.exfat root/usr/lib/libc.so
 root/usr/bin/fsck: build/sysroot/usr/bin/fsck root/usr/lib/libmount.so root/usr/lib/libblkid.so root/usr/lib/libc.so
 root/usr/bin/fsck.fat: bin/fsck.fat root/usr/lib/libc.so
@@ -122,3 +120,23 @@ root/usr/bin/mount.fuse: build/sysroot/usr/bin/mount.fuse root/usr/lib/libc.so
 root/usr/bin/fusermount: build/sysroot/usr/bin/fusermount root/usr/lib/libc.so
 root/usr/bin/mount.fuse3: build/sysroot/usr/bin/mount.fuse3 root/usr/lib/libfuse3.so root/usr/lib/libc.so
 root/usr/bin/fusermount3: build/sysroot/usr/bin/fusermount3 root/usr/lib/libc.so
+root/usr/bin/ntfscp: build/sysroot/usr/bin/ntfscp root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsinfo: build/sysroot/usr/bin/ntfsinfo root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfslabel: build/sysroot/usr/bin/ntfslabel root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsusermap: build/sysroot/usr/bin/ntfsusermap root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfstruncate: build/sysroot/usr/bin/ntfstruncate root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfscluster: build/sysroot/usr/bin/ntfscluster root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsundelete: build/sysroot/usr/bin/ntfsundelete root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsfix: build/sysroot/usr/bin/ntfsfix root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfs-3g.probe: build/sysroot/usr/bin/ntfs-3g.probe root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/mkntfs: build/sysroot/usr/bin/mkntfs root/usr/lib/libntfs-3g.so root/usr/lib/libuuid.so root/usr/lib/libc.so
+root/usr/bin/ntfsresize: build/sysroot/usr/bin/ntfsresize root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfssecaudit: build/sysroot/usr/bin/ntfssecaudit root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsrecover: build/sysroot/usr/bin/ntfsrecover root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfscat: build/sysroot/usr/bin/ntfscat root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfscmp: build/sysroot/usr/bin/ntfscmp root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsls: build/sysroot/usr/bin/ntfsls root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfswipe: build/sysroot/usr/bin/ntfswipe root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfs-3g: build/sysroot/usr/bin/ntfs-3g root/usr/lib/libfuse.so root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/lowntfs-3g: build/sysroot/usr/bin/lowntfs-3g root/usr/lib/libfuse.so root/usr/lib/libntfs-3g.so root/usr/lib/libc.so
+root/usr/bin/ntfsclone: build/sysroot/usr/bin/ntfsclone root/usr/lib/libntfs-3g.so root/usr/lib/libc.so

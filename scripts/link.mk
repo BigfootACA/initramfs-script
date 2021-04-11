@@ -280,3 +280,6 @@ root/usr/bin/fsck.fat16: root/usr/bin/fsck.fat
 root/usr/bin/fsck.fat12: root/usr/bin/fsck.fat
 root/usr/bin/fsck.msdos: root/usr/bin/fsck.fat
 root/usr/bin/btrfsck: root/usr/bin/btrfs
+root/usr/bin/mkfs.ntfs: root/usr/bin/mkntfs
+root/usr/bin/mount.lowntfs-3g: lowntfs-3g
+root/usr/bin/mount.ntfs-3g: ntfs-3g

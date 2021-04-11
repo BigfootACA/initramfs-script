@@ -1,0 +1,45 @@
+diff --git a/build/ntfs-3g/libtool b/build/ntfs-3g/libtool
+index 48cea9b..818bf5e 100644
+--- a/build/ntfs-3g/libtool
++++ b/build/ntfs-3g/libtool
+@@ -9655,8 +9655,8 @@ func_mode_link ()
+ 
+ 	linux) # correct to gnu/linux during the next big refactor
+ 	  func_arith $current - $age
+-	  major=.$func_arith_result
+-	  versuffix=$major.$age.$revision
++	  major=
++	  versuffix=
+ 	  ;;
+ 
+ 	osf)
+diff --git a/build/ntfs-3g/src/Makefile b/build/ntfs-3g/src/Makefile
+index 36ecbe9..bfc1f41 100644
+--- a/build/ntfs-3g/src/Makefile
++++ b/build/ntfs-3g/src/Makefile
+@@ -999,13 +999,12 @@ uninstall-man: uninstall-man8
+ drivers : $(FUSE_LIBS) ntfs-3g lowntfs-3g
+ 
+ install-exec-hook:
+-	$(LDCONFIG)
+ 	$(MKDIR_P) $(DESTDIR)/$(plugindir)
+ 
+ install-exec-local:	install-rootbinPROGRAMS
+-	$(MKDIR_P) "$(DESTDIR)/sbin"
+-	$(LN_S) -f "$(rootbindir)/ntfs-3g" "$(DESTDIR)/sbin/mount.ntfs-3g"
+-	$(LN_S) -f "$(rootbindir)/lowntfs-3g" "$(DESTDIR)/sbin/mount.lowntfs-3g"
++	$(MKDIR_P) "$(DESTDIR)/usr/bin"
++	$(LN_S) -f "$(rootbindir)/ntfs-3g" "$(DESTDIR)/usr/bin/mount.ntfs-3g"
++	$(LN_S) -f "$(rootbindir)/lowntfs-3g" "$(DESTDIR)/usr/bin/mount.lowntfs-3g"
+ 
+ install-data-local:	install-man8
+ 	$(LN_S) -f ntfs-3g.8 "$(DESTDIR)$(man8dir)/mount.ntfs-3g.8"
+@@ -1012,7 +1013,7 @@ install-data-local:	install-man8
+ 
+ uninstall-local:
+ 	$(RM) -f "$(DESTDIR)$(man8dir)/mount.ntfs-3g.8"
+-	$(RM) -f "$(DESTDIR)/sbin/mount.ntfs-3g" "$(DESTDIR)/sbin/mount.lowntfs-3g"
++	$(RM) -f "$(DESTDIR)/usr/bin/mount.ntfs-3g" "$(DESTDIR)/usr/bin/mount.lowntfs-3g"
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

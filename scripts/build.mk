@@ -29,7 +29,8 @@ CLEAN_TARGETS=\
 	clean-f2fs-tools \
 	clean-btrfs-progs \
 	clean-fuse2 \
-	clean-fuse3
+	clean-fuse3 \
+	clean-ntfs-3g
 toolchain: build/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
