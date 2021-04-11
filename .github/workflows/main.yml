@@ -7,11 +7,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        initramfs:
+          - initramfs.tar
+          - initramfs.tar.gz
+          - initramfs.tar.xz
+          - initramfs.tar.zst
+          - initramfs.cpio
+          - initramfs.cpio.gz
+          - initramfs.cpio.xz
+          - initramfs.cpio.zst
+          - initramfs.cpio.lz4
     steps:
       - uses: actions/checkout@v2
       - name: Install requires packages
-        run: sudo apt update&&sudo apt install autoconf libtool autopoint po4a pkgconf shtool meson cmake make gcc gcc-aarch64-linux-gnu rsync patch bison gperf cpio
+        run: sudo apt update&&sudo apt install autoconf libtool autopoint po4a pkgconf shtool meson cmake make gcc gcc-aarch64-linux-gnu rsync patch bison gperf cpio gzip xz-utils zstd lz4
       - name: Fetch submodules
         run: bash scripts/submodules.sh
-      - name: Build
-        run: make TARGET=aarch64-linux-gnu
+      - name: Build ${{ matrix.initramfs }}
+        run: make TARGET=aarch64-linux-gnu ${{ matrix.initramfs }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.initramfs }}
+          path: ./initramfs.*
