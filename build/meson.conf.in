@@ -1,7 +1,7 @@
 [binaries]
 c='%BUILD%/musl-gcc'
 ar='%CROSS_COMPILE%ar'
-strip='%BUILD%/strip-wrapper'
+strip='%HOSTROOT%/usr/bin/strip-wrapper'
 [properties]
 sys_root='%SYSROOT%'
 pkg_config_libdir='%SYSROOT%/usr/lib/pkgconfig'

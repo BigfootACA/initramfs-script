@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 KERNEL?=zImage
 CMDLINE?=
-XSTRIP=$(PWD)/build/strip-wrapper
+XSTRIP=$(HOSTROOT)/usr/bin/strip-wrapper
 INSTALL?=install
 BIN_INSTALL=$(INSTALL) --strip-program="$(XSTRIP)" -svDm755
 SYSROOT=$(PWD)/build/sysroot
@@ -34,3 +34,4 @@ export PKG_CONFIG_SYSROOT_DIR
 export PKG_CONFIG_LIBDIR
 export PKG_CONFIG_SYSTEM_INCLUDE_PATH
 export PKG_CONFIG_SYSTEM_LIBRARY_PATH
+$(info $(XSTRIP))
