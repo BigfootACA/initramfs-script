@@ -2,7 +2,7 @@ build/lz4/.patched: build/patches/lz4.patch
 	@patch -Np1 < $<
 	@touch $@
 build/lz4/Makefile: build/lz4/.patched
-build/lz4/.built: build/musl-gcc build/lz4/Makefile
+build/lz4/.built: build/hostroot/usr/bin/musl-gcc build/lz4/Makefile
 	@$(MAKE) \
 		-C build/lz4 \
 		PREFIX="/usr" \

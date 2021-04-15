@@ -2,7 +2,7 @@ build/zstd/.patched: build/patches/zstd.patch
 	@patch -Np1 < $<
 	@touch $@
 build/zstd/Makefile: build/zstd/.patched
-build/zstd/.built: build/musl-gcc build/zstd/Makefile build/sysroot/usr/lib/liblzma.so build/sysroot/usr/lib/liblz4.so build/sysroot/usr/lib/libz.so
+build/zstd/.built: build/hostroot/usr/bin/musl-gcc build/zstd/Makefile build/sysroot/usr/lib/liblzma.so build/sysroot/usr/lib/liblz4.so build/sysroot/usr/lib/libz.so
 	@$(MAKE) \
 		-C build/zstd \
 		PREFIX="/usr" \

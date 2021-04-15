@@ -6,7 +6,7 @@ INSTALL?=install
 BIN_INSTALL=$(INSTALL) --strip-program="$(XSTRIP)" -svDm755
 SYSROOT=$(PWD)/build/sysroot
 HOSTROOT=$(PWD)/build/hostroot
-REALCC?=$(PWD)/build/musl-gcc
+REALCC?=$(PWD)/build/hostroot/usr/bin/musl-gcc
 ifndef TARGET
 $(error TARGET not specified)
 endif

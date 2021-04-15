@@ -8,7 +8,7 @@ build/kmod/.patched: build/patches/kmod.patch build/kmod/libtool
 build/kmod/configure: build/kmod/autogen.sh
 	@cd build/kmod;bash autogen.sh
 build/kmod/libtool: build/kmod/Makefile
-build/kmod/Makefile: build/musl-gcc build/kmod/configure $(KMOD_DEPS)
+build/kmod/Makefile: build/hostroot/usr/bin/musl-gcc build/kmod/configure $(KMOD_DEPS)
 	@cd build/kmod;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -21,7 +21,7 @@ build/kmod/Makefile: build/musl-gcc build/kmod/configure $(KMOD_DEPS)
 		--with-zlib \
 		--with-sysroot="$(SYSROOT)" \
 		$(KMOD_CONFIGURE_FLAGS)
-build/kmod/.built: build/musl-gcc build/kmod/.patched build/kmod/Makefile
+build/kmod/.built: build/hostroot/usr/bin/musl-gcc build/kmod/.patched build/kmod/Makefile
 	@$(MAKE) \
 		-C build/kmod \
 		CC="$(REALCC)" \

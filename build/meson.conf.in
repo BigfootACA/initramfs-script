@@ -1,5 +1,5 @@
 [binaries]
-c='%BUILD%/musl-gcc'
+c='%HOSTROOT%/usr/bin/musl-gcc'
 ar='%CROSS_COMPILE%ar'
 strip='%HOSTROOT%/usr/bin/strip-wrapper'
 [properties]

@@ -2,7 +2,7 @@ build/json-c/.patched: build/patches/json-c.patch build/json-c/CMakeLists.txt
 	@patch -Np1 < $<
 	@touch $@
 build/json-c/CMakeLists.txt: build/toolchain.cmake
-build/json-c/build/Makefle: build/musl-gcc build/json-c/CMakeLists.txt build/json-c/.patched
+build/json-c/build/Makefle: build/hostroot/usr/bin/musl-gcc build/json-c/CMakeLists.txt build/json-c/.patched
 	@echo|$(REALCC) -mno-outline-atomics -E - &>/dev/null&&FLAGS="-mno-outline-atomics";\
 	cd build/json-c;cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
@@ -12,7 +12,7 @@ build/json-c/build/Makefle: build/musl-gcc build/json-c/CMakeLists.txt build/jso
 		-B build \
 		$(JSON_C_CONFIGURE_FLAGS)
 	@touch $@
-build/json-c/build/.built: build/musl-gcc build/json-c/build/Makefle
+build/json-c/build/.built: build/hostroot/usr/bin/musl-gcc build/json-c/build/Makefle
 	@$(MAKE) \
 		-C build/json-c/build \
 		$(JSON_C_BUILD_FLAGS)

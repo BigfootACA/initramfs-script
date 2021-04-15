@@ -18,7 +18,7 @@ build/eudev/.patched: build/patches/eudev.patch build/eudev/libtool
 build/eudev/libtool: build/eudev/Makefile
 build/eudev/configure: build/eudev/configure.ac
 	@cd build/eudev;autoreconf -f -i -s
-build/eudev/Makefile: build/musl-gcc build/eudev/configure $(EUDEV_DEPS)
+build/eudev/Makefile: build/hostroot/usr/bin/musl-gcc build/eudev/configure $(EUDEV_DEPS)
 	@cd build/eudev;./configure \
 		KMOD_LIBS="-lkmod -lzstd -llzma -lz" \
 		CC="$(REALCC)" \

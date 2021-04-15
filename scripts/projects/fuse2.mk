@@ -11,7 +11,7 @@ build/fuse2/.patched: build/patches/fuse2.patch build/fuse2/libtool
 build/fuse2/configure: build/fuse2/makeconf.sh
 	@cd build/fuse2;bash makeconf.sh
 build/fuse2/libtool: build/fuse2/Makefile
-build/fuse2/Makefile: build/musl-gcc build/fuse2/configure
+build/fuse2/Makefile: build/hostroot/usr/bin/musl-gcc build/fuse2/configure
 	@cd build/fuse2;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -24,7 +24,7 @@ build/fuse2/Makefile: build/musl-gcc build/fuse2/configure
 		UDEV_RULES_PATH=/usr/lib/udev/rules.d \
 		MOUNT_FUSE_PATH=/usr/bin \
 		$(FUSE2_CONFIGURE_FLAGS)
-build/fuse2/.built: build/musl-gcc build/fuse2/.patched build/fuse2/Makefile
+build/fuse2/.built: build/hostroot/usr/bin/musl-gcc build/fuse2/.patched build/fuse2/Makefile
 	@$(MAKE) \
 		-C build/fuse2 \
 		CC="$(REALCC)" \

@@ -1,6 +1,6 @@
 build/busybox/.config: build/patches/busybox.patch
 	@patch -Np1 < $<
-build/busybox/busybox: build/musl-gcc build/busybox/Makefile build/busybox/.config
+build/busybox/busybox: build/hostroot/usr/bin/musl-gcc build/busybox/Makefile build/busybox/.config
 	@$(MAKE) \
 		-C build/busybox \
 		CC="$(REALCC)" \

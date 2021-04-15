@@ -39,7 +39,7 @@ build/ntfs-3g/.patched: build/patches/ntfs-3g.patch build/ntfs-3g/libtool
 build/ntfs-3g/libtool: build/ntfs-3g/Makefile
 build/ntfs-3g/configure: build/ntfs-3g/autogen.sh
 	@cd build/ntfs-3g;bash autogen.sh
-build/ntfs-3g/Makefile: build/musl-gcc build/ntfs-3g/configure $(NTFS_DEPS)
+build/ntfs-3g/Makefile: build/hostroot/usr/bin/musl-gcc build/ntfs-3g/configure $(NTFS_DEPS)
 	@cd build/ntfs-3g;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -53,7 +53,7 @@ build/ntfs-3g/Makefile: build/musl-gcc build/ntfs-3g/configure $(NTFS_DEPS)
 		--with-sysroot="$(SYSROOT)" \
 		$(NTFS_3G_CONFIGURE_FLAGS)
 	@touch $@
-build/ntfs-3g/.built: build/musl-gcc build/ntfs-3g/.patched build/ntfs-3g/Makefile
+build/ntfs-3g/.built: build/hostroot/usr/bin/musl-gcc build/ntfs-3g/.patched build/ntfs-3g/Makefile
 	@$(MAKE) \
 		-C build/ntfs-3g \
 		CC="$(REALCC)" \

@@ -1,4 +1,4 @@
-build/adbd/adbd: build/adbd/Makefile build/musl-gcc
+build/adbd/adbd: build/adbd/Makefile build/hostroot/usr/bin/musl-gcc
 	@$(MAKE) \
 		-C build/adbd \
 		CC="$(REALCC)" \

@@ -2,7 +2,7 @@ build/lzo/.patched: build/patches/lzo.patch build/lzo/libtool
 	@patch -Np1 < $<
 	@touch $@
 build/lzo/libtool: build/lzo/Makefile
-build/lzo/Makefile: build/musl-gcc build/lzo/configure
+build/lzo/Makefile: build/hostroot/usr/bin/musl-gcc build/lzo/configure
 	@cd build/lzo;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -10,7 +10,7 @@ build/lzo/Makefile: build/musl-gcc build/lzo/configure
 		--enable-shared \
 		--with-sysroot="$(SYSROOT)"
 		$(LZO_CONFIGURE_FLAGS)
-build/lzo/.built: build/musl-gcc build/lzo/.patched build/lzo/Makefile
+build/lzo/.built: build/hostroot/usr/bin/musl-gcc build/lzo/.patched build/lzo/Makefile
 	@$(MAKE) \
 		-C build/lzo \
 		PREFIX="/usr" \

@@ -4,7 +4,7 @@ build/xz/.patched: build/patches/xz.patch build/xz/libtool
 build/xz/configure: build/xz/autogen.sh
 	@cd build/xz;bash autogen.sh
 build/xz/libtool: build/xz/Makefile
-build/xz/Makefile: build/musl-gcc build/xz/configure
+build/xz/Makefile: build/hostroot/usr/bin/musl-gcc build/xz/configure
 	@cd build/xz;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -13,7 +13,7 @@ build/xz/Makefile: build/musl-gcc build/xz/configure
 		--disable-scripts \
 		--disable-doc \
 		$(XZ_CONFIGURE_FLAGS)
-build/xz/.built: build/musl-gcc build/xz/.patched build/xz/Makefile
+build/xz/.built: build/hostroot/usr/bin/musl-gcc build/xz/.patched build/xz/Makefile
 	@$(MAKE) \
 		-C build/xz \
 		CC="$(REALCC)" \

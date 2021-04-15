@@ -1,9 +1,9 @@
 build/zlib/.patched: build/patches/zlib.patch
 	@patch -Np1 < $<
 	@touch $@
-build/zlib/Makefile: build/musl-gcc build/zlib/.patched build/zlib/configure
+build/zlib/Makefile: build/hostroot/usr/bin/musl-gcc build/zlib/.patched build/zlib/configure
 	@cd build/zlib;env CC="$(REALCC)" ./configure --prefix=/usr
-build/zlib/libz.so: build/musl-gcc build/zlib/Makefile
+build/zlib/libz.so: build/hostroot/usr/bin/musl-gcc build/zlib/Makefile
 	@$(MAKE) \
 		-C build/zlib \
 		CC="$(REALCC)" \

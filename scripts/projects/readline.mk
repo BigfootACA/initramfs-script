@@ -1,14 +1,14 @@
 build/readline/.patched: build/patches/readline.patch
 	@patch -Np1 < $<
 	@touch $@
-build/readline/Makefile: build/musl-gcc build/readline/.patched build/readline/configure build/sysroot/usr/lib/libncursesw.so
+build/readline/Makefile: build/hostroot/usr/bin/musl-gcc build/readline/.patched build/readline/configure build/sysroot/usr/lib/libncursesw.so
 	@cd build/readline;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
 		--prefix=/usr \
 		--with-curses \
 		$(READLINE_CONFIGURE_FLAGS)
-build/readline/.built: build/musl-gcc build/readline/Makefile
+build/readline/.built: build/hostroot/usr/bin/musl-gcc build/readline/Makefile
 	@$(MAKE) \
 		-C build/readline \
 		CC="$(REALCC)" \

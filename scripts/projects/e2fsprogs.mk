@@ -22,7 +22,7 @@ build/e2fsprogs/.patched: build/patches/e2fsprogs.patch
 	@patch -Np1 < $<
 	@touch $@
 build/e2fsprogs/libtool: build/e2fsprogs/Makefile
-build/e2fsprogs/Makefile: build/musl-gcc build/e2fsprogs/.patched build/e2fsprogs/configure $(E2P_DEPS)
+build/e2fsprogs/Makefile: build/hostroot/usr/bin/musl-gcc build/e2fsprogs/.patched build/e2fsprogs/configure $(E2P_DEPS)
 	@cd build/e2fsprogs;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -41,7 +41,7 @@ build/e2fsprogs/Makefile: build/musl-gcc build/e2fsprogs/.patched build/e2fsprog
 		--enable-symlink-install \
 		--enable-relative-symlinks \
 		$(E2FSPROGS_CONFIGURE_FLAGS)
-build/e2fsprogs/.built: build/musl-gcc build/e2fsprogs/Makefile
+build/e2fsprogs/.built: build/hostroot/usr/bin/musl-gcc build/e2fsprogs/Makefile
 	@$(MAKE) \
 		-C build/e2fsprogs \
 		CC="$(REALCC)" \

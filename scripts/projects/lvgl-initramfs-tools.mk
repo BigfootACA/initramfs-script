@@ -10,7 +10,7 @@ build/lvgl-initramfs-tools/lvgl/Makefile:
 		git submodule init;\
 		git submodule update
 	@touch $@
-build/lvgl-initramfs-tools/.built: build/musl-gcc build/lvgl-initramfs-tools/Makefile build/sysroot/usr/lib/libdrm.so build/sysroot/usr/lib/libjson-c.so
+build/lvgl-initramfs-tools/.built: build/hostroot/usr/bin/musl-gcc build/lvgl-initramfs-tools/Makefile build/sysroot/usr/lib/libdrm.so build/sysroot/usr/lib/libjson-c.so
 	@$(MAKE) \
 		-C build/lvgl-initramfs-tools \
 		NO_DEFAULT=1 \

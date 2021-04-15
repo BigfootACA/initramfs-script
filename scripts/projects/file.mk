@@ -34,7 +34,7 @@ build/file/host/.installed: build/file/host/.built
 	@touch $@
 build/hostroot/usr/bin/file: build/file/host/.installed
 build/file/libtool: build/file/Makefile
-build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS) build/hostroot/usr/bin/file
+build/file/Makefile: build/hostroot/usr/bin/musl-gcc build/file/configure $(FILE_DEPS) build/hostroot/usr/bin/file
 	@cd build/file;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -43,7 +43,7 @@ build/file/Makefile: build/musl-gcc build/file/configure $(FILE_DEPS) build/host
 		--disable-libseccomp \
 		--with-sysroot="$(SYSROOT)" \
 		$(FILE_CONFIGURE_FLAGS)
-build/file/.built: build/musl-gcc build/file/.patched build/file/Makefile
+build/file/.built: build/hostroot/usr/bin/musl-gcc build/file/.patched build/file/Makefile
 	@$(MAKE) \
 		-C build/file \
 		CC="$(REALCC)" \

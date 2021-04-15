@@ -1,4 +1,4 @@
-build/advreboot/advreboot: build/musl-gcc build/advreboot/Makefile
+build/advreboot/advreboot: build/hostroot/usr/bin/musl-gcc build/advreboot/Makefile
 	@$(MAKE) \
 		-C build/advreboot \
 		CC="$(REALCC)" \

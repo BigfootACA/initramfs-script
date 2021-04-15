@@ -129,7 +129,7 @@ build/util-linux/.patched: build/patches/util-linux.patch build/util-linux/libto
 build/util-linux/configure: build/util-linux/autogen.sh
 	@cd build/util-linux;bash autogen.sh
 build/util-linux/libtool: build/util-linux/Makefile
-build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
+build/util-linux/Makefile: build/hostroot/usr/bin/musl-gcc build/util-linux/configure $(UL_DEPS)
 	@cd build/util-linux;./configure \
 		CC="$(REALCC)" \
 		PATH="$(HOSTROOT)/usr/bin:$(PATH)" \
@@ -153,7 +153,7 @@ build/util-linux/Makefile: build/musl-gcc build/util-linux/configure $(UL_DEPS)
 		--without-tinfo \
 		--enable-usrdir-path \
 		$(UTIL_LINUX_CONFIGURE_FLAGS)
-build/util-linux/.built: build/musl-gcc build/util-linux/.patched build/util-linux/Makefile
+build/util-linux/.built: build/hostroot/usr/bin/musl-gcc build/util-linux/.patched build/util-linux/Makefile
 	@$(MAKE) \
 		-C build/util-linux \
 		PATH="$(HOSTROOT)/usr/bin:$(PATH)" \

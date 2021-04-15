@@ -24,7 +24,7 @@ build/btrfs-progs/.patched: build/patches/btrfs-progs.patch
 build/btrfs-progs/libtool: build/btrfs-progs/Makefile
 build/btrfs-progs/configure: build/btrfs-progs/autogen.sh build/btrfs-progs/.patched
 	@cd build/btrfs-progs;bash autogen.sh
-build/btrfs-progs/version.h: build/musl-gcc build/btrfs-progs/configure $(BTRFS_DEPS)
+build/btrfs-progs/version.h: build/hostroot/usr/bin/musl-gcc build/btrfs-progs/configure $(BTRFS_DEPS)
 	@cd build/btrfs-progs;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -37,7 +37,7 @@ build/btrfs-progs/version.h: build/musl-gcc build/btrfs-progs/configure $(BTRFS_
 		--disable-python \
 		$(BTRFS_PROGS_CONFIGURE_FLAGS)
 	@touch $@
-build/btrfs-progs/.built: build/musl-gcc build/btrfs-progs/version.h
+build/btrfs-progs/.built: build/hostroot/usr/bin/musl-gcc build/btrfs-progs/version.h
 	@$(MAKE) \
 		-C build/btrfs-progs \
 		CC="$(REALCC)" \

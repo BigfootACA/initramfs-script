@@ -16,6 +16,7 @@ build/hostroot/usr/bin/*
 !build/hostroot/usr
 !build/hostroot/usr/bin
 !build/hostroot/usr/bin/strip-wrapper
+!build/hostroot/usr/bin/musl-gcc.in
 root
 *.rej
 *.orig
@@ -26,6 +27,5 @@ initramfs.tar*
 initramfs.sfs*
 zImage
 boot.img
-build/musl-gcc
 build/meson.conf
 build/toolchain.cmake

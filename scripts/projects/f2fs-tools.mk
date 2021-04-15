@@ -19,7 +19,7 @@ build/f2fs-tools/configure: build/f2fs-tools/autogen.sh
 	@cd build/f2fs-tools;\
 		bash autogen.sh; \
 		sed -i '/sg_write_buffer/d' tools/Makefile.am
-build/f2fs-tools/Makefile: build/musl-gcc build/f2fs-tools/configure $(F2FS_DEPS)
+build/f2fs-tools/Makefile: build/hostroot/usr/bin/musl-gcc build/f2fs-tools/configure $(F2FS_DEPS)
 	@cd build/f2fs-tools;./configure \
 		CC="$(REALCC)" \
 		--host=$(TARGET) \
@@ -28,7 +28,7 @@ build/f2fs-tools/Makefile: build/musl-gcc build/f2fs-tools/configure $(F2FS_DEPS
 		--without-selinux \
 		--with-sysroot="$(SYSROOT)" \
 		$(F2FS_TOOLS_CONFIGURE_FLAGS)
-build/f2fs-tools/.built: build/musl-gcc build/f2fs-tools/.patched build/f2fs-tools/Makefile
+build/f2fs-tools/.built: build/hostroot/usr/bin/musl-gcc build/f2fs-tools/.patched build/f2fs-tools/Makefile
 	@$(MAKE) \
 		-C build/f2fs-tools \
 		CC="$(REALCC)" \

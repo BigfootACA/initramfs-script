@@ -1,4 +1,4 @@
-build/abootimg/abootimg: build/abootimg/Makefile build/musl-gcc build/sysroot/usr/lib/libblkid.so
+build/abootimg/abootimg: build/abootimg/Makefile build/hostroot/usr/bin/musl-gcc build/sysroot/usr/lib/libblkid.so
 	@$(MAKE) \
 		-C build/abootimg \
 		CC="$(REALCC)" \

@@ -5,7 +5,7 @@ BASH_DEPS=\
 build/bash/.patched: build/patches/bash.patch
 	@patch -Np1 < $<
 	@touch $@
-build/bash/Makefile: build/musl-gcc build/bash/configure build/bash/.patched $(BASH_DEPS)
+build/bash/Makefile: build/hostroot/usr/bin/musl-gcc build/bash/configure build/bash/.patched $(BASH_DEPS)
 	@cd build/bash;./configure \
 		CC="$(REALCC)" \
 		LDFLAGS="-L$(SYSROOT)/usr/lib" \
@@ -20,7 +20,7 @@ build/bash/Makefile: build/musl-gcc build/bash/configure build/bash/.patched $(B
 		--disable-rpath \
 		$(BASH_CONFIGURE_FLAGS)
 	@sed -i "s,_LIBDIR = /usr/lib,_LIBDIR = $(SYSROOT)/usr/lib,g" build/bash/Makefile
-build/bash/bash: build/musl-gcc build/bash/Makefile
+build/bash/bash: build/hostroot/usr/bin/musl-gcc build/bash/Makefile
 	@$(MAKE) \
 		-C build/bash \
 		CC="$(REALCC)" \

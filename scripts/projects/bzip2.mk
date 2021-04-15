@@ -1,7 +1,7 @@
 build/bzip2/.patched: build/patches/bzip2.patch build/bzip2/Makefile-libbz2_so
 	@patch -Np1 < $<
 	@touch $@
-build/bzip2/.built: build/musl-gcc build/bzip2/.patched build/bzip2/Makefile
+build/bzip2/.built: build/hostroot/usr/bin/musl-gcc build/bzip2/.patched build/bzip2/Makefile
 	@$(MAKE) \
 		-f Makefile-libbz2_so \
 		-C build/bzip2 \
