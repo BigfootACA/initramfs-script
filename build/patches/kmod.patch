@@ -13,3 +13,75 @@ index 48cea9b..818bf5e 100644
  	  ;;
  
  	osf)
+diff --git a/build/kmod/shared/util.c b/build/kmod/shared/util.c
+index b487b5f..1eaa8e6 100644
+--- a/build/kmod/shared/util.c
++++ b/build/kmod/shared/util.c
+@@ -399,7 +399,7 @@ static inline int is_dir(const char *path)
+ 	return -errno;
+ }
+ 
+-int mkdir_p(const char *path, int len, mode_t mode)
++int kmod_mkdir_p(const char *path, int len, mode_t mode)
+ {
+ 	char *start, *end;
+ 
+@@ -449,7 +449,7 @@ int mkdir_p(const char *path, int len, mode_t mode)
+ 	return 0;
+ }
+ 
+-int mkdir_parents(const char *path, mode_t mode)
++int kmod_mkdir_parents(const char *path, mode_t mode)
+ {
+ 	char *end = strrchr(path, '/');
+ 
+@@ -457,7 +457,7 @@ int mkdir_parents(const char *path, mode_t mode)
+ 	if (end == NULL)
+ 		return 0;
+ 
+-	return mkdir_p(path, end - path, mode);
++	return kmod_mkdir_p(path, end - path, mode);
+ }
+ 
+ unsigned long long ts_usec(const struct timespec *ts)
+diff --git a/build/kmod/shared/util.h b/build/kmod/shared/util.h
+index c6a31df..851b2a7 100644
+--- a/build/kmod/shared/util.h
++++ b/build/kmod/shared/util.h
+@@ -39,8 +39,8 @@ char *freadline_wrapped(FILE *fp, unsigned int *linenum) __attribute__((nonnull(
+ /* ************************************************************************ */
+ bool path_is_absolute(const char *p) _must_check_ __attribute__((nonnull(1)));
+ char *path_make_absolute_cwd(const char *p) _must_check_ __attribute__((nonnull(1)));
+-int mkdir_p(const char *path, int len, mode_t mode);
+-int mkdir_parents(const char *path, mode_t mode);
++int kmod_mkdir_p(const char *path, int len, mode_t mode);
++int kmod_mkdir_parents(const char *path, mode_t mode);
+ unsigned long long stat_mstamp(const struct stat *st);
+ unsigned long long ts_usec(const struct timespec *ts);
+ 
+diff --git a/build/kmod/testsuite/init_module.c b/build/kmod/testsuite/init_module.c
+index 503e703..3d18e30 100644
+--- a/build/kmod/testsuite/init_module.c
++++ b/build/kmod/testsuite/init_module.c
+@@ -157,7 +157,7 @@ static int create_sysfs_files(const char *modname)
+ 	strcpy(buf + len, modname);
+ 	len += strlen(modname);
+ 
+-	assert(mkdir_p(buf, len, 0755) >= 0);
++	assert(kmod_mkdir_p(buf, len, 0755) >= 0);
+ 
+ 	strcpy(buf + len, "/initstate");
+ 	return write_one_line_file(buf, "live\n", strlen("live\n"));
+diff --git a/build/kmod/tools/static-nodes.c b/build/kmod/tools/static-nodes.c
+index 8d2356d..0e2ea60 100644
+--- a/build/kmod/tools/static-nodes.c
++++ b/build/kmod/tools/static-nodes.c
+@@ -227,7 +227,7 @@ static int do_static_nodes(int argc, char *argv[])
+ 		goto finish;
+ 	}
+ 
+-	r = mkdir_parents(output, 0755);
++	r = kmod_mkdir_parents(output, 0755);
+ 	if (r < 0) {
+ 		fprintf(stderr, "Error: could not create parent directory for %s - %m.\n", output);
+ 		ret = EXIT_FAILURE;
