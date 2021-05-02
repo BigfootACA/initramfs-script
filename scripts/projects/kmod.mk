@@ -27,13 +27,17 @@ build/kmod/.built: build/hostroot/usr/bin/musl-gcc build/kmod/.patched build/kmo
 		CC="$(REALCC)" \
 		$(KMOD_BUILD_FLAGS)
 	@touch $@
-build/kmod/.installed: build/kmod/.built
+build/kmod/libkmod.a: build/kmod/.built
+	@$(AR) cr $(@) build/kmod/{shared,libkmod}/.libs/*.o
+	@$(RANLIB) $(@)
+build/kmod/.installed: build/kmod/.built build/kmod/libkmod.a
 	@$(MAKE) \
 		-C build/kmod \
 		DESTDIR="$(SYSROOT)" \
 		$(KMOD_INSTALL_FLAGS) \
 		install
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/libkmod.pc
+	@$(INSTALL) -vDm644 build/kmod/libkmod.a -t build/sysroot/usr/lib
 	@touch $@
 build/sysroot/usr/lib/libkmod.so build/sysroot/usr/bin/kmod: build/kmod/.installed
 configure-kmod: build/kmod/Makefile
