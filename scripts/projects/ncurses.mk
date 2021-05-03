@@ -42,6 +42,8 @@ build/ncurses/.installed: build/ncurses/.built
 		$(NCURSES_INSTALL_FLAGS) \
 		install
 	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libcurses.so
+	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libncurses.so
+	@ln -s libncursesw.a build/sysroot/usr/lib/libncurses.a
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/{ncurses,menu,form,panel}w.pc
 	@touch $@
 build/hostroot/usr/bin/ncursesw6-config: build/sysroot/usr/bin/ncursesw6-config
