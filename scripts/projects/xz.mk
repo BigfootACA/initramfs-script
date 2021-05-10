@@ -2,7 +2,7 @@ build/xz/.patched: build/patches/xz.patch build/xz/libtool
 	@patch -Np1 < $<
 	@touch $@
 build/xz/configure: build/xz/autogen.sh
-	@cd build/xz;bash autogen.sh
+	@cd build/xz;bash autogen.sh --no-po4a
 build/xz/libtool: build/xz/Makefile
 build/xz/Makefile: build/hostroot/usr/bin/musl-gcc build/xz/configure
 	@cd build/xz;./configure \
