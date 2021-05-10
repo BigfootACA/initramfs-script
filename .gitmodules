@@ -85,3 +85,6 @@
 [submodule "build/musl-fts"]
 	path = build/musl-fts
 	url = https://github.com/void-linux/musl-fts.git
+[submodule "build/argp-standalone"]
+	path = build/argp-standalone
+	url = https://github.com/BigfootACA/argp-standalone.git
