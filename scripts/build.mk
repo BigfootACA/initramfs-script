@@ -30,7 +30,8 @@ CLEAN_TARGETS=\
 	clean-btrfs-progs \
 	clean-fuse2 \
 	clean-fuse3 \
-	clean-ntfs-3g
+	clean-ntfs-3g \
+	clean-musl-fts
 toolchain: build/hostroot/usr/bin/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*

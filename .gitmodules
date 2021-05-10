@@ -82,3 +82,6 @@
 [submodule "build/ntfs-3g"]
 	path = build/ntfs-3g
 	url = https://git.code.sf.net/p/ntfs-3g/ntfs-3g.git
+[submodule "build/musl-fts"]
+	path = build/musl-fts
+	url = https://github.com/void-linux/musl-fts.git
