@@ -1,0 +1,79 @@
+diff --git a/build/freetype/include/freetype/config/ftoption.h b/build/freetype/include/freetype/config/ftoption.h
+index 097f19b8a..efa13b9c6 100644
+--- a/build/freetype/include/freetype/config/ftoption.h
++++ b/build/freetype/include/freetype/config/ftoption.h
+@@ -124,7 +124,7 @@ FT_BEGIN_HEADER
+    * When this macro is not defined, FreeType offers alternative LCD
+    * rendering technology that produces excellent output.
+    */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /**************************************************************************
+@@ -672,8 +672,8 @@ FT_BEGIN_HEADER
+    * https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
+    */
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
+-#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2
+-/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
++/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
++#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )
+ 
+ 
+   /**************************************************************************
+@@ -861,7 +861,7 @@ FT_BEGIN_HEADER
+    * If this option is activated, it can be controlled with the
+    * `no-long-family-names` property of the 'pcf' driver module.
+    */
+-/* #define PCF_CONFIG_OPTION_LONG_FAMILY_NAMES */
++#define PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
+ 
+ 
+   /*************************************************************************/
+diff --git a/build/freetype/meson.build b/build/freetype/meson.build
+index ea304954e..806afc3ec 100644
+--- a/build/freetype/meson.build
++++ b/build/freetype/meson.build
+@@ -249,8 +249,7 @@ endif
+ # static library version and the shared library version when they are
+ # installed on the system, and will try to link them *both* to the final
+ # library!
+-bzip2_dep = meson.get_compiler('c').find_library('bz2',
+-              static: false,
++bzip2_dep = dependency('bz2',
+               required: get_option('bzip2'))
+ if bzip2_dep.found()
+   ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_BZIP2']
+@@ -258,23 +258,6 @@ if bzip2_dep.found()
+   ft2_deps += [bzip2_dep]
+ endif
+ 
+-# PNG support
+-libpng_dep = dependency('libpng', required: get_option('png'))
+-ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_PNG']
+-ft2_deps += [libpng_dep]
+-
+-# Harfbuzz support
+-harfbuzz_dep = dependency('harfbuzz',
+-                 version: '>= 1.8.0',
+-                 required: get_option('harfbuzz'))
+-ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_HARFBUZZ']
+-ft2_deps += [harfbuzz_dep]
+-
+-# Brotli decompression support
+-brotli_dep = dependency('libbrotlidec', required: get_option('brotli'))
+-ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_BROTLI']
+-ft2_deps += [brotli_dep]
+-
+ # We can now generate `ftoption.h`.
+ ftoption_h = custom_target('ftoption.h',
+   input: 'include/freetype/config/ftoption.h',
+@@ -316,7 +316,6 @@ ft2_lib = library('freetype',
+   include_directories: ft2_includes,
+   dependencies: ft2_deps,
+   install: true,
+-  version: ft2_libtool_version,
+ )
+ 
+ 

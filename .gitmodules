@@ -88,3 +88,6 @@
 [submodule "build/argp-standalone"]
 	path = build/argp-standalone
 	url = https://github.com/BigfootACA/argp-standalone.git
+[submodule "build/freetype"]
+	path = build/freetype
+	url = https://gitlab.freedesktop.org/freetype/freetype.git

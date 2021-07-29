@@ -32,7 +32,8 @@ CLEAN_TARGETS=\
 	clean-fuse3 \
 	clean-ntfs-3g \
 	clean-musl-fts \
-	clean-argp-standalone
+	clean-argp-standalone \
+	clean-freetype
 toolchain: build/hostroot/usr/bin/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
