@@ -19,6 +19,20 @@ build/bzip2/.installed: build/bzip2/.built
 	@install -vDm644 build/bzip2/libbz2.a build/sysroot/usr/lib/libbz2.a
 	@install -vDm644 build/bzip2/bzlib.h build/sysroot/usr/include/bzlib.h
 	@touch $@
+build/sysroot/usr/lib/pkgconfig/bz2.pc: build/bzip2/.installed
+	@echo "prefix=$(SYSROOT)/usr" > $@
+	@echo "exec_prefix=\$${prefix}" >> $@
+	@echo "libdir=\$${exec_prefix}/lib" >> $@
+	@echo "sharedlibdir=\$${libdir}" >> $@
+	@echo "includedir=\$${prefix}/include" >> $@
+	@echo >> $@
+	@echo "Name: bzip2" >> $@
+	@echo "Description: bzip2 compression library" >> $@
+	@echo "Version: 1.0.8" >> $@
+	@echo >> $@
+	@echo "Requires:" >> $@
+	@echo "Libs: -L\$${libdir} -L\$${sharedlibdir} -lbz2" >> $@
+	@echo "Cflags: -I\$${includedir}" >> $@
 build/sysroot/usr/lib/libbz2.so build/sysroot/usr/bin/bzip2: build/bzip2/.installed
 build-bzip2: build/bzip2/.built
 install-bzip2: build/bzip2/.installed
