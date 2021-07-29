@@ -2,6 +2,7 @@
 c='%HOSTROOT%/usr/bin/musl-gcc'
 ar='%CROSS_COMPILE%ar'
 strip='%HOSTROOT%/usr/bin/strip-wrapper'
+pkgconfig='%HOSTROOT%/usr/bin/pkg-config'
 [properties]
 sys_root='%SYSROOT%'
 pkg_config_libdir='%SYSROOT%/usr/lib/pkgconfig'

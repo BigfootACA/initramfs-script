@@ -37,12 +37,12 @@ toolchain: build/hostroot/usr/bin/musl-gcc
 clean-sysroot:
 	@rm -rf $(SYSROOT)/*
 clean-hostroot:
-	@find build/hostroot ! -type d ! -name musl-gcc.in ! -name strip-wrapper -exec rm -f {} \;
+	@find build/hostroot ! -type d ! -name '*.in' ! -name strip-wrapper -exec rm -f {} \;
 	@find build/hostroot -type d|sort -r|xargs rmdir --ignore-fail-on-non-empty
 clean-configs:
 	@rm -f build/meson.conf build/toolchain.cmake build/hostroot/usr/bin/musl-gcc
 clean-build: $(CLEAN_TARGETS)
-build/meson.conf: build/meson.conf.in build/hostroot/usr/bin/musl-gcc
+build/meson.conf: build/meson.conf.in build/hostroot/usr/bin/musl-gcc build/hostroot/usr/bin/pkg-config
 	@sed \
 		-e "s|%SYSROOT%|$(SYSROOT)|g;" \
 		-e "s|%HOSTROOT%|$(HOSTROOT)|g;" \
@@ -51,6 +51,12 @@ build/meson.conf: build/meson.conf.in build/hostroot/usr/bin/musl-gcc
 		-e "s|%ENDIAN%|$(ENDIAN)|g;" \
 		-e "s|%CROSS_COMPILE%|$(CROSS_COMPILE)|g" \
 		< $< > $@
+build/hostroot/usr/bin/pkg-config: build/hostroot/usr/bin/pkg-config.in build/hostroot/usr/bin/musl-gcc
+	@sed \
+		-e "s|%SYSROOT%|$(SYSROOT)|g;" \
+		-e "s|%HOSTROOT%|$(HOSTROOT)|g;" \
+		< $< > $@
+	@chmod +x $@
 build/toolchain.cmake: build/toolchain.cmake.in build/hostroot/usr/bin/musl-gcc
 	@sed \
 		-e "s|%SYSROOT%|$(SYSROOT)|g;" \

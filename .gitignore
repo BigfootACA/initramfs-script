@@ -16,7 +16,7 @@ build/hostroot/usr/bin/*
 !build/hostroot/usr
 !build/hostroot/usr/bin
 !build/hostroot/usr/bin/strip-wrapper
-!build/hostroot/usr/bin/musl-gcc.in
+!build/hostroot/usr/bin/*.in
 root
 *.rej
 *.orig
