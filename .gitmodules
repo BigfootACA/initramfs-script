@@ -91,3 +91,6 @@
 [submodule "build/freetype"]
 	path = build/freetype
 	url = https://gitlab.freedesktop.org/freetype/freetype.git
+[submodule "build/lodepng"]
+	path = build/lodepng
+	url = https://github.com/lvandeve/lodepng
