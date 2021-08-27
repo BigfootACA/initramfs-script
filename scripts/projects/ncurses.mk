@@ -45,6 +45,7 @@ build/ncurses/.installed: build/ncurses/.built
 	@echo 'INPUT(-lncursesw)' > build/sysroot/usr/lib/libncurses.so
 	@ln -s libncursesw.a build/sysroot/usr/lib/libncurses.a
 	@sed -i s,=/usr,=$(SYSROOT)/usr,g build/sysroot/usr/lib/pkgconfig/{ncurses,menu,form,panel}w.pc
+	@ln -s ncursesw.pc build/sysroot/usr/lib/pkgconfig/ncurses.pc
 	@touch $@
 build/hostroot/usr/bin/ncursesw6-config: build/sysroot/usr/bin/ncursesw6-config
 	@install -vDm755 $< $@
